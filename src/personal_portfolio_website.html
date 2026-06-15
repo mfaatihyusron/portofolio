@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Rizki Pratama</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0A0A0B;--bg-card:#111113;--bg-card2:#16161A;
+--text:#F5F5F0;--muted:#6B6B6B;--subtle:#2A2A2E;
+--cream:#E8E4D9;--cream-dim:#B8B4A9;
+--border:#1E1E22;--border-hover:#3A3A40;
+--accent:#E8E4D9;
+font-size:16px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,11,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;color:var(--cream);letter-spacing:-0.02em}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);font-size:.875rem;text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+/* SECTIONS */
+section{padding:6rem 2rem;max-width:1100px;margin:0 auto}
+.section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-family:'Sora',sans-serif;font-weight:700;font-size:clamp(2rem,4vw,3rem);letter-spacing:-0.03em;line-height:1.1;margin-bottom:1.5rem}
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:5rem;position:relative;overflow:hidden;max-width:none}
+.hero-inner{max-width:1100px;margin:0 auto;padding:0 2rem;width:100%;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center}
+.hero-grain{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;opacity:.4}
+.hero-glow{position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(232,228,217,.06) 0%,transparent 70%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:var(--bg-card);border:1px solid var(--border);padding:.35rem .85rem;border-radius:100px;font-size:.8rem;color:var(--muted);margin-bottom:1.5rem}
+.hero-tag::before{content:'';width:6px;height:6px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero-name{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(2.8rem,6vw,5rem);letter-spacing:-0.04em;line-height:1;margin-bottom:.75rem;color:var(--text)}
+.hero-role{font-family:'Sora',sans-serif;font-weight:400;font-size:clamp(1rem,2vw,1.25rem);color:var(--cream-dim);margin-bottom:1.5rem;letter-spacing:-0.01em}
+.hero-desc{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:2.5rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--cream);color:#0A0A0B;padding:.75rem 1.75rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .2s;border:none;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-primary:hover{background:#fff;transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:var(--text);padding:.75rem 1.75rem;border-radius:8px;font-weight:500;font-size:.9rem;text-decoration:none;border:1px solid var(--border-hover);transition:all .2s;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-secondary:hover{border-color:var(--cream-dim);transform:translateY(-1px)}
+.hero-social{display:flex;gap:1rem;margin-top:2rem}
+.hero-social a{color:var(--muted);text-decoration:none;font-size:.85rem;transition:color .2s;display:flex;align-items:center;gap:.4rem}
+.hero-social a:hover{color:var(--text)}
+.avatar-wrap{position:relative}
+.avatar{width:280px;height:280px;border-radius:24px;background:var(--bg-card2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.avatar-initial{font-family:'Sora',sans-serif;font-size:5rem;font-weight:800;color:var(--subtle);position:relative;z-index:1}
+.avatar-deco{position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(232,228,217,.08),transparent 60%)}
+.avatar-badge{position:absolute;bottom:-12px;right:-12px;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:.6rem 1rem;font-size:.75rem;color:var(--cream-dim)}
+/* ABOUT */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.25rem;margin-top:2.5rem}
+.skill-card{background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;transition:border-color .2s,transform .2s}
+.skill-card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+.skill-card-icon{width:40px;height:40px;border-radius:10px;background:var(--subtle);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.25rem}
+.skill-card-title{font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;margin-bottom:.75rem;color:var(--text)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.tag{font-size:.72rem;font-family:'JetBrains Mono',monospace;background:var(--subtle);color:var(--muted);padding:.2rem .6rem;border-radius:4px;border:1px solid var(--border)}
+/* TECH STACK */
+#tech{background:var(--bg);position:relative}
+#tech::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(232,228,217,.03),transparent 65%);pointer-events:none}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem;margin-top:2.5rem}
+.tech-card{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:1.25rem;cursor:default;transition:all .25s;position:relative;overflow:hidden}
+.tech-card:hover{border-color:var(--cream-dim);transform:translateY(-3px);background:var(--bg-card2)}
+.tech-card::after{content:'';position:absolute;inset:0;opacity:0;background:radial-gradient(circle at 50% 0%,rgba(232,228,217,.06),transparent 70%);transition:opacity .3s;pointer-events:none}
+.tech-card:hover::after{opacity:1}
+.tech-icon{font-size:1.75rem;margin-bottom:.6rem;display:block}
+.tech-name{font-family:'Sora',sans-serif;font-weight:600;font-size:.85rem;color:var(--text);margin-bottom:.25rem}
+.tech-cat{font-size:.7rem;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.tech-desc{font-size:.75rem;color:var(--muted);line-height:1.5;margin-top:.6rem;max-height:0;overflow:hidden;transition:max-height .4s ease,opacity .3s}
+.tech-card:hover .tech-desc{max-height:100px;opacity:1}
+.tech-skill-bar{height:2px;background:var(--subtle);border-radius:2px;margin-top:.75rem;overflow:hidden}
+.tech-skill-fill{height:100%;background:var(--cream-dim);border-radius:2px;transition:width .8s ease}
+/* PROJECTS */
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+@media(max-width:700px){.projects-grid{grid-template-columns:1fr}.hero-inner{grid-template-columns:1fr}.avatar-wrap{display:none}}
+.project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}
+.project-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.project-mockup{height:160px;background:var(--bg-card2);display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.project-mockup-bg{position:absolute;inset:0;opacity:.15}
+.project-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.project-num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);margin-bottom:.5rem}
+.project-name{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;margin-bottom:.35rem;letter-spacing:-0.01em}
+.project-sub{font-size:.8rem;color:var(--muted);margin-bottom:1rem}
+.project-star{font-size:.82rem;color:var(--muted);margin-bottom:1.25rem;line-height:1.65;flex:1}
+.project-star strong{color:var(--cream-dim);font-weight:500}
+.project-stack{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem}
+.project-actions{display:flex;gap:.75rem}
+.btn-sm{font-size:.78rem;padding:.45rem 1rem;border-radius:7px;text-decoration:none;font-weight:500;transition:all .2s;cursor:pointer;border:none;font-family:'Inter',sans-serif}
+.btn-sm-primary{background:var(--cream);color:#0A0A0B}
+.btn-sm-primary:hover{background:#fff}
+.btn-sm-ghost{background:transparent;color:var(--muted);border:1px solid var(--border);}
+.btn-sm-ghost:hover{border-color:var(--border-hover);color:var(--text)}
+/* EXPERIENCE */
+.timeline{margin-top:2.5rem;position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:.5rem;top:0;bottom:0;width:1px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:2.5rem}
+.timeline-dot{position:absolute;left:-1.625rem;top:.3rem;width:10px;height:10px;border-radius:50%;background:var(--cream-dim);border:2px solid var(--bg)}
+.timeline-date{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-bottom:.35rem}
+.timeline-title{font-family:'Sora',sans-serif;font-weight:600;font-size:.95rem;color:var(--text);margin-bottom:.2rem}
+.timeline-org{font-size:.82rem;color:var(--cream-dim);margin-bottom:.4rem}
+.timeline-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+.exp-cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+@media(max-width:600px){.exp-cols{grid-template-columns:1fr}}
+/* CONTACT */
+.contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+@media(max-width:700px){.contact-wrap{grid-template-columns:1fr}}
+.contact-info h2{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.5rem);letter-spacing:-0.03em;margin-bottom:1rem}
+.contact-info p{color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:.85rem}
+.contact-link{display:flex;align-items:center;gap:.75rem;color:var(--muted);text-decoration:none;font-size:.9rem;transition:color .2s;padding:.75rem;border-radius:10px;border:1px solid transparent;transition:all .2s}
+.contact-link:hover{color:var(--text);border-color:var(--border);background:var(--bg-card)}
+.contact-link-icon{width:36px;height:36px;background:var(--subtle);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.form-group{margin-bottom:1.25rem}
+.form-group label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.5rem;font-family:'JetBrains Mono',monospace;letter-spacing:.05em}
+.form-control{width:100%;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--text);font-size:.9rem;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;resize:none}
+.form-control:focus{border-color:var(--cream-dim)}
+textarea.form-control{min-height:120px}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2.5rem 2rem;max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;gap:1.5rem}
+.footer-copy{font-size:.8rem;color:var(--muted)}
+.footer-links{display:flex;gap:1.5rem;list-style:none}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+.back-top{width:36px;height:36px;background:var(--bg-card);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;text-decoration:none;color:var(--muted)}
+.back-top:hover{border-color:var(--border-hover);color:var(--text)}
+/* METRICS */
+.metrics-row{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.metric{border-left:1px solid var(--border);padding-left:1.25rem}
+.metric-num{font-family:'Sora',sans-serif;font-size:1.75rem;font-weight:700;color:var(--text)}
+.metric-label{font-size:.75rem;color:var(--muted);margin-top:.2rem}
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-in.visible{opacity:1;transform:none}
+.stagger>*{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.stagger.visible>*:nth-child(1){opacity:1;transform:none;transition-delay:.05s}
+.stagger.visible>*:nth-child(2){opacity:1;transform:none;transition-delay:.12s}
+.stagger.visible>*:nth-child(3){opacity:1;transform:none;transition-delay:.19s}
+.stagger.visible>*:nth-child(4){opacity:1;transform:none;transition-delay:.26s}
+.stagger.visible>*:nth-child(5){opacity:1;transform:none;transition-delay:.33s}
+.stagger.visible>*:nth-child(6){opacity:1;transform:none;transition-delay:.40s}
+.stagger.visible>*:nth-child(7){opacity:1;transform:none;transition-delay:.47s}
+.stagger.visible>*:nth-child(8){opacity:1;transform:none;transition-delay:.54s}
+.divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">RP.</div>
+  <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#tech">Tech Stack</a></li>
+    <li><a href="#projects">Proyek</a></li>
+    <li><a href="#experience">Pengalaman</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="hero-grain"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">
+        <span>Terbuka untuk Internship & Kolaborasi</span>
+      </div>
+      <h1 class="hero-name">Rizki<br>Pratama</h1>
+      <p class="hero-role">UI/UX Designer &nbsp;·&nbsp; Frontend Developer &nbsp;·&nbsp; Data Enthusiast</p>
+      <p class="hero-desc">Menghubungkan desain yang berpusat pada pengguna, pengembangan web modern, dan analisis data berbasis bukti — untuk menciptakan solusi digital yang tidak hanya indah, tapi benar-benar bekerja.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Hubungi Saya</a>
+        <a href="#" class="btn-secondary">Unduh CV ↓</a>
+      </div>
+      <div class="hero-social">
+        <a href="#">⟵ LinkedIn</a>
+        <a href="#">⟵ GitHub</a>
+        <a href="#">⟵ Email</a>
+      </div>
+    </div>
+    <div class="avatar-wrap">
+      <div class="avatar">
+        <div class="avatar-deco"></div>
+        <span class="avatar-initial">RP</span>
+      </div>
+      <div class="avatar-badge">✦ Available 2025</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-eyebrow fade-in">Tentang Saya</p>
+  <div class="fade-in" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-bottom:3rem">
+    <div>
+      <h2 class="section-title" style="margin-bottom:1.25rem">Membangun di<br>persimpangan desain<br>&amp; data.</h2>
+    </div>
+    <div style="padding-top:.5rem">
+      <p style="color:var(--muted);line-height:1.8;font-size:.95rem;margin-bottom:1.25rem">Mahasiswa Ilmu Komputer yang percaya bahwa produk terbaik lahir dari kolaborasi antara riset pengguna yang mendalam, rekayasa teknis yang solid, dan intuisi data yang tajam.</p>
+      <p style="color:var(--muted);line-height:1.8;font-size:.95rem">Fokus saya ada di Product Design, Web Development, dan Machine Learning — tiga domain yang saya pelajari secara bersamaan agar bisa menjadi jembatan antara tim desain, engineering, dan data.</p>
+    </div>
+  </div>
+  <div class="metrics-row fade-in">
+    <div class="metric"><div class="metric-num">4+</div><div class="metric-label">Proyek Selesai</div></div>
+    <div class="metric"><div class="metric-num">3</div><div class="metric-label">Domain Keahlian</div></div>
+    <div class="metric"><div class="metric-num">5+</div><div class="metric-label">Sertifikasi</div></div>
+    <div class="metric"><div class="metric-num">2+</div><div class="metric-label">Kompetisi Diikuti</div></div>
+  </div>
+  <div class="skills-grid stagger">
+    <div class="skill-card">
+      <div class="skill-card-icon">✦</div>
+      <div class="skill-card-title">UI/UX Design</div>
+      <div class="skill-tags">
+        <span class="tag">User Research</span><span class="tag">User Flow</span><span class="tag">Journey Mapping</span><span class="tag">Wireframing</span><span class="tag">Design System</span><span class="tag">Prototyping</span><span class="tag">Figma</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">⬡</div>
+      <div class="skill-card-title">Frontend Development</div>
+      <div class="skill-tags">
+        <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">JavaScript</span><span class="tag">Tailwind CSS</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">⚙</div>
+      <div class="skill-card-title">Backend Development</div>
+      <div class="skill-tags">
+        <span class="tag">PHP</span><span class="tag">CodeIgniter 3</span><span class="tag">REST API</span><span class="tag">MySQL</span><span class="tag">Database Design</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">◈</div>
+      <div class="skill-card-title">Data Science & ML</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Random Forest</span><span class="tag">LightGBM</span><span class="tag">XGBoost</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-icon">◎</div>
+      <div class="skill-card-title">Metodologi</div>
+      <div class="skill-tags">
+        <span class="tag">Agile</span><span class="tag">Scrum</span><span class="tag">Design Thinking</span><span class="tag">Data Analysis</span><span class="tag">Problem Solving</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TECH STACK -->
+<section id="tech">
+  <p class="section-eyebrow fade-in">Tech Stack</p>
+  <h2 class="section-title fade-in">Alat &amp; teknologi<br>yang saya gunakan sehari-hari.</h2>
+  <div class="tech-grid stagger">
+    <div class="tech-card">
+      <span class="tech-icon">⬛</span>
+      <div class="tech-name">Figma</div>
+      <div class="tech-cat">UI/UX Design</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:90%"></div></div>
+      <div class="tech-desc">Membangun design system, komponen reusable, variant management, dan user journey map pada berbagai proyek aplikasi digital.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">▲</span>
+      <div class="tech-name">Next.js</div>
+      <div class="tech-cat">Frontend</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:80%"></div></div>
+      <div class="tech-desc">Framework utama untuk membangun aplikasi web modern dengan performa tinggi dan struktur scalable.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">◐</span>
+      <div class="tech-name">Tailwind</div>
+      <div class="tech-cat">Frontend</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:88%"></div></div>
+      <div class="tech-desc">Membangun UI responsif secara cepat dengan pendekatan utility-first yang konsisten.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">⬡</span>
+      <div class="tech-name">JavaScript</div>
+      <div class="tech-cat">Frontend</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:82%"></div></div>
+      <div class="tech-desc">Interaksi dinamis dan logic client-side pada berbagai proyek web.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">🐘</span>
+      <div class="tech-name">PHP</div>
+      <div class="tech-cat">Backend</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:75%"></div></div>
+      <div class="tech-desc">Sistem web dinamis berbasis database dengan arsitektur MVC.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">◇</span>
+      <div class="tech-name">CodeIgniter</div>
+      <div class="tech-cat">Backend</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:72%"></div></div>
+      <div class="tech-desc">Aplikasi reservasi lapangan dan sistem informasi berbasis CI3.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">🐍</span>
+      <div class="tech-name">Python</div>
+      <div class="tech-cat">Data Science</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:85%"></div></div>
+      <div class="tech-desc">Bahasa utama untuk data processing, machine learning, dan analisis data.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">🌲</span>
+      <div class="tech-name">Random Forest</div>
+      <div class="tech-cat">ML</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:78%"></div></div>
+      <div class="tech-desc">Feature importance analysis dan predictive modeling pada dataset kompetisi.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">⚡</span>
+      <div class="tech-name">LightGBM</div>
+      <div class="tech-cat">ML</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:76%"></div></div>
+      <div class="tech-desc">Optimasi model machine learning pada dataset kompetisi dengan efisiensi tinggi.</div>
+    </div>
+    <div class="tech-card">
+      <span class="tech-icon">✦</span>
+      <div class="tech-name">XGBoost</div>
+      <div class="tech-cat">ML</div>
+      <div class="tech-skill-bar"><div class="tech-skill-fill" style="width:74%"></div></div>
+      <div class="tech-desc">Meningkatkan performa prediksi dan evaluasi model pada kompetisi data science.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-eyebrow fade-in">Proyek Pilihan</p>
+  <h2 class="section-title fade-in">Studi kasus dari<br>proyek nyata.</h2>
+  <div class="projects-grid stagger">
+    <!-- Courty -->
+    <div class="project-card">
+      <div class="project-mockup" style="background:linear-gradient(135deg,#111113 0%,#16161A 100%)">
+        <span style="font-size:3rem">🏸</span>
+        <div class="project-mockup-bg" style="background:linear-gradient(135deg,#E8E4D920,transparent)"></div>
+      </div>
+      <div class="project-body">
+        <div class="project-num">01 — Full Stack</div>
+        <div class="project-name">Courty</div>
+        <div class="project-sub">Aplikasi Reservasi Lapangan Olahraga Real-Time</div>
+        <div class="project-star">
+          <strong>Situasi:</strong> Proses reservasi masih manual dan tidak efisien.<br>
+          <strong>Tindakan:</strong> Membangun platform online lengkap dengan sistem autentikasi, manajemen jadwal, dan koneksi frontend-backend.<br>
+          <strong>Hasil:</strong> Reservasi lebih cepat, jadwal lebih terkelola, kapasitas multi-pengguna.
+        </div>
+        <div class="project-stack">
+          <span class="tag">PHP</span><span class="tag">CodeIgniter 3</span><span class="tag">MySQL</span><span class="tag">JavaScript</span>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn-sm btn-sm-primary">View Case Study</a>
+          <a href="#" class="btn-sm btn-sm-ghost">GitHub →</a>
+        </div>
+      </div>
+    </div>
+    <!-- SERA -->
+    <div class="project-card">
+      <div class="project-mockup" style="background:linear-gradient(135deg,#111113 0%,#16161A 100%)">
+        <span style="font-size:3rem">🏥</span>
+      </div>
+      <div class="project-body">
+        <div class="project-num">02 — UI/UX Design</div>
+        <div class="project-name">SERA</div>
+        <div class="project-sub">Sistem Manajemen Respons Kesehatan Bencana</div>
+        <div class="project-star">
+          <strong>Situasi:</strong> Koordinasi informasi kesehatan saat bencana tidak terpusat.<br>
+          <strong>Tindakan:</strong> User research → user flow → wireframe → high-fidelity design → prototype interaktif.<br>
+          <strong>Hasil:</strong> Alur kerja lebih jelas, informasi lebih mudah diakses oleh responder.
+        </div>
+        <div class="project-stack">
+          <span class="tag">Figma</span><span class="tag">Design System</span><span class="tag">UX Research</span>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn-sm btn-sm-primary">View Prototype</a>
+          <a href="#" class="btn-sm btn-sm-ghost">Case Study →</a>
+        </div>
+      </div>
+    </div>
+    <!-- Bike Rental -->
+    <div class="project-card">
+      <div class="project-mockup" style="background:linear-gradient(135deg,#111113 0%,#16161A 100%)">
+        <span style="font-size:3rem">🚲</span>
+      </div>
+      <div class="project-body">
+        <div class="project-num">03 — Mobile Design</div>
+        <div class="project-name">Bike Rental App</div>
+        <div class="project-sub">Aplikasi Peminjaman Sepeda Elektrik</div>
+        <div class="project-star">
+          <strong>Tindakan:</strong> User journey mapping → wireframe → prototype → UI design final yang bersih.<br>
+          <strong>Hasil:</strong> User flow yang lebih sederhana dan pengalaman pengguna yang jauh lebih baik dari solusi sebelumnya.
+        </div>
+        <div class="project-stack">
+          <span class="tag">Figma</span><span class="tag">Prototyping</span><span class="tag">User Journey</span>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn-sm btn-sm-primary">View Design</a>
+          <a href="#" class="btn-sm btn-sm-ghost">Prototype →</a>
+        </div>
+      </div>
+    </div>
+    <!-- ML -->
+    <div class="project-card">
+      <div class="project-mockup" style="background:linear-gradient(135deg,#111113 0%,#16161A 100%)">
+        <span style="font-size:3rem">📊</span>
+      </div>
+      <div class="project-body">
+        <div class="project-num">04 — Machine Learning</div>
+        <div class="project-name">ML Competition</div>
+        <div class="project-sub">Prediksi & Analisis Data Kompetisi</div>
+        <div class="project-star">
+          <strong>Tindakan:</strong> Data cleaning → feature engineering → ensemble modeling dengan Random Forest, LightGBM, dan XGBoost.<br>
+          <strong>Hasil:</strong> Insight data lebih akurat, peningkatan performa model yang signifikan di leaderboard.
+        </div>
+        <div class="project-stack">
+          <span class="tag">Python</span><span class="tag">Random Forest</span><span class="tag">LightGBM</span><span class="tag">XGBoost</span>
+        </div>
+        <div class="project-actions">
+          <a href="#" class="btn-sm btn-sm-primary">View Notebook</a>
+          <a href="#" class="btn-sm btn-sm-ghost">GitHub →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-eyebrow fade-in">Pengalaman & Pencapaian</p>
+  <h2 class="section-title fade-in">Perjalanan<br>saya sejauh ini.</h2>
+  <div class="exp-cols fade-in">
+    <div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);margin-bottom:1.25rem;letter-spacing:.08em">ORGANISASI & KEPANITIAAN</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2024 — Sekarang</div>
+          <div class="timeline-title">Divisi Teknologi Informasi</div>
+          <div class="timeline-org">Organisasi Mahasiswa Ilmu Komputer</div>
+          <div class="timeline-desc">Bertanggung jawab atas pengembangan website organisasi dan sistem informasi internal.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023</div>
+          <div class="timeline-title">Koordinator Divisi IT</div>
+          <div class="timeline-org">Panitia Seminar Nasional Teknologi</div>
+          <div class="timeline-desc">Mengelola pendaftaran peserta digital dan sistem absensi berbasis web.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2023</div>
+          <div class="timeline-title">Project Collaboration</div>
+          <div class="timeline-org">Tim Pengembang Aplikasi Kampus</div>
+          <div class="timeline-desc">Kolaborasi lintas jurusan dalam membangun solusi digital untuk kebutuhan akademik.</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);margin-bottom:1.25rem;letter-spacing:.08em">KOMPETISI & SERTIFIKASI</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#60a5fa"></div>
+          <div class="timeline-date">2024</div>
+          <div class="timeline-title">Data Science Competition</div>
+          <div class="timeline-org">Kompetisi Nasional ML</div>
+          <div class="timeline-desc">Ensemble modeling dengan LightGBM + XGBoost untuk prediksi data tabular.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#a78bfa"></div>
+          <div class="timeline-date">2024</div>
+          <div class="timeline-title">UI/UX Design Competition</div>
+          <div class="timeline-org">Hackathon Desain Produk</div>
+          <div class="timeline-desc">Merancang solusi digital end-to-end dalam waktu 48 jam bersama tim.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#4ade80"></div>
+          <div class="timeline-date">2023 — 2024</div>
+          <div class="timeline-title">Sertifikasi</div>
+          <div class="timeline-org">Google · Dicoding · Coursera · RevoU</div>
+          <div class="timeline-desc">Google Data Analytics Professional Certificate, Front-End Web Development, Data Science Fundamentals.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info fade-in">
+      <p class="section-eyebrow">Kontak</p>
+      <h2>Mari<br>Berkolaborasi.</h2>
+      <p>Terbuka untuk internship, freelance project, kolaborasi, dan peluang profesional lainnya. Saya akan senang mendengar tentang proyek Anda.</p>
+      <div class="contact-links">
+        <a href="https://linkedin.com" class="contact-link">
+          <div class="contact-link-icon">in</div>
+          <div>
+            <div style="color:var(--text);font-weight:500;font-size:.85rem">LinkedIn</div>
+            <div style="font-size:.78rem">linkedin.com/in/rizkipratama</div>
+          </div>
+        </a>
+        <a href="https://github.com" class="contact-link">
+          <div class="contact-link-icon" style="font-size:.8rem">gh</div>
+          <div>
+            <div style="color:var(--text);font-weight:500;font-size:.85rem">GitHub</div>
+            <div style="font-size:.78rem">github.com/rizkipratama</div>
+          </div>
+        </a>
+        <a href="mailto:rizki@email.com" class="contact-link">
+          <div class="contact-link-icon" style="font-size:.75rem">@</div>
+          <div>
+            <div style="color:var(--text);font-weight:500;font-size:.85rem">Email</div>
+            <div style="font-size:.78rem">rizki@email.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:.15s">
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:2rem">
+        <p style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted);margin-bottom:1.5rem;letter-spacing:.06em">KIRIM PESAN</p>
+        <div class="form-group">
+          <label>NAMA</label>
+          <input type="text" class="form-control" placeholder="Nama lengkap Anda">
+        </div>
+        <div class="form-group">
+          <label>EMAIL</label>
+          <input type="email" class="form-control" placeholder="email@domain.com">
+        </div>
+        <div class="form-group">
+          <label>PESAN</label>
+          <textarea class="form-control" placeholder="Ceritakan tentang proyek atau peluang yang ingin Anda diskusikan..."></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;padding:.85rem">Kirim Pesan →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<footer>
+  <div class="footer-copy">© 2025 Rizki Pratama. Dibangun dengan ♥ dan banyak kopi.</div>
+  <ul class="footer-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#projects">Proyek</a></li>
+    <li><a href="#contact">Kontak</a></li>
+  </ul>
+  <a href="#hero" class="back-top" title="Kembali ke atas">↑</a>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}
+  })
+},{threshold:0.12});
+document.querySelectorAll('.fade-in,.stagger').forEach(el=>obs.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  })
+});
+</script>
+</body>
+</html>
