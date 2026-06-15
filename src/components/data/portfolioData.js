@@ -8,7 +8,7 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/mfaatihyusron/",
   cv: "#",
   profileImage: "/assets/hero.png",
-  avatarInitial: "RP",
+  avatarInitial: "MFY",
   availability: "Available 2025",
   tagline: "Terbuka untuk Internship & Kolaborasi"
 };
