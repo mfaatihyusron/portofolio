@@ -13,22 +13,22 @@ import {
 } from 'lucide-react';
 
 import { 
-  SiFigma, 
-  SiNextdotjs, 
-  SiTailwindcss, 
-  SiJavascript, 
-  SiPhp, 
-  SiCodeigniter, 
-  SiPython,
-  SiScikitlearn,
-} from 'react-icons/si';
+  siFigma, 
+  siNextdotjs, 
+  siTailwindcss, 
+  siJavascript, 
+  siPhp, 
+  siCodeigniter, 
+  siPython,
+  siScikitlearn,
+} from 'simple-icons';
 
 export const personalInfo = {
   name: "Muhammad Faatih Yusron",
   title: "UI/UX Designer · Frontend Developer · Data Enthusiast",
   shortBio: "Menghubungkan desain yang berpusat pada pengguna, pengembangan web modern, dan analisis data berbasis bukti — untuk menciptakan solusi digital yang tidak hanya indah, tapi benar-benar bekerja.",
   longBio: "Mahasiswa Ilmu Komputer yang percaya bahwa produk terbaik lahir dari kolaborasi antara riset pengguna yang mendalam, rekayasa teknis yang solid, dan intuisi data yang tajam. Fokus saya ada di Product Design, Web Development, dan Machine Learning — tiga domain yang saya pelajari secara bersamaan agar bisa menjadi jembatan antara tim desain, engineering, dan data.",
-  email: "faatih@email.com",
+  email: "faatihyusron@email.com",
   github: "https://github.com/mfaatihyusron",
   linkedin: "https://www.linkedin.com/in/mfaatihyusron/",
   cv: "#",
@@ -43,7 +43,6 @@ export const stats = [
   { value: "3", label: "Domain Keahlian" },
   { value: "5+", label: "Sertifikasi" },
   { value: "2+", label: "Kompetisi Diikuti" },
-  { value: "2+", label: "Belajar" },
 ];
 
 export const skillCategories = [
@@ -80,56 +79,56 @@ export const technologies = [
     category: "UI/UX Design",
     level: 90,
     description: "Membangun design system, komponen reusable, variant management, dan user journey map pada berbagai proyek aplikasi digital.",
-    icon: SiFigma,
+    icon: siFigma,
   },
   {
     name: "Next.js",
     category: "Frontend",
     level: 80,
     description: "Framework utama untuk membangun aplikasi web modern dengan performa tinggi dan struktur scalable.",
-    icon: SiNextdotjs,
+    icon: siNextdotjs,
   },
   {
     name: "Tailwind",
     category: "Frontend",
     level: 88,
     description: "Membangun UI responsif secara cepat dengan pendekatan utility-first yang konsisten.",
-    icon: SiTailwindcss,
+    icon: siTailwindcss,
   },
   {
     name: "JavaScript",
     category: "Frontend",
     level: 82,
     description: "Interaksi dinamis dan logic client-side pada berbagai proyek web.",
-    icon: SiJavascript,
+    icon: siJavascript,
   },
   {
     name: "PHP",
     category: "Backend",
     level: 75,
     description: "Sistem web dinamis berbasis database dengan arsitektur MVC.",
-    icon: SiPhp,
+    icon: siPhp,
   },
   {
     name: "CodeIgniter",
     category: "Backend",
     level: 72,
     description: "Aplikasi reservasi lapangan dan sistem informasi berbasis CI3.",
-    icon: SiCodeigniter,
+    icon: siCodeigniter,
   },
   {
     name: "Python",
     category: "Data Science",
     level: 85,
     description: "Bahasa utama untuk data processing, machine learning, dan analisis data.",
-    icon: SiPython,
+    icon: siPython,
   },
   {
     name: "Random Forest",
     category: "ML",
     level: 78,
     description: "Feature importance analysis dan predictive modeling pada dataset kompetisi.",
-    icon: SiScikitlearn,
+    icon: siScikitlearn,
   },
   {
     name: "LightGBM",
@@ -205,47 +204,82 @@ export const projects = [
 export const experiences = {
   organisasi: [
     {
-      date: "2024 — Sekarang",
-      title: "Divisi Teknologi Informasi",
-      org: "Organisasi Mahasiswa Ilmu Komputer",
-      desc: "Bertanggung jawab atas pengembangan website organisasi dan sistem informasi internal.",
+      date: "Jun 2026 — Jan 2027",
+      title: "Staff Divisi Akademik",
+      org: "KSM Multimedia UPN Veteran Jakarta",
+      desc: "Menyusun silabus UI/UX, mengelola jadwal dan absensi peserta, berkoordinasi dengan mentor, serta terlibat dalam kepanitiaan dan pengembangan program akademik.",
     },
     {
-      date: "2023",
-      title: "Koordinator Divisi IT",
-      org: "Panitia Seminar Nasional Teknologi",
-      desc: "Mengelola pendaftaran peserta digital dan sistem absensi berbasis web.",
+      date: "Mar 2026 — Des 2026",
+      title: "Anggota",
+      org: "KSM Android UPN Veteran Jakarta (VeteranTech)",
+      desc: "Mengikuti berbagai program pengembangan skill teknologi, berkolaborasi lintas bidang, memperluas jaringan profesional, dan belajar dari senior di bidang teknologi.",
     },
     {
-      date: "2023",
-      title: "Project Collaboration",
-      org: "Tim Pengembang Aplikasi Kampus",
-      desc: "Kolaborasi lintas jurusan dalam membangun solusi digital untuk kebutuhan akademik.",
+      date: "Mei 2025",
+      title: "Staff Divisi Transportasi",
+      org: "Tech for Society - KSM Android UPNVJ",
+      desc: "Mengelola koordinasi logistik kegiatan edukasi digital di SMAN 6 Tangerang serta membantu siswa memahami materi dasar UI/UX dan pemrograman website.",
+    },
+    {
+      date: "2025",
+      title: "Staff Divisi Acara as Master of Ceremony",
+      org: "Tech for Society - KSM Android UPNVJ",
+      desc: "Mengelola koordinasi logistik kegiatan edukasi digital di SMAN 6 Tangerang serta membantu siswa memahami materi dasar UI/UX dan pemrograman website.",
     },
   ],
+
   kompetisi: [
     {
-      date: "2024",
-      title: "Data Science Competition",
-      org: "Kompetisi Nasional ML",
-      desc: "Ensemble modeling dengan LightGBM + XGBoost untuk prediksi data tabular.",
-      color: "#60a5fa"
+      date: "2025",
+      title: "Lulus Program Kreativitas Mahasiswa (PKM)",
+      org: "Universitas Pembangunan Nasional Veteran Jakarta",
+      desc: "Lulus seleksi Program Kreativitas Mahasiswa tingkat universitas setelah melalui tahapan seleksi di tingkat fakultas.",
+      color: "#60a5fa",
+    },
+    {
+      date: "2025",
+      title: "Assistant Junior Web Developer (Magang)",
+      org: "PT Citra Agung Mestika",
+      desc: "Merancang UI/UX menggunakan Figma dan mengembangkan website menggunakan Bootstrap CSS serta CodeIgniter 4 dalam tim pengembang.",
+      color: "#a78bfa",
+    },
+    {
+      date: "2025",
+      title: "UI/UX Designer Intern",
+      org: "Project Web Development SDN Joglo 05 Pagi",
+      desc: "Merancang antarmuka dan pengalaman pengguna untuk sistem pengelolaan sekolah yang mencakup data siswa, guru, kelas, penilaian, dan prestasi.",
+      color: "#4ade80",
+    },
+    {
+      date: "2025",
+      title: "Graphic Designer Intern",
+      org: "Kreativa Scope Batch 2",
+      desc: "Membuat desain konten media sosial dan thumbnail video, serta berkolaborasi dengan script writer dalam proses produksi konten digital.",
+      color: "#fbbf24",
     },
     {
       date: "2024",
-      title: "UI/UX Design Competition",
-      org: "Hackathon Desain Produk",
-      desc: "Merancang solusi digital end-to-end dalam waktu 48 jam bersama tim.",
-      color: "#a78bfa"
+      title: "Data Science Basic",
+      org: "KSM Android UPN Veteran Jakarta",
+      desc: "Menyelesaikan program Data Science Basic (13,5 jam) yang mencakup spreadsheet, Python, Exploratory Data Analysis (EDA), statistika, data preparation, supervised dan unsupervised learning, serta implementasi proyek machine learning sederhana.",
+      color: "#38bdf8",
     },
     {
-      date: "2023 — 2024",
-      title: "Sertifikasi",
-      org: "Google · Dicoding · Coursera · RevoU",
-      desc: "Google Data Analytics Professional Certificate, Front-End Web Development, Data Science Fundamentals.",
-      color: "#4ade80"
+      date: "2025",
+      title: "Data Science Beginner",
+      org: "KSM Android UPN Veteran Jakarta",
+      desc: "Menyelesaikan program Data Science Beginner (15 jam) yang membahas clustering, dimensionality reduction, ensemble learning, hyperparameter tuning, recommendation system, time series, NLP, sentiment analysis, deep learning, dan deployment machine learning.",
+      color: "#818cf8",
     },
-  ]
+    {
+      date: "2025",
+      title: "Data Classification and Summarization Using IBM Granite",
+      org: "IBM SkillsBuild",
+      desc: "Mempelajari klasifikasi data dan peringkasan teks otomatis menggunakan IBM Granite, termasuk pengolahan data tidak terstruktur dan penerapan Generative AI.",
+      color: "#06b6d4",
+    },
+      ],
 };
 
 export const navigationLinks = [

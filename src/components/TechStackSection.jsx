@@ -47,7 +47,9 @@ export default function TechStackSection() {
         marginTop: '2.5rem'
       }}>
         {technologies.map((tech, i) => {
-          const Icon = tech.icon;
+          const isSimpleIcon = tech.icon && tech.icon.path;
+          const brandColor = isSimpleIcon ? `#${tech.icon.hex}` : 'var(--cream-dim)';
+          
           return (
             <div key={i} className="tech-card" style={{
               background: 'var(--bg-card)',
@@ -62,10 +64,24 @@ export default function TechStackSection() {
               <span className="tech-icon" style={{ 
                 fontSize: '1.75rem', 
                 marginBottom: '.75rem', 
-                display: 'block',
-                color: 'var(--cream-dim)'
+                display: 'flex',
+                alignItems: 'center',
+                color: brandColor
               }}>
-                <Icon size={32} strokeWidth={1.5} />
+                {isSimpleIcon ? (
+                  <svg 
+                    role="img" 
+                    viewBox="0 0 24 24" 
+                    width="32" 
+                    height="32"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d={tech.icon.path} />
+                  </svg>
+                ) : (
+                  <tech.icon size={32} strokeWidth={1.5} />
+                )}
               </span>
               <div className="tech-name" style={{
                 fontFamily: "'Sora', sans-serif",
@@ -80,7 +96,14 @@ export default function TechStackSection() {
                 {tech.category}
               </div>
               <div className="tech-skill-bar" style={{ height: '2px', background: 'var(--subtle)', borderRadius: '2px', marginTop: '.75rem', overflow: 'hidden' }}>
-                <div className="tech-skill-fill" style={{ height: '100%', background: 'var(--cream-dim)', borderRadius: '2px', transition: 'width .8s ease', width: `${tech.level}%` }}></div>
+                <div className="tech-skill-fill" style={{ 
+                  height: '100%', 
+                  background: brandColor, 
+                  borderRadius: '2px', 
+                  transition: 'width .8s ease', 
+                  width: `${tech.level}%`,
+                  opacity: 0.8
+                }}></div>
               </div>
               <div className="tech-desc" style={{
                 fontSize: '.75rem',
