@@ -1,3 +1,5 @@
+import { ArrowUp } from 'lucide-react';
+
 export default function Footer() {
   return (
     <footer style={{
@@ -12,7 +14,7 @@ export default function Footer() {
       gap: '1.5rem'
     }}>
       <div className="footer-copy" style={{ fontSize: '.8rem', color: 'var(--muted)' }}>
-        © 2025 Rizki Pratama. Dibangun dengan ♥ dan banyak kopi.
+        © 2025 Muhammad Faatih Yusron. Dibangun dengan ♥ dan banyak kopi.
       </div>
       <ul className="footer-links" style={{ display: 'flex', gap: '1.5rem', listStyle: 'none' }}>
         <li><a href="#about" style={{ fontSize: '.8rem', color: 'var(--muted)', textDecoration: 'none', transition: 'color .2s' }}>Tentang</a></li>
@@ -32,7 +34,9 @@ export default function Footer() {
         transition: 'all .2s',
         textDecoration: 'none',
         color: 'var(--muted)'
-      }}>↑</a>
+      }}>
+        <ArrowUp size={18} />
+      </a>
       <style>{`
         .footer-links a:hover { color: var(--text) !important; }
         .back-top:hover { border-color: var(--border-hover) !important; color: var(--text) !important; }

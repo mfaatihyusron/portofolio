@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { personalInfo } from "./data/portfolioData";
+import { Mail, Download, Sparkles } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function HeroSection() {
   const heroRef = useRef(null);
@@ -124,13 +126,21 @@ export default function HeroSection() {
           
           <div className="hero-cta" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a href="#contact" className="btn-primary">Hubungi Saya</a>
-            <a href={personalInfo.cv} className="btn-secondary">Unduh CV ↓</a>
+            <a href={personalInfo.cv} className="btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
+              Unduh CV <Download size={16} />
+            </a>
           </div>
           
-          <div className="hero-social" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
-            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', textDecoration: 'none', fontSize: '.85rem', transition: 'color .2s', display: 'flex', alignItems: 'center', gap: '.4rem' }}>⟵ LinkedIn</a>
-            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', textDecoration: 'none', fontSize: '.85rem', transition: 'color .2s', display: 'flex', alignItems: 'center', gap: '.4rem' }}>⟵ GitHub</a>
-            <a href={`mailto:${personalInfo.email}`} style={{ color: 'var(--muted)', textDecoration: 'none', fontSize: '.85rem', transition: 'color .2s', display: 'flex', alignItems: 'center', gap: '.4rem' }}>⟵ Email</a>
+          <div className="hero-social" style={{ display: 'flex', gap: '1.5rem', marginTop: '2.5rem' }}>
+            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', transition: 'color .2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted)'} title="LinkedIn">
+              <FaLinkedin size={20} />
+            </a>
+            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', transition: 'color .2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted)'} title="GitHub">
+              <FaGithub size={20} />
+            </a>
+            <a href={`mailto:${personalInfo.email}`} style={{ color: 'var(--muted)', transition: 'color .2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted)'} title="Email">
+              <Mail size={20} />
+            </a>
           </div>
         </div>
         
@@ -170,8 +180,13 @@ export default function HeroSection() {
             borderRadius: '12px',
             padding: '.6rem 1rem',
             fontSize: '.75rem',
-            color: 'var(--cream-dim)'
-          }}>✦ {personalInfo.availability}</div>
+            color: 'var(--cream-dim)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '.4rem'
+          }}>
+            <Sparkles size={14} /> {personalInfo.availability}
+          </div>
         </div>
       </div>
       <style>{`

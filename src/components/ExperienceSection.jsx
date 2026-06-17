@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { experiences } from "./data/portfolioData";
+import { Users, Trophy } from 'lucide-react';
 
 export default function ExperienceSection() {
   const sectionRef = useRef(null);
@@ -34,8 +35,8 @@ export default function ExperienceSection() {
         gap: '3rem'
       }}>
         <div>
-          <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em' }}>
-            ORGANISASI & KEPANITIAAN
+          <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
+            <Users size={14} /> ORGANISASI & KEPANITIAAN
           </p>
           <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
             <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>
@@ -52,8 +53,8 @@ export default function ExperienceSection() {
         </div>
         
         <div>
-          <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em' }}>
-            KOMPETISI & SERTIFIKASI
+          <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
+            <Trophy size={14} /> KOMPETISI & SERTIFIKASI
           </p>
           <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
             <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>

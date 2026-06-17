@@ -46,49 +46,57 @@ export default function TechStackSection() {
         gap: '1rem',
         marginTop: '2.5rem'
       }}>
-        {technologies.map((tech, i) => (
-          <div key={i} className="tech-card" style={{
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border)',
-            borderRadius: '14px',
-            padding: '1.25rem',
-            cursor: 'default',
-            transition: 'all .25s',
-            position: 'relative',
-            overflow: 'hidden'
-          }}>
-            <span className="tech-icon" style={{ fontSize: '1.75rem', marginBottom: '.6rem', display: 'block' }}>
-              {tech.icon}
-            </span>
-            <div className="tech-name" style={{
-              fontFamily: "'Sora', sans-serif",
-              fontWeight: 600,
-              fontSize: '.85rem',
-              color: 'var(--text)',
-              marginBottom: '.25rem'
+        {technologies.map((tech, i) => {
+          const Icon = tech.icon;
+          return (
+            <div key={i} className="tech-card" style={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              borderRadius: '14px',
+              padding: '1.25rem',
+              cursor: 'default',
+              transition: 'all .25s',
+              position: 'relative',
+              overflow: 'hidden'
             }}>
-              {tech.name}
+              <span className="tech-icon" style={{ 
+                fontSize: '1.75rem', 
+                marginBottom: '.75rem', 
+                display: 'block',
+                color: 'var(--cream-dim)'
+              }}>
+                <Icon size={32} strokeWidth={1.5} />
+              </span>
+              <div className="tech-name" style={{
+                fontFamily: "'Sora', sans-serif",
+                fontWeight: 600,
+                fontSize: '.85rem',
+                color: 'var(--text)',
+                marginBottom: '.25rem'
+              }}>
+                {tech.name}
+              </div>
+              <div className="tech-cat" style={{ fontSize: '.7rem', color: 'var(--muted)', fontFamily: "'JetBrains Mono', monospace" }}>
+                {tech.category}
+              </div>
+              <div className="tech-skill-bar" style={{ height: '2px', background: 'var(--subtle)', borderRadius: '2px', marginTop: '.75rem', overflow: 'hidden' }}>
+                <div className="tech-skill-fill" style={{ height: '100%', background: 'var(--cream-dim)', borderRadius: '2px', transition: 'width .8s ease', width: `${tech.level}%` }}></div>
+              </div>
+              <div className="tech-desc" style={{
+                fontSize: '.75rem',
+                color: 'var(--muted)',
+                lineHeight: 1.5,
+                marginTop: '.6rem',
+                maxHeight: 0,
+                overflow: 'hidden',
+                transition: 'max-height .4s ease, opacity .3s',
+                opacity: 0
+              }}>
+                {tech.description}
+              </div>
             </div>
-            <div className="tech-cat" style={{ fontSize: '.7rem', color: 'var(--muted)', fontFamily: "'JetBrains Mono', monospace" }}>
-              {tech.category}
-            </div>
-            <div className="tech-skill-bar" style={{ height: '2px', background: 'var(--subtle)', borderRadius: '2px', marginTop: '.75rem', overflow: 'hidden' }}>
-              <div className="tech-skill-fill" style={{ height: '100%', background: 'var(--cream-dim)', borderRadius: '2px', transition: 'width .8s ease', width: `${tech.level}%` }}></div>
-            </div>
-            <div className="tech-desc" style={{
-              fontSize: '.75rem',
-              color: 'var(--muted)',
-              lineHeight: 1.5,
-              marginTop: '.6rem',
-              maxHeight: 0,
-              overflow: 'hidden',
-              transition: 'max-height .4s ease, opacity .3s',
-              opacity: 0
-            }}>
-              {tech.description}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <style>{`
         .tech-card:hover {

@@ -63,43 +63,46 @@ export default function AboutSection() {
       </div>
 
       <div className="skills-grid stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem', marginTop: '2.5rem' }}>
-        {skillCategories.map((category, i) => (
-          <div key={i} className="skill-card" style={{
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border)',
-            borderRadius: '16px',
-            padding: '1.5rem',
-            transition: 'border-color .2s, transform .2s'
-          }}>
-            <div className="skill-card-icon" style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '10px',
-              background: 'var(--subtle)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '1rem',
-              fontSize: '1.25rem'
+        {skillCategories.map((category, i) => {
+          const Icon = category.icon;
+          return (
+            <div key={i} className="skill-card" style={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border)',
+              borderRadius: '16px',
+              padding: '1.5rem',
+              transition: 'border-color .2s, transform .2s'
             }}>
-              {category.icon}
+              <div className="skill-card-icon" style={{
+                width: '40px',
+                height: '40px',
+                borderRadius: '10px',
+                background: 'var(--subtle)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '1rem',
+                color: 'var(--cream-dim)'
+              }}>
+                <Icon size={22} strokeWidth={1.5} />
+              </div>
+              <div className="skill-card-title" style={{
+                fontFamily: "'Sora', sans-serif",
+                fontWeight: 600,
+                fontSize: '.95rem',
+                marginBottom: '.75rem',
+                color: 'var(--text)'
+              }}>
+                {category.title}
+              </div>
+              <div className="skill-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '.4rem' }}>
+                {category.skills.map((skill, j) => (
+                  <span key={j} className="tag">{skill}</span>
+                ))}
+              </div>
             </div>
-            <div className="skill-card-title" style={{
-              fontFamily: "'Sora', sans-serif",
-              fontWeight: 600,
-              fontSize: '.95rem',
-              marginBottom: '.75rem',
-              color: 'var(--text)'
-            }}>
-              {category.title}
-            </div>
-            <div className="skill-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '.4rem' }}>
-              {category.skills.map((skill, j) => (
-                <span key={j} className="tag">{skill}</span>
-              ))}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <style>{`
         .skill-card:hover {

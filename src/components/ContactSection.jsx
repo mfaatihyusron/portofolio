@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { personalInfo } from "./data/portfolioData";
+import { Mail, Send } from 'lucide-react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 export default function ContactSection() {
   const sectionRef = useRef(null);
@@ -41,21 +43,27 @@ export default function ContactSection() {
           </p>
           <div className="contact-links" style={{ display: 'flex', flexDirection: 'column', gap: '.85rem' }}>
             <a href={personalInfo.linkedin} className="contact-link" style={{ display: 'flex', alignItems: 'center', gap: '.75rem', color: 'var(--muted)', textDecoration: 'none', fontSize: '.9rem', padding: '.75rem', borderRadius: '10px', border: '1px solid transparent', transition: 'all .2s' }}>
-              <div className="contact-link-icon" style={{ width: '36px', height: '36px', background: 'var(--subtle)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyCenter: 'center', fontSize: '1rem', display: 'flex', justifyContent: 'center' }}>in</div>
+              <div className="contact-link-icon" style={{ width: '40px', height: '40px', background: 'var(--subtle)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--cream-dim)' }}>
+                <FaLinkedin size={20} />
+              </div>
               <div>
                 <div style={{ color: 'var(--text)', fontWeight: 500, fontSize: '.85rem' }}>LinkedIn</div>
-                <div style={{ fontSize: '.78rem' }}>linkedin.com/in/rizkipratama</div>
+                <div style={{ fontSize: '.78rem' }}>linkedin.com/in/mfaatihyusron</div>
               </div>
             </a>
             <a href={personalInfo.github} className="contact-link" style={{ display: 'flex', alignItems: 'center', gap: '.75rem', color: 'var(--muted)', textDecoration: 'none', fontSize: '.9rem', padding: '.75rem', borderRadius: '10px', border: '1px solid transparent', transition: 'all .2s' }}>
-              <div className="contact-link-icon" style={{ width: '36px', height: '36px', background: 'var(--subtle)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', display: 'flex', justifyContent: 'center' }}>gh</div>
+              <div className="contact-link-icon" style={{ width: '40px', height: '40px', background: 'var(--subtle)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--cream-dim)' }}>
+                <FaGithub size={20} />
+              </div>
               <div>
                 <div style={{ color: 'var(--text)', fontWeight: 500, fontSize: '.85rem' }}>GitHub</div>
-                <div style={{ fontSize: '.78rem' }}>github.com/rizkipratama</div>
+                <div style={{ fontSize: '.78rem' }}>github.com/mfaatihyusron</div>
               </div>
             </a>
             <a href={`mailto:${personalInfo.email}`} className="contact-link" style={{ display: 'flex', alignItems: 'center', gap: '.75rem', color: 'var(--muted)', textDecoration: 'none', fontSize: '.9rem', padding: '.75rem', borderRadius: '10px', border: '1px solid transparent', transition: 'all .2s' }}>
-              <div className="contact-link-icon" style={{ width: '36px', height: '36px', background: 'var(--subtle)', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', display: 'flex', justifyContent: 'center' }}>@</div>
+              <div className="contact-link-icon" style={{ width: '40px', height: '40px', background: 'var(--subtle)', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--cream-dim)' }}>
+                <Mail size={20} />
+              </div>
               <div>
                 <div style={{ color: 'var(--text)', fontWeight: 500, fontSize: '.85rem' }}>Email</div>
                 <div style={{ fontSize: '.78rem' }}>{personalInfo.email}</div>
@@ -81,7 +89,9 @@ export default function ContactSection() {
               <label style={{ display: 'block', fontSize: '.8rem', color: 'var(--muted)', marginBottom: '.5rem', fontFamily: "'JetBrains Mono',monospace", letterSpacing: '.05em' }}>PESAN</label>
               <textarea className="form-control" placeholder="Ceritakan tentang proyek atau peluang yang ingin Anda diskusikan..." style={{ width: '100%', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '10px', padding: '.75rem 1rem', color: 'var(--text)', fontSize: '.9rem', fontFamily: "'Inter', sans-serif", outline: 'none', transition: 'border-color .2s', minHeight: '120px', resize: 'none' }}></textarea>
             </div>
-            <button className="btn-primary" style={{ width: '100%', padding: '.85rem' }}>Kirim Pesan →</button>
+            <button className="btn-primary" style={{ width: '100%', padding: '.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '.5rem' }}>
+              Kirim Pesan <Send size={16} />
+            </button>
           </div>
         </div>
       </div>
