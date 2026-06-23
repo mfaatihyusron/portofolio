@@ -26,8 +26,8 @@ export default function ExperienceSection() {
 
   return (
     <section id="experience" ref={sectionRef} style={{ padding: '6rem 2rem', maxWidth: '1100px', margin: '0 auto' }}>
-      <p className="section-eyebrow fade-in">Pengalaman & Pencapaian</p>
-      <h2 className="section-title fade-in">Perjalanan<br />saya sejauh ini.</h2>
+      <p className="section-eyebrow fade-in">Experience & Achievements</p>
+      <h2 className="section-title fade-in">My journey<br />so far.</h2>
       
       <div className="exp-cols fade-in" style={{
         display: 'grid',
@@ -36,7 +36,7 @@ export default function ExperienceSection() {
       }}>
         <div>
           <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-            <Users size={14} /> ORGANISASI & KEPANITIAAN
+            <Users size={14} /> ORGANIZATIONS & COMMITTEES
           </p>
           <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
             <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>
@@ -54,7 +54,7 @@ export default function ExperienceSection() {
         
         <div>
           <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-            <Trophy size={14} /> KOMPETISI & SERTIFIKASI
+            <Trophy size={14} /> COMPETITIONS & CERTIFICATIONS
           </p>
           <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
             <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>

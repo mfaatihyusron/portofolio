@@ -38,7 +38,7 @@ export default function TechStackSection() {
       }}></div>
       
       <p className="section-eyebrow fade-in">Tech Stack</p>
-      <h2 className="section-title fade-in">Alat &amp; teknologi<br />yang saya gunakan sehari-hari.</h2>
+      <h2 className="section-title fade-in">Tools &amp; technologies<br />I use on a daily basis.</h2>
       
       <div className="tech-grid stagger" style={{
         display: 'grid',

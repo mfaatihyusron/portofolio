@@ -34,12 +34,12 @@ export default function ContactSection() {
         alignItems: 'start'
       }}>
         <div className="contact-info fade-in">
-          <p className="section-eyebrow">Kontak</p>
+          <p className="section-eyebrow">Contact</p>
           <h2 style={{ fontFamily: "'Sora', sans-serif", fontWeight: 800, fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)', letterSpacing: '-0.03em', marginBottom: '1rem' }}>
-            Mari<br />Berkolaborasi.
+            Let's<br />Collaborate.
           </h2>
           <p style={{ color: 'var(--muted)', fontSize: '.95rem', lineHeight: 1.75, marginBottom: '2rem' }}>
-            Terbuka untuk internship, freelance project, kolaborasi, dan peluang profesional lainnya. Saya akan senang mendengar tentang proyek Anda.
+            Open to internships, freelance projects, collaborations, and other professional opportunities. I would love to hear about your project.
           </p>
           <div className="contact-links" style={{ display: 'flex', flexDirection: 'column', gap: '.85rem' }}>
             <a href={personalInfo.linkedin} className="contact-link" style={{ display: 'flex', alignItems: 'center', gap: '.75rem', color: 'var(--muted)', textDecoration: 'none', fontSize: '.9rem', padding: '.75rem', borderRadius: '10px', border: '1px solid transparent', transition: 'all .2s' }}>
@@ -75,22 +75,22 @@ export default function ContactSection() {
         <div className="fade-in" style={{ transitionDelay: '.15s' }}>
           <div style={{ background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '20px', padding: '2rem' }}>
             <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.72rem', color: 'var(--muted)', marginBottom: '1.5rem', letterSpacing: '.06em' }}>
-              KIRIM PESAN
+              SEND MESSAGE
             </p>
             <div className="form-group" style={{ marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', fontSize: '.8rem', color: 'var(--muted)', marginBottom: '.5rem', fontFamily: "'JetBrains Mono',monospace", letterSpacing: '.05em' }}>NAMA</label>
-              <input type="text" className="form-control" placeholder="Nama lengkap Anda" style={{ width: '100%', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '10px', padding: '.75rem 1rem', color: 'var(--text)', fontSize: '.9rem', fontFamily: "'Inter', sans-serif", outline: 'none', transition: 'border-color .2s' }} />
+              <label style={{ display: 'block', fontSize: '.8rem', color: 'var(--muted)', marginBottom: '.5rem', fontFamily: "'JetBrains Mono',monospace", letterSpacing: '.05em' }}>NAME</label>
+              <input type="text" className="form-control" placeholder="Your full name" style={{ width: '100%', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '10px', padding: '.75rem 1rem', color: 'var(--text)', fontSize: '.9rem', fontFamily: "'Inter', sans-serif", outline: 'none', transition: 'border-color .2s' }} />
             </div>
             <div className="form-group" style={{ marginBottom: '1.25rem' }}>
               <label style={{ display: 'block', fontSize: '.8rem', color: 'var(--muted)', marginBottom: '.5rem', fontFamily: "'JetBrains Mono',monospace", letterSpacing: '.05em' }}>EMAIL</label>
               <input type="email" className="form-control" placeholder="email@domain.com" style={{ width: '100%', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '10px', padding: '.75rem 1rem', color: 'var(--text)', fontSize: '.9rem', fontFamily: "'Inter', sans-serif", outline: 'none', transition: 'border-color .2s' }} />
             </div>
             <div className="form-group" style={{ marginBottom: '1.25rem' }}>
-              <label style={{ display: 'block', fontSize: '.8rem', color: 'var(--muted)', marginBottom: '.5rem', fontFamily: "'JetBrains Mono',monospace", letterSpacing: '.05em' }}>PESAN</label>
-              <textarea className="form-control" placeholder="Ceritakan tentang proyek atau peluang yang ingin Anda diskusikan..." style={{ width: '100%', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '10px', padding: '.75rem 1rem', color: 'var(--text)', fontSize: '.9rem', fontFamily: "'Inter', sans-serif", outline: 'none', transition: 'border-color .2s', minHeight: '120px', resize: 'none' }}></textarea>
+              <label style={{ display: 'block', fontSize: '.8rem', color: 'var(--muted)', marginBottom: '.5rem', fontFamily: "'JetBrains Mono',monospace", letterSpacing: '.05em' }}>MESSAGE</label>
+              <textarea className="form-control" placeholder="Tell me about the project or opportunity you would like to discuss..." style={{ width: '100%', background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: '10px', padding: '.75rem 1rem', color: 'var(--text)', fontSize: '.9rem', fontFamily: "'Inter', sans-serif", outline: 'none', transition: 'border-color .2s', minHeight: '120px', resize: 'none' }}></textarea>
             </div>
             <button className="btn-primary" style={{ width: '100%', padding: '.85rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '.5rem' }}>
-              Kirim Pesan <Send size={16} />
+              Send Message <Send size={16} />
             </button>
           </div>
         </div>

@@ -125,9 +125,9 @@ export default function HeroSection() {
           </p>
           
           <div className="hero-cta" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href="#contact" className="btn-primary">Hubungi Saya</a>
+            <a href="#contact" className="btn-primary">Contact Me</a>
             <a href={personalInfo.cv} className="btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-              Unduh CV <Download size={16} />
+              Download CV <Download size={16} />
             </a>
           </div>
           

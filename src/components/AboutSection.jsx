@@ -25,7 +25,7 @@ export default function AboutSection() {
 
   return (
     <section id="about" ref={sectionRef} style={{ padding: '6rem 2rem', maxWidth: '1100px', margin: '0 auto' }}>
-      <p className="section-eyebrow fade-in">Tentang Saya</p>
+      <p className="section-eyebrow fade-in">About Me</p>
       
       <div className="fade-in" style={{
         display: 'grid',
@@ -36,7 +36,7 @@ export default function AboutSection() {
       }}>
         <div>
           <h2 className="section-title" style={{ marginBottom: '1.25rem' }}>
-            Membangun di<br />persimpangan desain<br />&amp; data.
+            Building at the<br />intersection of design<br />&amp; data.
           </h2>
         </div>
         <div style={{ paddingTop: '.5rem' }}>

@@ -14,14 +14,14 @@ export default function Footer() {
       gap: '1.5rem'
     }}>
       <div className="footer-copy" style={{ fontSize: '.8rem', color: 'var(--muted)' }}>
-        © 2025 Muhammad Faatih Yusron. Dibangun dengan ♥ dan banyak kopi.
+        © 2025 Muhammad Faatih Yusron. Built with ♥ and lots of coffee.
       </div>
       <ul className="footer-links" style={{ display: 'flex', gap: '1.5rem', listStyle: 'none' }}>
-        <li><a href="#about" style={{ fontSize: '.8rem', color: 'var(--muted)', textDecoration: 'none', transition: 'color .2s' }}>Tentang</a></li>
-        <li><a href="#projects" style={{ fontSize: '.8rem', color: 'var(--muted)', textDecoration: 'none', transition: 'color .2s' }}>Proyek</a></li>
-        <li><a href="#contact" style={{ fontSize: '.8rem', color: 'var(--muted)', textDecoration: 'none', transition: 'color .2s' }}>Kontak</a></li>
+        <li><a href="#about" style={{ fontSize: '.8rem', color: 'var(--muted)', textDecoration: 'none', transition: 'color .2s' }}>About</a></li>
+        <li><a href="#projects" style={{ fontSize: '.8rem', color: 'var(--muted)', textDecoration: 'none', transition: 'color .2s' }}>Projects</a></li>
+        <li><a href="#contact" style={{ fontSize: '.8rem', color: 'var(--muted)', textDecoration: 'none', transition: 'color .2s' }}>Contact</a></li>
       </ul>
-      <a href="#hero" className="back-top" title="Kembali ke atas" style={{
+      <a href="#hero" className="back-top" title="Back to top" style={{
         width: '36px',
         height: '36px',
         background: 'var(--bg-card)',

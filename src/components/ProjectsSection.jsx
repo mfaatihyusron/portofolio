@@ -27,8 +27,8 @@ export default function ProjectsSection() {
 
   return (
     <section id="projects" ref={sectionRef} style={{ padding: '6rem 2rem', maxWidth: '1100px', margin: '0 auto' }}>
-      <p className="section-eyebrow fade-in">Proyek Pilihan</p>
-      <h2 className="section-title fade-in">Studi kasus dari<br />proyek nyata.</h2>
+      <p className="section-eyebrow fade-in">Selected Projects</p>
+      <h2 className="section-title fade-in">Case studies of<br />real-world projects.</h2>
       <div className="projects-grid stagger" style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
@@ -83,9 +83,9 @@ export default function ProjectsSection() {
                   {project.subtitle}
                 </div>
                 <div className="project-star" style={{ fontSize: '.82rem', color: 'var(--muted)', marginBottom: '1.25rem', lineHeight: 1.65, flex: 1 }}>
-                  <strong style={{ color: 'var(--cream-dim)', fontWeight: 500 }}>Situasi:</strong> {project.situation}<br />
-                  <strong style={{ color: 'var(--cream-dim)', fontWeight: 500 }}>Tindakan:</strong> {project.action}<br />
-                  <strong style={{ color: 'var(--cream-dim)', fontWeight: 500 }}>Hasil:</strong> {project.result}
+                  <strong style={{ color: 'var(--cream-dim)', fontWeight: 500 }}>Situation:</strong> {project.situation}<br />
+                  <strong style={{ color: 'var(--cream-dim)', fontWeight: 500 }}>Action:</strong> {project.action}<br />
+                  <strong style={{ color: 'var(--cream-dim)', fontWeight: 500 }}>Result:</strong> {project.result}
                 </div>
                 <div className="project-stack" style={{ display: 'flex', flexWrap: 'wrap', gap: '.4rem', marginBottom: '1.25rem' }}>
                   {project.techStack.map((tech, j) => (
