@@ -25,11 +25,18 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background: radial-gradient(circle at 50% 40%, #0c0a1e 0%, #050508 100%);
+  background-attachment: scroll;
   color: var(--text);
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* Layer sections and content above the background canvas */
+section, #hero, footer, .divider {
+  position: relative;
+  z-index: 10;
 }
 
 /* Base Styles from HTML */
@@ -134,6 +141,17 @@ body {
 .stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: .40s; }
 .stagger.visible > *:nth-child(7) { opacity: 1; transform: none; transition-delay: .47s; }
 .stagger.visible > *:nth-child(8) { opacity: 1; transform: none; transition-delay: .54s; }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 
 /* Tailwind resets/overrides if needed, but since we are moving to custom CSS mostly, we keep it clean */
 @tailwind base;

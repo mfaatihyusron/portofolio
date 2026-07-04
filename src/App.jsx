@@ -6,10 +6,12 @@ import ProjectsSection from "./components/ProjectsSection";
 import ExperienceSection from "./components/ExperienceSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
+import ParticleBackground from "./components/ParticleBackground";
 
 function App() {
   return (
-    <div className="bg-[#0A0A0B] text-[#F5F5F0] overflow-x-hidden">
+    <div style={{ position: "relative", minHeight: "100vh", overflowX: "hidden", color: "var(--text)" }}>
+      <ParticleBackground />
       <Navbar />
       <HeroSection />
       <div className="divider"></div>

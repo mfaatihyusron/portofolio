@@ -24,7 +24,7 @@ export default function TechStackSection() {
   }, []);
 
   return (
-    <section id="tech" ref={sectionRef} style={{ background: 'var(--bg)', position: 'relative', padding: '6rem 2rem', maxWidth: '1100px', margin: '0 auto' }}>
+    <section id="tech" ref={sectionRef} style={{ background: 'transparent', position: 'relative', zIndex: 1, padding: '6rem 2rem', maxWidth: '1100px', margin: '0 auto' }}>
       <div style={{
         content: "''",
         position: 'absolute',

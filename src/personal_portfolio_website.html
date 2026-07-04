@@ -18,7 +18,7 @@ font-size:16px;
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,11,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,11,0.4);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .nav-logo{font-family:'Sora',sans-serif;font-weight:700;font-size:1.1rem;color:var(--cream);letter-spacing:-0.02em}
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{color:var(--muted);font-size:.875rem;text-decoration:none;transition:color .2s}
@@ -145,6 +145,15 @@ footer{border-top:1px solid var(--border);padding:2.5rem 2rem;max-width:1100px;m
 .stagger.visible>*:nth-child(7){opacity:1;transform:none;transition-delay:.47s}
 .stagger.visible>*:nth-child(8){opacity:1;transform:none;transition-delay:.54s}
 .divider{height:1px;background:var(--border);max-width:1100px;margin:0 auto}
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 </style>
 </head>
 <body>

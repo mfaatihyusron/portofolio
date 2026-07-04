@@ -12,8 +12,9 @@ export default function Navbar() {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      background: 'rgba(10, 10, 11, 0.85)',
-      backdropFilter: 'blur(12px)',
+      background: 'rgba(10, 10, 11, 0.4)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
       borderBottom: '1px solid var(--border)'
     }}>
       <div style={{
