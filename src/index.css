@@ -4,14 +4,14 @@
   --bg: #0A0A0B;
   --bg-card: #111113;
   --bg-card2: #16161A;
-  --text: #F5F5F0;
-  --muted: #6B6B6B;
+  --text: #FFFFFF;      /* Max contrast Pure White */
+  --muted: #A0A0AB;     /* Highly visible light grey (exceeds WCAG 4.5:1 contrast ratio) */
   --subtle: #2A2A2E;
-  --cream: #E8E4D9;
-  --cream-dim: #B8B4A9;
+  --cream: #FFFFFF;     /* Brightest White */
+  --cream-dim: #D4D2C9; /* High-contrast soft cream */
   --border: #1E1E22;
   --border-hover: #3A3A40;
-  --accent: #E8E4D9;
+  --accent: #FFFFFF;
 }
 
 *, *::before, *::after {
