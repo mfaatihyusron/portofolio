@@ -1,32 +1,59 @@
-import { useEffect, useRef } from "react";
 import { personalInfo } from "./data/portfolioData";
 import { Mail, Download, Sparkles } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { motion } from "framer-motion";
 
-export default function HeroSection() {
-  const heroRef = useRef(null);
+export default function HeroSection({ reveal }) {
+  // Stagger container variants
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.2
+      }
+    }
+  };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
+  // Stagger child elements reveal variants (sliding from left to right)
+  const childVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: -30, 
+      filter: "blur(6px)" 
+    },
+    visible: { 
+      opacity: 1, 
+      x: 0, 
+      filter: "blur(0px)",
+      transition: { 
+        duration: 1.0, 
+        ease: [0.22, 1, 0.36, 1] // Apple-inspired cubic-bezier
+      } 
+    }
+  };
 
-    const elements = heroRef.current.querySelectorAll(".fade-in, .stagger");
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  // Avatar/Image special transition (soft scale and blur-out)
+  const avatarVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.94, 
+      filter: "blur(10px)" 
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1, 
+      filter: "blur(0px)",
+      transition: { 
+        duration: 1.4, 
+        ease: [0.22, 1, 0.36, 1],
+        delay: 0.4
+      } 
+    }
+  };
 
   return (
-    <div id="hero" ref={heroRef} style={{
+    <div id="hero" style={{
       minHeight: '100vh',
       display: 'flex',
       alignItems: 'center',
@@ -52,18 +79,27 @@ export default function HeroSection() {
         pointerEvents: 'none'
       }}></div>
       
-      <div className="hero-inner" style={{
-        maxWidth: '1100px',
-        margin: '0 auto',
-        padding: '0 2rem',
-        width: '100%',
-        display: 'grid',
-        gridTemplateColumns: '1fr auto',
-        gap: '4rem',
-        alignItems: 'center'
-      }}>
-        <div className="fade-in">
-          <div className="hero-tag" style={{
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate={reveal ? "visible" : "hidden"}
+        className="hero-inner" 
+        style={{
+          maxWidth: '1100px',
+          margin: '0 auto',
+          padding: '0 2rem',
+          width: '100%',
+          display: 'grid',
+          gridTemplateColumns: '1fr auto',
+          gap: '4rem',
+          alignItems: 'center',
+          position: 'relative',
+          zIndex: 10
+        }}
+      >
+        <div>
+          {/* Tagline element */}
+          <motion.div variants={childVariants} className="hero-tag" style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '.5rem',
@@ -84,9 +120,10 @@ export default function HeroSection() {
               animation: 'pulse 2s infinite'
             }}></span>
             <span>{personalInfo.tagline}</span>
-          </div>
+          </motion.div>
           
-          <h1 className="hero-name" style={{
+          {/* Headline element */}
+          <motion.h1 variants={childVariants} className="hero-name" style={{
             fontFamily: "'Sora', sans-serif",
             fontWeight: 800,
             fontSize: 'clamp(2.8rem, 6vw, 5rem)',
@@ -101,9 +138,10 @@ export default function HeroSection() {
                 {i === 0 && <br />}
               </span>
             ))}
-          </h1>
+          </motion.h1>
           
-          <p className="hero-role" style={{
+          {/* Role element */}
+          <motion.p variants={childVariants} className="hero-role" style={{
             fontFamily: "'Sora', sans-serif",
             fontWeight: 400,
             fontSize: 'clamp(1rem, 2vw, 1.25rem)',
@@ -112,9 +150,10 @@ export default function HeroSection() {
             letterSpacing: '-0.01em'
           }}>
             {personalInfo.title}
-          </p>
+          </motion.p>
           
-          <p className="hero-desc" style={{
+          {/* Description element */}
+          <motion.p variants={childVariants} className="hero-desc" style={{
             fontSize: '1rem',
             color: 'var(--muted)',
             maxWidth: '480px',
@@ -122,16 +161,18 @@ export default function HeroSection() {
             marginBottom: '2.5rem'
           }}>
             {personalInfo.shortBio}
-          </p>
+          </motion.p>
           
-          <div className="hero-cta" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          {/* CTA Buttons element */}
+          <motion.div variants={childVariants} className="hero-cta" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a href="#contact" className="btn-primary">Contact Me</a>
             <a href={personalInfo.cv} className="btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '.5rem' }}>
               Download CV <Download size={16} />
             </a>
-          </div>
+          </motion.div>
           
-          <div className="hero-social" style={{ display: 'flex', gap: '1.5rem', marginTop: '2.5rem' }}>
+          {/* Social Icons element */}
+          <motion.div variants={childVariants} className="hero-social" style={{ display: 'flex', gap: '1.5rem', marginTop: '2.5rem' }}>
             <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--muted)', transition: 'color .2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted)'} title="LinkedIn">
               <FaLinkedin size={20} />
             </a>
@@ -141,10 +182,15 @@ export default function HeroSection() {
             <a href={`mailto:${personalInfo.email}`} style={{ color: 'var(--muted)', transition: 'color .2s' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--text)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--muted)'} title="Email">
               <Mail size={20} />
             </a>
-          </div>
+          </motion.div>
         </div>
         
-        <div className="avatar-wrap fade-in" style={{ position: 'relative' }}>
+        {/* Hero Image (Avatar Wrap) element */}
+        <motion.div 
+          variants={avatarVariants} 
+          className="avatar-wrap" 
+          style={{ position: 'relative' }}
+        >
           <div className="avatar" style={{
             width: '280px',
             height: '280px',
@@ -187,15 +233,62 @@ export default function HeroSection() {
           }}>
             <Sparkles size={14} /> {personalInfo.availability}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll Indicator element */}
+      <motion.div 
+        variants={childVariants}
+        initial="hidden"
+        animate={reveal ? "visible" : "hidden"}
+        style={{
+          position: 'absolute',
+          bottom: '2.5rem',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '0.5rem',
+          color: 'var(--muted)',
+          fontSize: '0.75rem',
+          fontFamily: "'JetBrains Mono', monospace",
+          zIndex: 15,
+          pointerEvents: 'none'
+        }}
+      >
+        <span style={{
+          width: '18px',
+          height: '30px',
+          border: '1px solid var(--border-hover)',
+          borderRadius: '100px',
+          position: 'relative',
+          display: 'inline-block'
+        }}>
+          <motion.span 
+            animate={{ y: [2, 12, 2] }}
+            transition={{ repeat: Infinity, duration: 1.8, ease: "easeInOut" }}
+            style={{
+              width: '4px',
+              height: '6px',
+              background: 'var(--cream)',
+              borderRadius: '50%',
+              position: 'absolute',
+              left: '6px',
+              top: '4px'
+            }}
+          />
+        </span>
+        <span style={{ letterSpacing: '0.12em', textTransform: 'uppercase', fontSize: '0.65rem' }}>Scroll</span>
+      </motion.div>
+
       <style>{`
         @keyframes pulse {
           0%, 100% { opacity: 1; }
           50% { opacity: .4; }
         }
         @media (max-width: 700px) {
-          .hero-inner { grid-template-columns: 1fr !important; }
+          .hero-inner { grid-template-columns: 1fr !important; gap: 2rem !important; }
           .avatar-wrap { display: none !important; }
         }
       `}</style>
