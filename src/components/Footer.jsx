@@ -14,7 +14,7 @@ export default function Footer() {
       gap: '1.5rem'
     }}>
       <div className="footer-copy" style={{ fontSize: '.8rem', color: 'var(--muted)' }}>
-        © 2025 Muhammad Faatih Yusron. Built with ♥ and lots of tea (I'm not a coffee-person).
+        © 2026 Muhammad Faatih Yusron. Built with ♥ and lots of tea (I'm not a coffee-person).
       </div>
       <ul className="footer-links" style={{ display: 'flex', gap: '1.5rem', listStyle: 'none' }}>
         <li><a href="#about" style={{ fontSize: '.8rem', color: 'var(--muted)', textDecoration: 'none', transition: 'color .2s' }}>About</a></li>

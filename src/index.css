@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
 
 :root {
   --bg: #0A0A0B;
@@ -153,7 +154,4 @@ html {
   scrollbar-width: none;  /* Firefox */
 }
 
-/* Tailwind resets/overrides if needed, but since we are moving to custom CSS mostly, we keep it clean */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+

@@ -122,11 +122,23 @@ export default function ParticleBackground({
         this.baseX += this.ambientVx;
         this.baseY += this.ambientVy;
 
-        // Wrap around boundaries for ambient positions
-        if (this.baseX < 0) this.baseX = canvasWidth;
-        if (this.baseX > canvasWidth) this.baseX = 0;
-        if (this.baseY < 0) this.baseY = canvasHeight;
-        if (this.baseY > canvasHeight) this.baseY = 0;
+        // Wrap around boundaries and instantly teleport actual positions to prevent screen sliding jump glitches
+        if (this.baseX < 0) {
+          this.baseX = canvasWidth;
+          this.x += canvasWidth;
+        }
+        if (this.baseX > canvasWidth) {
+          this.baseX = 0;
+          this.x -= canvasWidth;
+        }
+        if (this.baseY < 0) {
+          this.baseY = canvasHeight;
+          this.y += canvasHeight;
+        }
+        if (this.baseY > canvasHeight) {
+          this.baseY = 0;
+          this.y -= canvasHeight;
+        }
 
         // 3. Calculate target position (pushed away from mouse if inside radius)
         let targetX = this.baseX;
