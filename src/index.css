@@ -3,15 +3,15 @@
 
 :root {
   --bg: #0A0A0B;
-  --bg-card: #111113;
-  --bg-card2: #16161A;
+  --bg-card: rgba(30, 30, 36, 0.72);    /* Lighter greyish translucent card background for Glassmorphism */
+  --bg-card2: rgba(36, 36, 42, 0.88);
   --text: #FFFFFF;      /* Max contrast Pure White */
   --muted: #A0A0AB;     /* Highly visible light grey (exceeds WCAG 4.5:1 contrast ratio) */
   --subtle: #2A2A2E;
   --cream: #FFFFFF;     /* Brightest White */
   --cream-dim: #D4D2C9; /* High-contrast soft cream */
-  --border: #1E1E22;
-  --border-hover: #3A3A40;
+  --border: rgba(255, 255, 255, 0.08);   /* Subtle transparent white borders */
+  --border-hover: rgba(0, 240, 255, 0.3); /* Cyan glowing border hover outline */
   --accent: #FFFFFF;
 }
 
@@ -154,4 +154,29 @@ html {
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Glassmorphic Cards & Timelines */
+.project-card, .skill-card, .timeline-item {
+  backdrop-filter: blur(14px) !important;
+  -webkit-backdrop-filter: blur(14px) !important;
+}
 
+/* Premium Interactive Glow Shadows & Custom Hover Transitions */
+.project-card:hover {
+  border-color: rgba(0, 240, 255, 0.38) !important;
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.15) !important;
+  transform: translateY(-4px) !important;
+}
+
+.skill-card:hover {
+  border-color: rgba(255, 230, 0, 0.38) !important;
+  box-shadow: 0 0 35px rgba(255, 230, 0, 0.12) !important;
+  transform: translateY(-3px) !important;
+}
+
+.timeline-item {
+  transition: transform 0.25s ease !important;
+}
+
+.timeline-item:hover {
+  transform: translateX(5px) !important;
+}

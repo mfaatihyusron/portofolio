@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { experiences } from "./data/portfolioData";
-import { Users, Trophy } from 'lucide-react';
+import { Users, Briefcase, Award } from 'lucide-react';
 
 export default function ExperienceSection() {
   const sectionRef = useRef(null);
@@ -25,15 +25,35 @@ export default function ExperienceSection() {
   }, []);
 
   return (
-    <section id="experience" ref={sectionRef} style={{ padding: '6rem 2rem', maxWidth: '1100px', margin: '0 auto' }}>
+    <section id="experience" ref={sectionRef} style={{ padding: '6rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
       <p className="section-eyebrow fade-in">Experience & Achievements</p>
       <h2 className="section-title fade-in">My journey<br />so far.</h2>
       
       <div className="exp-cols fade-in" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
         gap: '3rem'
       }}>
+        {/* Column 1: Work Experience */}
+        <div>
+          <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
+            <Briefcase size={14} /> WORK EXPERIENCES
+          </p>
+          <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
+            <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>
+            {experiences.work.map((exp, i) => (
+              <div key={i} className="timeline-item" style={{ position: 'relative', marginBottom: '2.5rem' }}>
+                <div className="timeline-dot" style={{ position: 'absolute', left: '-1.625rem', top: '.3rem', width: '10px', height: '10px', borderRadius: '50%', background: 'var(--cream-dim)', border: '2px solid var(--bg)' }}></div>
+                <div className="timeline-date" style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.72rem', color: 'var(--muted)', marginBottom: '.35rem' }}>{exp.date}</div>
+                <div className="timeline-title" style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '.95rem', color: 'var(--text)', marginBottom: '.2rem' }}>{exp.title}</div>
+                <div className="timeline-org" style={{ fontSize: '.82rem', color: 'var(--cream-dim)', marginBottom: '.4rem' }}>{exp.org}</div>
+                <div className="timeline-desc" style={{ fontSize: '.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>{exp.desc}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Column 2: Organizations & Committees */}
         <div>
           <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
             <Users size={14} /> ORGANIZATIONS & COMMITTEES
@@ -51,16 +71,17 @@ export default function ExperienceSection() {
             ))}
           </div>
         </div>
-        
+
+        {/* Column 3: Honors & Certificates */}
         <div>
           <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-            <Trophy size={14} /> COMPETITIONS & CERTIFICATIONS
+            <Award size={14} /> HONORS & CERTIFICATES
           </p>
           <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
             <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>
-            {experiences.kompetisi.map((exp, i) => (
+            {experiences.sertifikasi.map((exp, i) => (
               <div key={i} className="timeline-item" style={{ position: 'relative', marginBottom: '2.5rem' }}>
-                <div className="timeline-dot" style={{ position: 'absolute', left: '-1.625rem', top: '.3rem', width: '10px', height: '10px', borderRadius: '50%', background: exp.color || 'var(--cream-dim)', border: '2px solid var(--bg)' }}></div>
+                <div className="timeline-dot" style={{ position: 'absolute', left: '-1.625rem', top: '.3rem', width: '10px', height: '10px', borderRadius: '50%', background: 'var(--cream-dim)', border: '2px solid var(--bg)' }}></div>
                 <div className="timeline-date" style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.72rem', color: 'var(--muted)', marginBottom: '.35rem' }}>{exp.date}</div>
                 <div className="timeline-title" style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '.95rem', color: 'var(--text)', marginBottom: '.2rem' }}>{exp.title}</div>
                 <div className="timeline-org" style={{ fontSize: '.82rem', color: 'var(--cream-dim)', marginBottom: '.4rem' }}>{exp.org}</div>
@@ -71,7 +92,7 @@ export default function ExperienceSection() {
         </div>
       </div>
       <style>{`
-        @media (max-width: 600px) {
+        @media (max-width: 900px) {
           .exp-cols { grid-template-columns: 1fr !important; }
         }
       `}</style>

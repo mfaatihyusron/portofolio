@@ -47,6 +47,44 @@ function App() {
       )}
       <ParticleBackground reveal={isRevealing} />
       
+      {/* Background Ambient Nebula Glow Blobs */}
+      <div style={{
+        position: 'fixed',
+        top: '-15%',
+        left: '-15%',
+        width: '650px',
+        height: '650px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(0, 240, 255, 0.07) 0%, rgba(0, 0, 0, 0) 70%)',
+        filter: 'blur(100px)',
+        pointerEvents: 'none',
+        zIndex: 1
+      }} />
+      <div style={{
+        position: 'fixed',
+        top: '40%',
+        right: '-15%',
+        width: '750px',
+        height: '750px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(255, 230, 0, 0.05) 0%, rgba(0, 0, 0, 0) 70%)',
+        filter: 'blur(120px)',
+        pointerEvents: 'none',
+        zIndex: 1
+      }} />
+      <div style={{
+        position: 'fixed',
+        bottom: '-15%',
+        left: '-10%',
+        width: '700px',
+        height: '700px',
+        borderRadius: '50%',
+        background: 'radial-gradient(circle, rgba(0, 240, 255, 0.06) 0%, rgba(0, 0, 0, 0) 70%)',
+        filter: 'blur(110px)',
+        pointerEvents: 'none',
+        zIndex: 1
+      }} />
+
       {/* Website content revealed naturally as loading screen slides up */}
       <div
         style={{
