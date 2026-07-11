@@ -1,10 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { experiences } from "./data/portfolioData";
-import { Users, Briefcase, Award } from 'lucide-react';
+import { Users, Briefcase, Award, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function ExperienceSection() {
   const sectionRef = useRef(null);
 
+  // States for tabs and autoplay
+  const [activeTab, setActiveTab] = useState("work");
+  const [isPaused, setIsPaused] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  // Intersection observer for entrance animations
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -18,82 +25,268 @@ export default function ExperienceSection() {
       { threshold: 0.12 }
     );
 
-    const elements = sectionRef.current.querySelectorAll(".fade-in, .stagger");
-    elements.forEach((el) => observer.observe(el));
+    const elements = sectionRef.current?.querySelectorAll(".fade-in, .stagger");
+    elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
 
+  // Autoplay cycle effect: transitions every 4.5 seconds unless paused (hovered)
+  useEffect(() => {
+    if (isPaused) return;
+
+    const timer = setInterval(() => {
+      setActiveTab((prev) => {
+        if (prev === "work") return "organisasi";
+        if (prev === "organisasi") return "sertifikasi";
+        return "work";
+      });
+    }, 4500);
+
+    return () => clearInterval(timer);
+  }, [isPaused]);
+
+  // Tab definitions with matching icons and indicator colors
+  const tabs = [
+    { id: "work", label: "Work Experiences", icon: Briefcase, color: "#00f0ff" }, // Cyan
+    { id: "organisasi", label: "Organizations", icon: Users, color: "#ffe600" },  // Yellow
+    { id: "sertifikasi", label: "Certifications", icon: Award, color: "#ffffff" }  // White
+  ];
+
+  const currentItems = experiences[activeTab] || [];
+
   return (
-    <section id="experience" ref={sectionRef} style={{ padding: '6rem 2rem', maxWidth: '1200px', margin: '0 auto' }}>
+    <section 
+      id="experience" 
+      ref={sectionRef} 
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      style={{ padding: '6rem 2rem', maxWidth: '850px', margin: '0 auto' }}
+    >
       <p className="section-eyebrow fade-in">Experience & Achievements</p>
-      <h2 className="section-title fade-in">My journey<br />so far.</h2>
       
-      <div className="exp-cols fade-in" style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-        gap: '3rem'
+      <div className="fade-in" style={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'flex-end',
+        flexWrap: 'wrap',
+        gap: '1.5rem',
+        marginBottom: '3rem'
       }}>
-        {/* Column 1: Work Experience */}
-        <div>
-          <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-            <Briefcase size={14} /> WORK EXPERIENCES
-          </p>
-          <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
-            <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>
-            {experiences.work.map((exp, i) => (
-              <div key={i} className="timeline-item" style={{ position: 'relative', marginBottom: '2.5rem' }}>
-                <div className="timeline-dot" style={{ position: 'absolute', left: '-1.625rem', top: '.3rem', width: '10px', height: '10px', borderRadius: '50%', background: 'var(--cream-dim)', border: '2px solid var(--bg)' }}></div>
-                <div className="timeline-date" style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.72rem', color: 'var(--muted)', marginBottom: '.35rem' }}>{exp.date}</div>
-                <div className="timeline-title" style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '.95rem', color: 'var(--text)', marginBottom: '.2rem' }}>{exp.title}</div>
-                <div className="timeline-org" style={{ fontSize: '.82rem', color: 'var(--cream-dim)', marginBottom: '.4rem' }}>{exp.org}</div>
-                <div className="timeline-desc" style={{ fontSize: '.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>{exp.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <h2 className="section-title" style={{ margin: 0 }}>My journey<br />so far.</h2>
+        
+        {/* Futuristic Tab Switcher Panel */}
+        <div style={{
+          display: 'flex',
+          gap: '0.5rem',
+          background: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid var(--border)',
+          padding: '0.4rem',
+          borderRadius: '16px',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)'
+        }}>
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            const Icon = tab.icon;
 
-        {/* Column 2: Organizations & Committees */}
-        <div>
-          <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-            <Users size={14} /> ORGANIZATIONS & COMMITTEES
-          </p>
-          <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
-            <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>
-            {experiences.organisasi.map((exp, i) => (
-              <div key={i} className="timeline-item" style={{ position: 'relative', marginBottom: '2.5rem' }}>
-                <div className="timeline-dot" style={{ position: 'absolute', left: '-1.625rem', top: '.3rem', width: '10px', height: '10px', borderRadius: '50%', background: 'var(--cream-dim)', border: '2px solid var(--bg)' }}></div>
-                <div className="timeline-date" style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.72rem', color: 'var(--muted)', marginBottom: '.35rem' }}>{exp.date}</div>
-                <div className="timeline-title" style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '.95rem', color: 'var(--text)', marginBottom: '.2rem' }}>{exp.title}</div>
-                <div className="timeline-org" style={{ fontSize: '.82rem', color: 'var(--cream-dim)', marginBottom: '.4rem' }}>{exp.org}</div>
-                <div className="timeline-desc" style={{ fontSize: '.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>{exp.desc}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+            return (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  setHoveredIndex(null); // Reset hovered accordion item on tab change
+                }}
+                style={{
+                  position: 'relative',
+                  padding: '0.65rem 1.25rem',
+                  borderRadius: '12px',
+                  background: isActive ? 'rgba(255, 255, 255, 0.05)' : 'transparent',
+                  border: '1px solid',
+                  borderColor: isActive ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
+                  color: isActive ? 'var(--text)' : 'var(--muted)',
+                  fontFamily: "'Sora', sans-serif",
+                  fontWeight: isActive ? 600 : 500,
+                  fontSize: '0.82rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  overflow: 'hidden'
+                }}
+              >
+                <Icon size={14} />
+                {tab.label}
 
-        {/* Column 3: Honors & Certificates */}
-        <div>
-          <p style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.7rem', color: 'var(--muted)', marginBottom: '1.25rem', letterSpacing: '.08em', display: 'flex', alignItems: 'center', gap: '.5rem' }}>
-            <Award size={14} /> HONORS & CERTIFICATES
-          </p>
-          <div className="timeline" style={{ position: 'relative', paddingLeft: '2rem' }}>
-            <div style={{ position: 'absolute', left: '.5rem', top: 0, bottom: 0, width: '1px', background: 'var(--border)' }}></div>
-            {experiences.sertifikasi.map((exp, i) => (
-              <div key={i} className="timeline-item" style={{ position: 'relative', marginBottom: '2.5rem' }}>
-                <div className="timeline-dot" style={{ position: 'absolute', left: '-1.625rem', top: '.3rem', width: '10px', height: '10px', borderRadius: '50%', background: 'var(--cream-dim)', border: '2px solid var(--bg)' }}></div>
-                <div className="timeline-date" style={{ fontFamily: "'JetBrains Mono',monospace", fontSize: '.72rem', color: 'var(--muted)', marginBottom: '.35rem' }}>{exp.date}</div>
-                <div className="timeline-title" style={{ fontFamily: "'Sora', sans-serif", fontWeight: 600, fontSize: '.95rem', color: 'var(--text)', marginBottom: '.2rem' }}>{exp.title}</div>
-                <div className="timeline-org" style={{ fontSize: '.82rem', color: 'var(--cream-dim)', marginBottom: '.4rem' }}>{exp.org}</div>
-                <div className="timeline-desc" style={{ fontSize: '.82rem', color: 'var(--muted)', lineHeight: 1.6 }}>{exp.desc}</div>
-              </div>
-            ))}
-          </div>
+                {/* Ambient Autoplay Progress Bar Indicator */}
+                {isActive && (
+                  <div 
+                    className="tab-progress-bar"
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: '2px',
+                      background: tab.color,
+                      transformOrigin: 'left',
+                      animation: 'progressFill 4.5s linear forwards',
+                      animationPlayState: isPaused ? 'paused' : 'running'
+                    }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
+
+      {/* Spacious Single-Column Stagger Timeline */}
+      <div className="stagger-timeline-container" style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+          >
+            {currentItems.map((exp, i) => {
+              const isHovered = hoveredIndex === i;
+
+              return (
+                <div
+                  key={i}
+                  onMouseEnter={() => setHoveredIndex(i)}
+                  onMouseLeave={() => setHoveredIndex(null)}
+                  className="timeline-item"
+                  style={{
+                    position: 'relative',
+                    padding: '1.5rem',
+                    background: 'var(--bg-card)',
+                    border: '1px solid var(--border)',
+                    borderRadius: '20px',
+                    transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
+                    cursor: 'pointer',
+                    overflow: 'hidden'
+                  }}
+                >
+                  {/* Top-Row Title Accordion Trigger */}
+                  <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    gap: '1.5rem'
+                  }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        gap: '0.75rem',
+                        marginBottom: '0.35rem'
+                      }}>
+                        {/* Timeline Date Tag */}
+                        <span style={{
+                          fontFamily: "'JetBrains Mono', monospace",
+                          fontSize: '0.72rem',
+                          color: isHovered ? 'var(--text)' : 'var(--muted)',
+                          background: 'rgba(255,255,255,0.03)',
+                          border: '1px solid rgba(255,255,255,0.06)',
+                          padding: '0.15rem 0.5rem',
+                          borderRadius: '6px',
+                          transition: 'color 0.3s ease'
+                        }}>
+                          {exp.date}
+                        </span>
+                        
+                        {/* Organization/Company Name */}
+                        <span style={{
+                          fontSize: '0.8rem',
+                          fontWeight: 500,
+                          color: isHovered ? tabs.find(t => t.id === activeTab)?.color : 'var(--cream-dim)',
+                          transition: 'color 0.3s ease'
+                        }}>
+                          {exp.org}
+                        </span>
+                      </div>
+
+                      {/* Main Role Title */}
+                      <h3 style={{
+                        fontFamily: "'Sora', sans-serif",
+                        fontWeight: 600,
+                        fontSize: '1.08rem',
+                        color: 'var(--text)',
+                        margin: 0
+                      }}>
+                        {exp.title}
+                      </h3>
+                    </div>
+
+                    {/* Rotating Indicator Chevron */}
+                    <div style={{
+                      width: '28px',
+                      height: '28px',
+                      borderRadius: '50%',
+                      background: 'rgba(255,255,255,0.03)',
+                      border: '1px solid rgba(255,255,255,0.06)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease',
+                      transform: isHovered ? 'rotate(180deg)' : 'rotate(0deg)',
+                      color: isHovered ? 'var(--text)' : 'var(--muted)'
+                    }}>
+                      <ChevronDown size={15} />
+                    </div>
+                  </div>
+
+                  {/* Expandable Accordion Bullet Points */}
+                  <AnimatePresence>
+                    {isHovered && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        style={{ overflow: 'hidden' }}
+                      >
+                        <div style={{
+                          marginTop: '1.25rem',
+                          fontSize: '0.84rem',
+                          color: 'var(--muted)',
+                          lineHeight: 1.7,
+                          borderTop: '1px solid rgba(255, 255, 255, 0.06)',
+                          paddingTop: '1.25rem'
+                        }}>
+                          {exp.desc}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
+      </div>
       <style>{`
+        @keyframes progressFill {
+          from { transform: scaleX(0); }
+          to { transform: scaleX(1); }
+        }
+        .stagger-timeline-container {
+          height: 585px;
+          overflow: visible;
+        }
         @media (max-width: 900px) {
-          .exp-cols { grid-template-columns: 1fr !important; }
+          .stagger-timeline-container {
+            height: auto !important;
+          }
         }
       `}</style>
     </section>

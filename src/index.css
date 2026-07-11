@@ -5,14 +5,14 @@
   --bg: #0A0A0B;
   --bg-card: rgba(30, 30, 36, 0.72);    /* Lighter greyish translucent card background for Glassmorphism */
   --bg-card2: rgba(36, 36, 42, 0.88);
-  --text: #FFFFFF;      /* Max contrast Pure White */
+  --text: #E6E4DD;      /* Soft premium Bone White (Off-white, reduces glare) */
   --muted: #A0A0AB;     /* Highly visible light grey (exceeds WCAG 4.5:1 contrast ratio) */
   --subtle: #2A2A2E;
-  --cream: #FFFFFF;     /* Brightest White */
+  --cream: #E6E4DD;     /* Soft Bone White */
   --cream-dim: #D4D2C9; /* High-contrast soft cream */
   --border: rgba(255, 255, 255, 0.08);   /* Subtle transparent white borders */
   --border-hover: rgba(0, 240, 255, 0.3); /* Cyan glowing border hover outline */
-  --accent: #FFFFFF;
+  --accent: #E6E4DD;
 }
 
 *, *::before, *::after {
