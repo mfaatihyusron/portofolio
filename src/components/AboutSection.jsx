@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { personalInfo, stats, skillCategories } from "./data/portfolioData";
+import { personalInfo, stats } from "./data/portfolioData";
 
 export default function AboutSection() {
   const sectionRef = useRef(null);
@@ -62,54 +62,42 @@ export default function AboutSection() {
         ))}
       </div>
 
-      <div className="skills-grid stagger" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem', marginTop: '2.5rem' }}>
-        {skillCategories.map((category, i) => {
-          const Icon = category.icon;
-          return (
-            <div key={i} className="skill-card" style={{
-              background: 'var(--bg-card)',
-              border: '1px solid var(--border)',
-              borderRadius: '16px',
-              padding: '1.5rem',
-              transition: 'border-color .2s, transform .2s'
+      {/* Core Soft Skills / Professional Qualities */}
+      <div className="fade-in" style={{ marginTop: '3.5rem' }}>
+        <p style={{ 
+          fontFamily: "'JetBrains Mono', monospace", 
+          fontSize: '0.72rem', 
+          color: 'var(--muted)', 
+          letterSpacing: '0.08em', 
+          marginBottom: '1rem',
+          textTransform: 'uppercase'
+        }}>
+          Core Qualities
+        </p>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          {[
+            "Communication", 
+            "Problem Solving", 
+            "Team Collaboration", 
+            "Adaptability", 
+            "Project Management", 
+            "Creativity", 
+            "Attention to Detail"
+          ].map((quality, i) => (
+            <span key={i} className="tag" style={{ 
+              background: 'rgba(255,255,255,0.03)', 
+              border: '1px solid rgba(255,255,255,0.06)', 
+              borderRadius: '6px', 
+              fontSize: '0.8rem', 
+              padding: '0.35rem 0.8rem', 
+              color: 'var(--cream-dim)',
+              fontFamily: "'Inter', sans-serif"
             }}>
-              <div className="skill-card-icon" style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '10px',
-                background: 'var(--subtle)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '1rem',
-                color: 'var(--cream-dim)'
-              }}>
-                <Icon size={22} strokeWidth={1.5} />
-              </div>
-              <div className="skill-card-title" style={{
-                fontFamily: "'Sora', sans-serif",
-                fontWeight: 600,
-                fontSize: '.95rem',
-                marginBottom: '.75rem',
-                color: 'var(--text)'
-              }}>
-                {category.title}
-              </div>
-              <div className="skill-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: '.4rem' }}>
-                {category.skills.map((skill, j) => (
-                  <span key={j} className="tag">{skill}</span>
-                ))}
-              </div>
-            </div>
-          );
-        })}
+              {quality}
+            </span>
+          ))}
+        </div>
       </div>
-      <style>{`
-        .skill-card:hover {
-          border-color: var(--border-hover) !important;
-          transform: translateY(-2px);
-        }
-      `}</style>
     </section>
   );
 }

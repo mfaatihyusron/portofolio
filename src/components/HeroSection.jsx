@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { personalInfo } from "./data/portfolioData";
-import { Mail, Download, Sparkles } from 'lucide-react';
+import { Mail, Download } from 'lucide-react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion } from "framer-motion";
+import profileImg from "../assets/hero.png";
 
 export default function HeroSection({ reveal }) {
+  const [avatarHovered, setAvatarHovered] = useState(false);
   // Stagger container variants
   const containerVariants = {
     hidden: {},
@@ -185,53 +188,41 @@ export default function HeroSection({ reveal }) {
           </motion.div>
         </div>
         
-        {/* Hero Image (Avatar Wrap) element */}
+        {/* Hero Image (Avatar Wrap) element - Customized for transparent PNG silhouette */}
         <motion.div 
           variants={avatarVariants} 
           className="avatar-wrap" 
           style={{ position: 'relative' }}
+          onMouseEnter={() => setAvatarHovered(true)}
+          onMouseLeave={() => setAvatarHovered(false)}
         >
           <div className="avatar" style={{
-            width: '280px',
-            height: '280px',
-            borderRadius: '24px',
-            background: 'var(--bg-card2)',
-            border: '1px solid var(--border)',
+            width: '320px',
+            height: '320px',
             display: 'flex',
-            alignItems: 'center',
+            alignItems: 'flex-end',
             justifyContent: 'center',
-            overflow: 'hidden',
-            position: 'relative'
+            overflow: 'visible', // Allows drop-shadow glow to spread outside container boundary
+            position: 'relative',
+            background: 'transparent', // Transparent background to blend PNG
+            border: 'none', // Remove boxy border
+            transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)'
           }}>
-            <div className="avatar-deco" style={{
-              position: 'absolute',
-              inset: 0,
-              background: 'radial-gradient(circle at 70% 30%,rgba(232,228,217,.08),transparent 60%)'
-            }}></div>
-            <span className="avatar-initial" style={{
-              fontFamily: "'Sora', sans-serif",
-              fontSize: '5rem',
-              fontWeight: 800,
-              color: 'var(--subtle)',
-              position: 'relative',
-              zIndex: 1
-            }}>{personalInfo.avatarInitial}</span>
-          </div>
-          <div className="avatar-badge" style={{
-            position: 'absolute',
-            bottom: '-12px',
-            right: '-12px',
-            background: 'var(--bg-card)',
-            border: '1px solid var(--border)',
-            borderRadius: '12px',
-            padding: '.6rem 1rem',
-            fontSize: '.75rem',
-            color: 'var(--cream-dim)',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '.4rem'
-          }}>
-            <Sparkles size={14} /> {personalInfo.availability}
+            {/* Photo with dynamic drop-shadow following the PNG silhouette contour on hover */}
+            <img 
+              src={profileImg} 
+              alt={personalInfo.name} 
+              style={{
+                height: '100%',
+                width: 'auto',
+                objectFit: 'contain',
+                filter: avatarHovered 
+                  ? 'grayscale(0%) contrast(1.05) brightness(1.05) drop-shadow(0 0 25px rgba(0, 240, 255, 0.65))' 
+                  : 'grayscale(100%) contrast(1.1) brightness(0.9) drop-shadow(0 0 8px rgba(255, 255, 255, 0.05))',
+                transform: avatarHovered ? 'scale(1.05)' : 'scale(1)',
+                transition: 'all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1)'
+              }}
+            />
           </div>
         </motion.div>
       </motion.div>
