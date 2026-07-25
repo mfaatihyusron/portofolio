@@ -9,11 +9,13 @@ import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import ParticleBackground from "./components/ParticleBackground";
 import LoadingScreen from "./components/LoadingScreen";
+import ProjectDetailSection from "./components/ProjectDetailSection";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isRevealing, setIsRevealing] = useState(false);
   const [componentsReveal, setComponentsReveal] = useState(false); // Controls navbar/hero components delay
+  const [activeProject, setActiveProject] = useState(null);
 
   // Lock scrolling while loading screen is active
   useEffect(() => {
@@ -91,23 +93,38 @@ function App() {
           width: "100%",
           minHeight: "100vh",
           display: "flex",
-          flexDirection: "column"
+          flexDirection: "column",
+          paddingTop: activeProject ? "4rem" : "0" // Offset fixed navbar in detailed view
         }}
       >
-        <Navbar reveal={componentsReveal} />
-        <HeroSection reveal={componentsReveal} />
-        <div className="divider"></div>
-        <AboutSection />
-        <div className="divider"></div>
-        <TechStackSection />
-        <div className="divider"></div>
-        <ProjectsSection />
-        <div className="divider"></div>
-        <ExperienceSection />
-        <div className="divider"></div>
-        <ContactSection />
-        <div className="divider"></div>
-        <Footer />
+        <Navbar reveal={componentsReveal} onLinkClick={() => setActiveProject(null)} />
+        
+        {activeProject ? (
+          <>
+            <ProjectDetailSection 
+              project={activeProject} 
+              onBack={() => setActiveProject(null)} 
+            />
+            <div className="divider"></div>
+            <Footer />
+          </>
+        ) : (
+          <>
+            <HeroSection reveal={componentsReveal} />
+            <div className="divider"></div>
+            <AboutSection />
+            <div className="divider"></div>
+            <TechStackSection />
+            <div className="divider"></div>
+            <ProjectsSection onProjectClick={setActiveProject} />
+            <div className="divider"></div>
+            <ExperienceSection />
+            <div className="divider"></div>
+            <ContactSection />
+            <div className="divider"></div>
+            <Footer />
+          </>
+        )}
       </div>
     </div>
   );

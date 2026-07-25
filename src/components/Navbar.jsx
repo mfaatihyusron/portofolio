@@ -1,7 +1,7 @@
 import { navigationLinks } from "./data/portfolioData";
 import { motion } from "framer-motion";
 
-export default function Navbar({ reveal }) {
+export default function Navbar({ reveal, onLinkClick }) {
   // Stagger container for navbar items
   const navContainer = {
     hidden: { opacity: 0, y: -15 },
@@ -52,12 +52,14 @@ export default function Navbar({ reveal }) {
       {/* Logo sliding in from left */}
       <motion.div 
         variants={navItem}
+        onClick={() => onLinkClick && onLinkClick()}
         style={{
           fontFamily: "'Sora', sans-serif",
           fontWeight: 700,
           fontSize: '1.1rem',
           color: 'var(--cream)',
-          letterSpacing: '-0.02em'
+          letterSpacing: '-0.02em',
+          cursor: onLinkClick ? 'pointer' : 'default'
         }}
       >
         MFY.
@@ -76,6 +78,7 @@ export default function Navbar({ reveal }) {
           >
             <a 
               href={link.href}
+              onClick={() => onLinkClick && onLinkClick()}
               style={{
                 color: 'var(--muted)',
                 fontSize: '.875rem',

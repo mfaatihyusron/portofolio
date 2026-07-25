@@ -48,6 +48,7 @@ import {
   siMiro,
   siVercel,
   siDiagramsdotnet,
+  siGooglecolab,
 } from 'simple-icons';
 
 export const personalInfo = {
@@ -144,7 +145,8 @@ export const technologies = [
   { name: "CapCut", category: "Tools", icon: Video },
   { name: "MS Office 365", category: "Tools", icon: FileText },
   { name: "Archi", category: "Tools", icon: Network },
-  { name: "Maze", category: "Tools", icon: Compass }
+  { name: "Maze", category: "Tools", icon: Compass },
+  { name: "Google Colab", category: "Tools", icon: siGooglecolab }
 ];
 
 export const projects = [
@@ -154,12 +156,37 @@ export const projects = [
     subtitle: "Real-Time Sports Court Reservation App",
     category: "Full Stack",
     icon: Calendar,
+    image: "/projects/courty.png",
     situation: "The reservation process was still manual and inefficient.",
     action: "Built a complete online platform with an authentication system, schedule management, and frontend-backend connectivity.",
     result: "Faster reservations, better-managed schedules, and multi-user capacity.",
     techStack: ["PHP", "CodeIgniter 3", "MySQL", "JavaScript"],
-    github: "#",
-    demo: "#",
+    links: {
+      github: "https://github.com/mfaatihyusron/courty",
+      demo: "https://courty-demo.com"
+    },
+    caseStudy: {
+      role: "Lead Full Stack Developer",
+      timeline: "Nov 2025 — Jan 2026",
+      deliverables: ["Responsive Web Application", "Database Schema", "Admin Scheduler Panel"],
+      overview: "Courty is a web-based sports court reservation system designed to digitize manual booking processes. It replaces inefficient paper or chat-based workflows with a real-time availability calendar, secure user accounts, and an administrative dashboard to manage court allocations and booking records.",
+      challenges: [
+        "Handling concurrent booking requests for the same time slot to prevent double-bookings.",
+        "Designing an intuitive scheduler interface that works seamlessly on both mobile and desktop screens.",
+        "Managing user session security and clean MVC routing in a legacy framework context."
+      ],
+      solutions: [
+        "Implemented database transactions with exclusive locks in MySQL to ensure atomicity during booking confirmations.",
+        "Created a dynamic scheduling grid using custom vanilla JavaScript and responsive flex layouts.",
+        "Refactored routing layers and added custom authentication middleware in CodeIgniter 3."
+      ],
+      features: [
+        "Real-Time Schedule Grid: Interactive calendar view displaying hourly availability.",
+        "Admin Management Panel: Dynamic dashboard for adding courts, configuring hours, and viewing transaction summaries.",
+        "Auto-Cancellation: Background checks to release unpaid reservation slots after 15 minutes."
+      ],
+      gallery: ["/projects/courty-1.png", "/projects/courty-2.png"]
+    }
   },
   {
     id: 2,
@@ -167,12 +194,36 @@ export const projects = [
     subtitle: "Disaster Health Response Management System",
     category: "UI/UX Design",
     icon: Activity,
+    image: "/projects/sera.png",
     situation: "Coordination of health information during disasters was not centralized.",
     action: "User research → user flow → wireframe → high-fidelity design → interactive prototype.",
     result: "Clearer workflows, information is more easily accessible by responders.",
     techStack: ["Figma", "Design System", "UX Research"],
-    github: "#",
-    demo: "#",
+    links: {
+      figma: "https://figma.com/file/sera-prototype"
+    },
+    caseStudy: {
+      role: "UI/UX Designer",
+      timeline: "Feb 2026 — Present",
+      deliverables: ["Interactive High-Fidelity Prototype", "UI Design System Library", "User Persona Research Reports"],
+      overview: "SERA is a disaster response health management system designed to coordinate medical information and personnel allocation during emergency crises. It provides centralized dashboards for disaster response commanders and field medical volunteers to report conditions and request supplies.",
+      challenges: [
+        "Synthesizing high-stress emergency workflows into clean, simple dashboards that responders can navigate in seconds.",
+        "Maintaining design system consistency across both mobile-volunteer and desktop-commander interfaces.",
+        "Validating usability assumptions with real-world users under emergency response simulations."
+      ],
+      solutions: [
+        "Conducted user interviews with volunteer paramedics to construct logical information hierarchies, prioritizing emergency alerts over secondary statistics.",
+        "Established a strict Figma component library utilizing color-coded system statuses (Red for critical, Yellow for warning, Green for safe).",
+        "Ran interactive maze tests and prototype evaluations to identify and fix navigation bottlenecks in the volunteer reporting flow."
+      ],
+      features: [
+        "Commander Dashboard: Desktop control panel showing real-time volunteer locations and resource statuses.",
+        "Volunteer Report Form: Ultra-simple mobile-web form with big buttons for quick resource updates.",
+        "Shared Design System: Reusable components, alert banners, and standard topography styles."
+      ],
+      gallery: ["/projects/sera-1.png", "/projects/sera-2.png"]
+    }
   },
   {
     id: 3,
@@ -180,12 +231,36 @@ export const projects = [
     subtitle: "Electric Bike Rental App",
     category: "Mobile Design",
     icon: Bike,
-    situation: "Action: User journey mapping → wireframe → prototype → clean final UI design.",
+    image: "/projects/bike.png",
+    situation: "Unlocking process and map-based bike navigation was friction-heavy.",
     action: "User journey mapping → wireframe → prototype → clean final UI design.",
     result: "A simpler user flow and a significantly better user experience than previous solutions.",
     techStack: ["Figma", "Prototyping", "User Journey"],
-    github: "#",
-    demo: "#",
+    links: {
+      figma: "https://figma.com/file/bike-prototype"
+    },
+    caseStudy: {
+      role: "Product Designer",
+      timeline: "Aug 2025 — Oct 2025",
+      deliverables: ["Figma Mobile UI Screens", "Interactive Micro-interactions", "User Flow Diagrams"],
+      overview: "An electric bike rental application concept designed to encourage green urban mobility. The design focuses on minimizing the steps required for a commuter to unlock a nearby bike, ride, and complete payment on a mobile device.",
+      challenges: [
+        "Designing a map-based home screen that remains uncluttered even when displaying high densities of available bikes.",
+        "Creating a checkout flow that guides users through scanning, unlocking, and payment without friction.",
+        "Establishing a friendly, tech-forward visual aesthetic that appeals to young urban professionals."
+      ],
+      solutions: [
+        "Implemented clean map clustering icons and collapsible bottom sheets in Figma to reveal individual bike statistics only upon tap.",
+        "Constructed a step-by-step linear flow with progress bars, reducing ride unlock steps to just three taps: locate, scan, ride.",
+        "Created a vibrant green and dark-space aesthetic combined with clean sans-serif typography (Outfit/Inter) and rounded card shapes."
+      ],
+      features: [
+        "Clutter-Free Map: Interactive map interface with smart bike clusters and location filtering.",
+        "Quick QR Scanner: Mockup interface for scanning bike codes with immediate confirmation.",
+        "Commute Statistics: Personal dashboard tracking distance traveled, carbon saved, and ride history."
+      ],
+      gallery: ["/projects/bike-1.png", "/projects/bike-2.png"]
+    }
   },
   {
     id: 4,
@@ -193,12 +268,37 @@ export const projects = [
     subtitle: "Competition Data Prediction & Analysis",
     category: "Machine Learning",
     icon: BarChart3,
-    situation: "Action: Data cleaning → feature engineering → ensemble modeling with Random Forest, LightGBM, and XGBoost.",
+    image: "/projects/ml.png",
+    situation: "Improving prediction accuracy on highly imbalanced dataset.",
     action: "Data cleaning → feature engineering → ensemble modeling with Random Forest, LightGBM, and XGBoost.",
     result: "More accurate data insights, and a significant improvement in model performance on the leaderboard.",
     techStack: ["Python", "Random Forest", "LightGBM", "XGBoost"],
-    github: "#",
-    demo: "#",
+    links: {
+      github: "https://github.com/mfaatihyusron/ml-competition",
+      colab: "https://colab.google/notebook"
+    },
+    caseStudy: {
+      role: "Data Analyst / ML Engineer",
+      timeline: "Nov 2025 — Dec 2025",
+      deliverables: ["Jupyter Notebooks", "Feature Engineering Scripts", "Trained Ensemble Models"],
+      overview: "Participated in a data science competition to build a predictive model for structured tabular data. The project involved robust exploratory data analysis, advanced feature engineering, and model training using state-of-the-art gradient boosted trees and ensemble combinations.",
+      challenges: [
+        "Handling highly unbalanced training labels which biased model predictions toward the majority class.",
+        "Feature scale differences and high-cardinality categorical columns causing model overfitting.",
+        "Optimizing hyperparameters for complex ensemble architectures within memory and time constraints."
+      ],
+      solutions: [
+        "Applied SMOTE (Synthetic Minority Over-sampling Technique) and stratified k-fold cross-validation to maintain balanced label ratios.",
+        "Engineered interaction features, applied target encoding to high-cardinality columns, and standardized numeric columns.",
+        "Conducted random grid searches to optimize hyperparameter configurations for Random Forest, LightGBM, and XGBoost, blending their predictions via soft voting."
+      ],
+      features: [
+        "Exploratory Analysis Plots: Correlation heatmaps and feature distribution curves to locate outliers.",
+        "Feature Importance Ranking: Analytical breakdown showing which variables contributed most to predictions.",
+        "Ensemble Pipeline: Automated python script to load data, clean it, train model variants, and output validation scores."
+      ],
+      gallery: ["/projects/ml-1.png", "/projects/ml-2.png"]
+    }
   },
 ];
 
