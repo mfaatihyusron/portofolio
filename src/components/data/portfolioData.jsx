@@ -258,7 +258,7 @@ export const projects = [
         "Profile & Health Details: Monitor medical records and weight progress of livestock.",
         "Livestock Catalog & Toko Ternak: Simplifies buying and selling farming supplies or products."
       ],
-      gallery: ["/projects/barne-1.png", "/projects/barne-2.png"]
+      gallery: ["/projects/barne.png","/projects/barne-1.png", "/projects/barne-2.png"]
     }
   },
   {

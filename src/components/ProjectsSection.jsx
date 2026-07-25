@@ -47,7 +47,8 @@ function ProjectCard({ project, i, onSelect }) {
       }}
     >
       <div className="project-mockup" style={{
-        height: '160px',
+        width: '100%',
+        aspectRatio: '16/9',
         background: 'linear-gradient(135deg,#111113 0%,#16161A 100%)',
         display: 'flex',
         alignItems: 'center',
