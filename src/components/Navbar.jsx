@@ -52,7 +52,7 @@ export default function Navbar({ reveal, onLinkClick }) {
       {/* Logo sliding in from left */}
       <motion.div 
         variants={navItem}
-        onClick={() => onLinkClick && onLinkClick()}
+        onClick={() => onLinkClick && onLinkClick("#about")}
         style={{
           fontFamily: "'Sora', sans-serif",
           fontWeight: 700,
@@ -64,7 +64,7 @@ export default function Navbar({ reveal, onLinkClick }) {
       >
         MFY.
       </motion.div>
-
+ 
       {/* Navigation menu list */}
       <ul style={{
         display: 'flex',
@@ -78,7 +78,11 @@ export default function Navbar({ reveal, onLinkClick }) {
           >
             <a 
               href={link.href}
-              onClick={() => onLinkClick && onLinkClick()}
+              onClick={(e) => {
+                if (onLinkClick) {
+                  onLinkClick(link.href);
+                }
+              }}
               style={{
                 color: 'var(--muted)',
                 fontSize: '.875rem',

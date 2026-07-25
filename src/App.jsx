@@ -14,8 +14,8 @@ import ProjectDetailSection from "./components/ProjectDetailSection";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isRevealing, setIsRevealing] = useState(false);
-  const [componentsReveal, setComponentsReveal] = useState(false); // Controls navbar/hero components delay
   const [activeProject, setActiveProject] = useState(null);
+  const [scrollTarget, setScrollTarget] = useState(null);
 
   // Lock scrolling while loading screen is active
   useEffect(() => {
@@ -29,15 +29,20 @@ function App() {
     };
   }, [isLoading]);
 
-  // Handle staggered reveal delay for website elements (2 seconds after particles/curtain slide up starts)
+  // Handle smooth scroll when returning to a specific section from detailed project view
   useEffect(() => {
-    if (isRevealing) {
+    if (scrollTarget && !activeProject) {
+      const targetId = scrollTarget.substring(1); // remove '#'
       const timer = setTimeout(() => {
-        setComponentsReveal(true);
-      }, 2000); // 2-second delay
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        setScrollTarget(null); // Reset target
+      }, 100);
       return () => clearTimeout(timer);
     }
-  }, [isRevealing]);
+  }, [scrollTarget, activeProject]);
 
   return (
     <div style={{ position: "relative", minHeight: "100vh", overflowX: "hidden", color: "var(--text)" }}>
@@ -97,20 +102,29 @@ function App() {
           paddingTop: activeProject ? "4rem" : "0" // Offset fixed navbar in detailed view
         }}
       >
-        <Navbar reveal={componentsReveal} onLinkClick={() => setActiveProject(null)} />
+        <Navbar 
+          reveal={!isLoading} 
+          onLinkClick={(target) => {
+            setActiveProject(null);
+            if (target) setScrollTarget(target);
+          }} 
+        />
         
         {activeProject ? (
           <>
             <ProjectDetailSection 
               project={activeProject} 
-              onBack={() => setActiveProject(null)} 
+              onBack={() => {
+                setActiveProject(null);
+                setScrollTarget("#projects");
+              }} 
             />
             <div className="divider"></div>
             <Footer />
           </>
         ) : (
           <>
-            <HeroSection reveal={componentsReveal} />
+            <HeroSection reveal={!isLoading} />
             <div className="divider"></div>
             <AboutSection />
             <div className="divider"></div>

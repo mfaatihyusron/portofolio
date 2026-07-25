@@ -39,25 +39,7 @@ function GalleryImage({ src, alt }) {
   );
 }
 
-const getProjectLinks = (project) => {
-  const links = project.links || {};
-  const list = [];
-  
-  if (links.demo) {
-    list.push({ type: 'demo', label: 'Live Project Demo', url: links.demo, icon: ExternalLink, primary: true });
-  }
-  if (links.figma) {
-    list.push({ type: 'figma', label: 'Figma Prototype', url: links.figma, icon: FaFigma, primary: true });
-  }
-  if (links.colab) {
-    list.push({ type: 'colab', label: 'Colab Notebook', url: links.colab, icon: SiGooglecolab, primary: true });
-  }
-  if (links.github) {
-    list.push({ type: 'github', label: 'Source Code (GitHub)', url: links.github, icon: FaGithub, primary: !list.some(l => l.primary) });
-  }
-  
-  return list;
-};
+// Projects links mapping helper is no longer needed since project.links is a dynamic array
 
 export default function ProjectDetailSection({ project, onBack }) {
   const [imgError, setImgError] = useState(false);
@@ -380,8 +362,13 @@ export default function ProjectDetailSection({ project, onBack }) {
         }}>
           {/* External Code & Live Demo Buttons */}
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {getProjectLinks(project).map((link, idx) => {
-              const LinkIcon = link.icon;
+            {project.links && project.links.map((link, idx) => {
+              let LinkIcon = ExternalLink;
+              if (link.type === 'github') LinkIcon = FaGithub;
+              if (link.type === 'figma') LinkIcon = FaFigma;
+              if (link.type === 'colab') LinkIcon = SiGooglecolab;
+
+              const isPrimary = idx === 0;
               return (
                 <a 
                   key={idx}
@@ -396,15 +383,15 @@ export default function ProjectDetailSection({ project, onBack }) {
                     fontWeight: 600,
                     transition: 'all 0.2s',
                     fontFamily: "'Inter', sans-serif",
-                    background: link.primary ? 'var(--cream)' : 'transparent',
-                    color: link.primary ? '#0A0A0B' : 'var(--muted)',
-                    border: link.primary ? 'none' : '1px solid var(--border)',
+                    background: isPrimary ? 'var(--cream)' : 'transparent',
+                    color: isPrimary ? '#0A0A0B' : 'var(--muted)',
+                    border: isPrimary ? 'none' : '1px solid var(--border)',
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.5rem'
                   }}
                   onMouseEnter={(e) => {
-                    if (link.primary) {
+                    if (isPrimary) {
                       e.currentTarget.style.background = '#ffffff';
                     } else {
                       e.currentTarget.style.borderColor = 'var(--border-hover)';
@@ -412,7 +399,7 @@ export default function ProjectDetailSection({ project, onBack }) {
                     }
                   }}
                   onMouseLeave={(e) => {
-                    if (link.primary) {
+                    if (isPrimary) {
                       e.currentTarget.style.background = 'var(--cream)';
                     } else {
                       e.currentTarget.style.borderColor = 'var(--border)';

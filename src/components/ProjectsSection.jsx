@@ -130,27 +130,26 @@ function ProjectCard({ project, i, onSelect }) {
             Case Study <ExternalLink size={14} />
           </button>
           
-          {/* Render links conditionally based on data presence */}
-          {project.links?.github && (
-            <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="btn-sm-ghost" style={ghostButtonStyle}>
-              GitHub <FaGithub size={14} />
-            </a>
-          )}
-          {project.links?.demo && (
-            <a href={project.links.demo} target="_blank" rel="noopener noreferrer" className="btn-sm-ghost" style={ghostButtonStyle}>
-              Live Demo <ExternalLink size={14} />
-            </a>
-          )}
-          {project.links?.figma && (
-            <a href={project.links.figma} target="_blank" rel="noopener noreferrer" className="btn-sm-ghost" style={ghostButtonStyle}>
-              Figma <FaFigma size={14} />
-            </a>
-          )}
-          {project.links?.colab && (
-            <a href={project.links.colab} target="_blank" rel="noopener noreferrer" className="btn-sm-ghost" style={ghostButtonStyle}>
-              Colab <SiGooglecolab size={14} />
-            </a>
-          )}
+          {/* Render links dynamically from the array */}
+          {project.links && project.links.map((link, idx) => {
+            let LinkIcon = ExternalLink;
+            if (link.type === 'github') LinkIcon = FaGithub;
+            if (link.type === 'figma') LinkIcon = FaFigma;
+            if (link.type === 'colab') LinkIcon = SiGooglecolab;
+
+            return (
+              <a 
+                key={idx} 
+                href={link.url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-sm-ghost" 
+                style={ghostButtonStyle}
+              >
+                {link.label} <LinkIcon size={14} />
+              </a>
+            );
+          })}
         </div>
       </div>
     </div>

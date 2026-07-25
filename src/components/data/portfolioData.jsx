@@ -5,9 +5,6 @@ import {
   Database, 
   Workflow, 
   Calendar,
-  Activity,
-  Bike,
-  BarChart3,
   PenTool,
   Compass,
   Network,
@@ -15,6 +12,9 @@ import {
   Video,
   Brush,
   FileText,
+  Globe,
+  AppWindow,
+  ShieldAlert,
 } from 'lucide-react';
 
 import { 
@@ -102,204 +102,204 @@ export const skillCategories = [
 ];
 
 export const technologies = [
-  // Design
-{ name: "Figma", category: "Design", icon: siFigma },
-{ name: "Miro", category: "Design", icon: siMiro },
-{ name: "Maze", category: "Design", icon: Compass },
-{ name: "Archi", category: "Design", icon: Network },
-{ name: "Draw.io", category: "Design", icon: siDiagramsdotnet },
-{ name: "Photoshop", category: "Design", icon: PenTool },
-{ name: "Affinity", category: "Design", icon: Brush },
-{ name: "Canva", category: "Design", icon: Palette },
-{ name: "CapCut", category: "Design", icon: Video },
-
-// Code
-{ name: "HTML/CSS", category: "Code", icon: siHtml5 },
-{ name: "Tailwind CSS", category: "Code", icon: siTailwindcss },
+  { name: "Affinity", category: "Design", icon: Brush },
+{ name: "Archi", category: "Tools", icon: Network },
 { name: "Bootstrap", category: "Code", icon: siBootstrap },
-{ name: "JavaScript", category: "Code", icon: siJavascript },
-{ name: "TypeScript", category: "Code", icon: siTypescript },
-{ name: "React", category: "Code", icon: siReact },
-{ name: "Next.js", category: "Code", icon: siNextdotjs },
-{ name: "Dart", category: "Code", icon: siDart },
-{ name: "PHP", category: "Code", icon: siPhp },
-{ name: "Laravel", category: "Code", icon: siLaravel },
-{ name: "CodeIgniter", category: "Code", icon: siCodeigniter },
-{ name: "Node.js", category: "Code", icon: siNodedotjs },
-{ name: "Express", category: "Code", icon: siExpress },
-{ name: "MySQL", category: "Code", icon: siMysql },
-{ name: "PostgreSQL", category: "Code", icon: siPostgresql },
-{ name: "SQLite", category: "Code", icon: siSqlite },
-{ name: "Supabase", category: "Code", icon: siSupabase },
-{ name: "Python", category: "Code", icon: siPython },
 { name: "C", category: "Code", icon: siC },
 { name: "C++", category: "Code", icon: siCplusplus },
-{ name: "Java", category: "Code", icon: siOpenjdk },
-{ name: "Kotlin", category: "Code", icon: siKotlin },
-
-// Tools
+{ name: "Canva", category: "Design", icon: Palette },
+{ name: "CapCut", category: "Design", icon: Video },
+{ name: "CodeIgniter", category: "Code", icon: siCodeigniter },
+{ name: "Dart", category: "Code", icon: siDart },
+{ name: "Draw.io", category: ("Design"), icon: siDiagramsdotnet },
+{ name: "Express", category: "Code", icon: siExpress },
+{ name: "Figma", category: "Design", icon: siFigma },
 { name: "GitHub", category: "Tools", icon: siGithub },
 { name: "GitLab", category: "Tools", icon: siGitlab },
-{ name: "Postman", category: "Tools", icon: siPostman },
-{ name: "Vercel", category: "Tools", icon: siVercel },
+{ name: "Google Colab", category: "Tools", icon: siGooglecolab },
+{ name: "HTML/CSS", category: "Code", icon: siHtml5 },
+{ name: "Java", category: "Code", icon: siOpenjdk },
+{ name: "JavaScript", category: "Code", icon: siJavascript },
+{ name: "Kotlin", category: "Code", icon: siKotlin },
+{ name: "Laravel", category: "Code", icon: siLaravel },
 { name: "Linear", category: "Tools", icon: siLinear },
+{ name: "Maze", category: "Design", icon: Compass },
+{ name: "Miro", category: "Design", icon: siMiro },
 { name: "MS Office 365", category: "Tools", icon: FileText },
-{ name: "Archi", category: "Tools", icon: Network },
-{ name: "Google Colab", category: "Tools", icon: siGooglecolab }
-
+{ name: "MySQL", category: "Code", icon: siMysql },
+{ name: "Next.js", category: "Code", icon: siNextdotjs },
+{ name: "Node.js", category: "Code", icon: siNodedotjs },
+{ name: "PHP", category: "Code", icon: siPhp },
+{ name: "Photoshop", category: "Design", icon: PenTool },
+{ name: "PostgreSQL", category: "Code", icon: siPostgresql },
+{ name: "Postman", category: "Tools", icon: siPostman },
+{ name: "Python", category: "Code", icon: siPython },
+{ name: "React", category: "Code", icon: siReact },
+{ name: "SQLite", category: "Code", icon: siSqlite },
+{ name: "Supabase", category: "Code", icon: siSupabase },
+{ name: "Tailwind CSS", category: "Code", icon: siTailwindcss },
+{ name: "TypeScript", category: "Code", icon: siTypescript },
+{ name: "Vercel", category: "Tools", icon: siVercel }
 ];
 
 export const projects = [
   {
     id: 1,
     title: "Courty",
-    subtitle: "Real-Time Sports Court Reservation App",
+    subtitle: "Online Sports Court Reservation Platform",
     category: "Full Stack",
     icon: Calendar,
     image: "/projects/courty.png",
-    situation: "The reservation process was still manual and inefficient.",
-    action: "Built a complete online platform with an authentication system, schedule management, and frontend-backend connectivity.",
-    result: "Faster reservations, better-managed schedules, and multi-user capacity.",
-    techStack: ["PHP", "CodeIgniter 3", "MySQL", "JavaScript"],
-    links: {
-      github: "https://github.com/mfaatihyusron/courty",
-      demo: "https://courty-demo.com"
-    },
+    situation: "The sports court reservation process was manual and inefficient, leading to scheduling conflicts and long queues.",
+    action: "Developed an MVC-based web application featuring a multi-role authentication system (User, Owner, Super Admin), real-time schedule availability checks, and payment management.",
+    result: "Reservations became faster and more accurate, schedules were managed efficiently, and double-booking was completely prevented.",
+    techStack: ["PHP", "CodeIgniter 3", "MySQL", "JavaScript", "jQuery", "Tailwind CSS"],
+    links: [
+      { type: "github", label: "GitHub", url: "https://github.com/mfaatihyusron/Courty" },
+      { type: "demo", label: "Video Demo", url: "https://drive.google.com/file/d/1avSNncm6kok1qDPBw7sdVlP5GA4MpeYK/view?usp=sharing" }
+    ],
     caseStudy: {
-      role: "Lead Full Stack Developer",
+      role: "Fullstack Developer",
       timeline: "Nov 2025 — Jan 2026",
-      deliverables: ["Responsive Web Application", "Database Schema", "Admin Scheduler Panel"],
-      overview: "Courty is a web-based sports court reservation system designed to digitize manual booking processes. It replaces inefficient paper or chat-based workflows with a real-time availability calendar, secure user accounts, and an administrative dashboard to manage court allocations and booking records.",
+      deliverables: ["Responsive Web Application", "Relational Database Schema (ERD)", "Admin & Partner Management Panel"],
+      overview: "Courty is a web application designed to simplify sports court reservations online. It addresses schedule uncertainty and long queues by displaying real-time court availability for users, court owners (partners), and administrators.",
       challenges: [
-        "Handling concurrent booking requests for the same time slot to prevent double-bookings.",
-        "Designing an intuitive scheduler interface that works seamlessly on both mobile and desktop screens.",
-        "Managing user session security and clean MVC routing in a legacy framework context."
+        "Preventing reservation conflicts or double-bookings on the same time slot.",
+        "Designing a dynamic and intuitive interface for various user groups (Multi-role).",
+        "Managing integrated payment verification workflows between renters and court owners."
       ],
       solutions: [
-        "Implemented database transactions with exclusive locks in MySQL to ensure atomicity during booking confirmations.",
-        "Created a dynamic scheduling grid using custom vanilla JavaScript and responsive flex layouts.",
-        "Refactored routing layers and added custom authentication middleware in CodeIgniter 3."
+        "Built a Real-Time Booking System for live schedule availability checks.",
+        "Implemented Role-Based Access Control (RBAC) to separate dashboards and automatically manage access rights for Users, Owners (Partners), and Super Admins.",
+        "Provided a payment proof upload feature for users integrated with the partner's manual verification panel."
       ],
       features: [
-        "Real-Time Schedule Grid: Interactive calendar view displaying hourly availability.",
-        "Admin Management Panel: Dynamic dashboard for adding courts, configuring hours, and viewing transaction summaries.",
-        "Auto-Cancellation: Background checks to release unpaid reservation slots after 15 minutes."
+        "Multi-Role Authentication: Separate dashboards and access controls for Users, Owners, and Admins.",
+        "Real-Time Booking System: Instant availability checks to prevent double-bookings.",
+        "Payment Management: Module for uploading and verifying payment receipts.",
+        "Complete CRUD Management: Partner control panel to manage court data, pricing, photos, and operational hours."
       ],
       gallery: ["/projects/courty-1.png", "/projects/courty-2.png"]
     }
   },
   {
     id: 2,
-    title: "SERA",
-    subtitle: "Disaster Health Response Management System",
-    category: "UI/UX Design",
-    icon: Activity,
-    image: "/projects/sera.png",
-    situation: "Coordination of health information during disasters was not centralized.",
-    action: "User research → user flow → wireframe → high-fidelity design → interactive prototype.",
-    result: "Clearer workflows, information is more easily accessible by responders.",
-    techStack: ["Figma", "Design System", "UX Research"],
-    links: {
-      figma: "https://figma.com/file/sera-prototype"
-    },
+    title: "Social Act",
+    subtitle: "Social Action Transparency & GIS-Based Trash Reporting Website",
+    category: "Full Stack",
+    icon: Globe,
+    image: "/projects/socialact.png",
+    situation: "Environmental social movements often lack public trust due to a lack of financial transparency and unstructured trash location data.",
+    action: "Designed an MVC web architecture with GIS mapping using Leaflet.js, integrated financial transparency charts with Chart.js, and volunteer registration.",
+    result: "Increased public trust through real-time data transparency and simplified trash cleanup location mapping.",
+    techStack: ["PHP", "CodeIgniter 3", "MySQL", "JavaScript", "jQuery", "Tailwind CSS", "Leaflet.js", "Chart.js"],
+    links: [
+      { type: "github", label: "GitHub", url: "https://github.com/mfaatihyusron/socialact" },
+      { type: "demo", label: "Video Demo", url: "https://drive.google.com/file/d/1EvNwqRpAnZjr9LXWzab2KMdj25CoaDKI/view?usp=sharing" }
+    ],
     caseStudy: {
-      role: "UI/UX Designer",
-      timeline: "Feb 2026 — Present",
-      deliverables: ["Interactive High-Fidelity Prototype", "UI Design System Library", "User Persona Research Reports"],
-      overview: "SERA is a disaster response health management system designed to coordinate medical information and personnel allocation during emergency crises. It provides centralized dashboards for disaster response commanders and field medical volunteers to report conditions and request supplies.",
+      role: "Fullstack Developer",
+      timeline: "Dec 2025 — Jan 2026",
+      deliverables: ["GIS Trash Mapping Portal", "Real-Time Financial Dashboard", "Volunteer Registration System"],
+      overview: "SocialAct is a web application designed to modernize environmental social movements with a focus on public trust and data management efficiency. Inspired by the Pandawara Group, the platform integrates real-time financial transparency and Geographical Information System (GIS) based trash mapping.",
       challenges: [
-        "Synthesizing high-stress emergency workflows into clean, simple dashboards that responders can navigate in seconds.",
-        "Maintaining design system consistency across both mobile-volunteer and desktop-commander interfaces.",
-        "Validating usability assumptions with real-world users under emergency response simulations."
+        "Presenting social action funding alocation and usage openly and transparently.",
+        "Displaying the latest trash locations visually on an interactive map.",
+        "Managing data workflow and access rights among Super Admin, Finance Team, and Field Coordinators."
       ],
       solutions: [
-        "Conducted user interviews with volunteer paramedics to construct logical information hierarchies, prioritizing emergency alerts over secondary statistics.",
-        "Established a strict Figma component library utilizing color-coded system statuses (Red for critical, Yellow for warning, Green for safe).",
-        "Ran interactive maze tests and prototype evaluations to identify and fix navigation bottlenecks in the volunteer reporting flow."
+        "Integrated Chart.js for real-time visualization of donation income and expense charts.",
+        "Used Leaflet.js to map Geographical Information System (GIS) coordinates of trash reports in the field.",
+        "Applied Role-Based Access Control (RBAC) to divide authority among Super Admin, Finance, and Field Coordinators."
       ],
       features: [
-        "Commander Dashboard: Desktop control panel showing real-time volunteer locations and resource statuses.",
-        "Volunteer Report Form: Ultra-simple mobile-web form with big buttons for quick resource updates.",
-        "Shared Design System: Reusable components, alert banners, and standard topography styles."
+        "Financial Transparency Dashboard: Real-time visualization of donation income and fund expenditures.",
+        "GIS Interactive Mapping: Geographically-based distribution and reporting of trash locations.",
+        "Donation & Volunteer System: Integrated donation forms and volunteer activity registration.",
+        "Execution Gallery & Reports: Documentation gallery of cleanups and report resolution progress."
       ],
-      gallery: ["/projects/sera-1.png", "/projects/sera-2.png"]
+      gallery: ["/projects/socialact-1.png", "/projects/socialact-2.png"]
     }
   },
   {
     id: 3,
-    title: "Bike Rental App",
-    subtitle: "Electric Bike Rental App",
-    category: "Mobile Design",
-    icon: Bike,
-    image: "/projects/bike.png",
-    situation: "Unlocking process and map-based bike navigation was friction-heavy.",
-    action: "User journey mapping → wireframe → prototype → clean final UI design.",
-    result: "A simpler user flow and a significantly better user experience than previous solutions.",
-    techStack: ["Figma", "Prototyping", "User Journey"],
-    links: {
-      figma: "https://figma.com/file/bike-prototype"
-    },
+    title: "Barn-E",
+    subtitle: "Integrated Livestock Management Solution",
+    category: "UI/UX Design",
+    icon: AppWindow,
+    image: "/projects/barne.png",
+    situation: "Farmers experienced difficulties in manually recording livestock conditions, lacked access to livestock information, and had no integrated monitoring system.",
+    action: "Conducted user research (interviews & observations) using the Design Thinking method, constructed Customer Journey Maps, Empathy Maps, POV Statements, Wireframes, and High-Fidelity Prototypes.",
+    result: "Delivered an intuitive app interface design that makes it easy for farmers to monitor livestock health, daily schedules, and farming information.",
+    techStack: ["Figma", "Design Thinking", "UX Research", "Prototyping", "Maze"],
+    links: [
+      { type: "figma", label: "Figma Prototype", url: "https://www.figma.com/proto/nDNOmStAz0rpph60lDBihn/Apk-BarnE-peternak?node-id=334-1053&scaling=scale-down&page-id=5%3A3&starting-point-node-id=334%3A1053&show-proto-sidebar=1" },
+      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/1EvNwqRpAnZjr9LXWzab2KMdj25CoaDKI/view?usp=sharing" }
+    ],
     caseStudy: {
-      role: "Product Designer",
-      timeline: "Aug 2025 — Oct 2025",
-      deliverables: ["Figma Mobile UI Screens", "Interactive Micro-interactions", "User Flow Diagrams"],
-      overview: "An electric bike rental application concept designed to encourage green urban mobility. The design focuses on minimizing the steps required for a commuter to unlock a nearby bike, ride, and complete payment on a mobile device.",
+      role: "UI/UX Designer",
+      timeline: "Jan 2026 — Feb 2026",
+      deliverables: ["Interactive Figma Prototype", "Design Thinking Research Report", "Empathy & Journey Maps"],
+      overview: "Barn-E is a digital platform designed to help farmers manage livestock activities more easily and efficiently. The interface design was developed based on the real needs of farmers through an in-depth research process, prioritizing ease of use and clarity of information.",
       challenges: [
-        "Designing a map-based home screen that remains uncluttered even when displaying high densities of available bikes.",
-        "Creating a checkout flow that guides users through scanning, unlocking, and payment without friction.",
-        "Establishing a friendly, tech-forward visual aesthetic that appeals to young urban professionals."
+        "Managing farming schedules and recording livestock health conditions manually in notebooks or Excel sheets.",
+        "Helping farmers anticipate and prevent contagious diseases such as FMD (Foot and Mouth Disease).",
+        "Ensuring the application is easily understood by farmers from non-technical backgrounds."
       ],
       solutions: [
-        "Implemented clean map clustering icons and collapsible bottom sheets in Figma to reveal individual bike statistics only upon tap.",
-        "Constructed a step-by-step linear flow with progress bars, reducing ride unlock steps to just three taps: locate, scan, ride.",
-        "Created a vibrant green and dark-space aesthetic combined with clean sans-serif typography (Outfit/Inter) and rounded card shapes."
+        "Utilized the Design Thinking method focusing on direct user experience via interviews and observations.",
+        "Structured Point of View (POV) statements and Customer Journey Maps to focus features on actual farmer workflows.",
+        "Created a livestock QR/Barcode scanning feature for quick access to individual livestock health history.",
+        "Designed interactive Daily Tasks & Care Schedules to remind farmers of routine maintenance activities."
       ],
       features: [
-        "Clutter-Free Map: Interactive map interface with smart bike clusters and location filtering.",
-        "Quick QR Scanner: Mockup interface for scanning bike codes with immediate confirmation.",
-        "Commute Statistics: Personal dashboard tracking distance traveled, carbon saved, and ride history."
+        "Livestock QR Code Scan: Quick digital identification to view the profile and health condition of each animal.",
+        "Daily Tasks & Schedule: Automatic reminders for feeding, cleaning barns, and administering medicine.",
+        "Profile & Health Details: Monitor medical records and weight progress of livestock.",
+        "Livestock Catalog & Toko Ternak: Simplifies buying and selling farming supplies or products."
       ],
-      gallery: ["/projects/bike-1.png", "/projects/bike-2.png"]
+      gallery: ["/projects/barne-1.png", "/projects/barne-2.png"]
     }
   },
   {
     id: 4,
-    title: "ML Competition",
-    subtitle: "Competition Data Prediction & Analysis",
-    category: "Machine Learning",
-    icon: BarChart3,
-    image: "/projects/ml.png",
-    situation: "Improving prediction accuracy on highly imbalanced dataset.",
-    action: "Data cleaning → feature engineering → ensemble modeling with Random Forest, LightGBM, and XGBoost.",
-    result: "More accurate data insights, and a significant improvement in model performance on the leaderboard.",
-    techStack: ["Python", "Random Forest", "LightGBM", "XGBoost"],
-    links: {
-      github: "https://github.com/mfaatihyusron/ml-competition",
-      colab: "https://colab.google/notebook"
-    },
+    title: "SIGAP",
+    subtitle: "Emergency Information and Disaster Warning System in Indonesia",
+    category: "UI/UX Design",
+    icon: ShieldAlert,
+    image: "/projects/sigap.png",
+    situation: "Disaster information in Indonesia is often delayed, difficult to verify, and coordination between communities, volunteers, and BPBD remains constrained by informal communication channels.",
+    action: "Applied the Design Thinking approach, mapped the emergency reporting User Journey, and developed High-Fidelity UI layouts and interactive prototypes in Figma.",
+    result: "Designed a disaster reporting and mitigation system that accelerates emergency response and unifies volunteer coordination.",
+    techStack: ["Figma", "Design Thinking", "UX Research", "Prototyping"],
+    links: [
+      { type: "figma", label: "Figma Prototype", url: "https://www.figma.com/proto/WjrHhHqYQsJ9l4bBQ1PUBI/Baru-Aplikasi-SIGAP?node-id=72-2752&scaling=scale-down&page-id=3%3A196&starting-point-node-id=72%3A2752&show-proto-sidebar=1" },
+      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/1EvNwqRpAnZjr9LXWzab2KMdj25CoaDKI/view?usp=sharing" }
+    ],
     caseStudy: {
-      role: "Data Analyst / ML Engineer",
-      timeline: "Nov 2025 — Dec 2025",
-      deliverables: ["Jupyter Notebooks", "Feature Engineering Scripts", "Trained Ensemble Models"],
-      overview: "Participated in a data science competition to build a predictive model for structured tabular data. The project involved robust exploratory data analysis, advanced feature engineering, and model training using state-of-the-art gradient boosted trees and ensemble combinations.",
+      role: "UI/UX Designer",
+      timeline: "Feb 2026 — Mar 2026",
+      deliverables: ["Interactive Mobile UI Prototype", "User Journey & Persona Diagrams", "Case Study Medium Article"],
+      overview: "SIGAP is a mitigation-based mobile application designed to help communities report disaster events quickly, easily, and in real-time. User reports can be forwarded to relevant agencies like BPBD and volunteers to speed up response efforts.",
       challenges: [
-        "Handling highly unbalanced training labels which biased model predictions toward the majority class.",
-        "Feature scale differences and high-cardinality categorical columns causing model overfitting.",
-        "Optimizing hyperparameters for complex ensemble architectures within memory and time constraints."
+        "Reporting disasters during panic requires an extremely simple and efficient user interface.",
+        "Minimnya informasi lokasi bencana terverifikasi yang bisa langsung diakses tim SAR/Basarnas.",
+        "Low public understanding and education regarding disaster preparedness before events occur."
       ],
       solutions: [
-        "Applied SMOTE (Synthetic Minority Over-sampling Technique) and stratified k-fold cross-validation to maintain balanced label ratios.",
-        "Engineered interaction features, applied target encoding to high-cardinality columns, and standardized numeric columns.",
-        "Conducted random grid searches to optimize hyperparameter configurations for Random Forest, LightGBM, and XGBoost, blending their predictions via soft voting."
+        "Menerapkan metode Design Thinking melalui wawancara dan analisis kebutuhan korban/relawan bencana.",
+        "Merancang Tombol SOS Darurat & Panggilan Cepat (112 / Basarnas) yang accessible langsung dari halaman utama.",
+        "Menyediakan fitur Peta Persebaran Bencana Interaktif dan Modul Edukasi Kebencanaan."
       ],
       features: [
-        "Exploratory Analysis Plots: Correlation heatmaps and feature distribution curves to locate outliers.",
-        "Feature Importance Ranking: Analytical breakdown showing which variables contributed most to predictions.",
-        "Ensemble Pipeline: Automated python script to load data, clean it, train model variants, and output validation scores."
+        "Tombol SOS & Panggilan Darurat: Fitur panggil bantuan 1-tap to relevant emergency services.",
+        "Peta Persebaran Bencana: Visualisasi lokasi bencana terdekat secara real-time.",
+        "Formulir Pelaporan Cepat: Laporkan kondisi banjir/gempa dengan foto dan koordinat lokasi.",
+        "Edukasi Kebencanaan: Panduan langkah-langkah evakuasi pra dan pasca bencana."
       ],
-      gallery: ["/projects/ml-1.png", "/projects/ml-2.png"]
+      gallery: ["/projects/sigap-1.png", "/projects/sigap-2.png"]
     }
-  },
+  }
 ];
 
 export const experiences = {
