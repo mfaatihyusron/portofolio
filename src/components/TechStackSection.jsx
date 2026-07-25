@@ -32,19 +32,19 @@ export default function TechStackSection() {
   // Category tab definitions
   const tabs = [
     { id: "all", label: "All" },
-    { id: "frontend", label: "Design & Frontend" },
-    { id: "backend", label: "Backend & Database" },
-    { id: "tools", label: "Languages & Tools" }
+    { id: "Design", label: "Design" },
+    { id: "Code", label: "Code" },
+    { id: "tools", label: "Tools" }
   ];
 
   // Filtering logic
   const filteredTech = technologies.filter((tech) => {
     if (activeTab === "all") return true;
-    if (activeTab === "frontend") {
-      return tech.category === "UI/UX Design" || tech.category === "Frontend";
+    if (activeTab === "Design") {
+      return tech.category === "UI/UX Design" || tech.category === "Design";
     }
-    if (activeTab === "backend") {
-      return tech.category === "Backend";
+    if (activeTab === "Code") {
+      return tech.category === "Code";
     }
     if (activeTab === "tools") {
       return tech.category === "Languages" || tech.category === "Tools";

@@ -102,51 +102,51 @@ export const skillCategories = [
 ];
 
 export const technologies = [
-  // UI/UX & Frontend
-  { name: "Figma", category: "UI/UX Design", icon: siFigma },
-  { name: "HTML/CSS", category: "Frontend", icon: siHtml5 },
-  { name: "Tailwind CSS", category: "Frontend", icon: siTailwindcss },
-  { name: "Bootstrap", category: "Frontend", icon: siBootstrap },
-  { name: "JavaScript", category: "Frontend", icon: siJavascript },
-  { name: "TypeScript", category: "Frontend", icon: siTypescript },
-  { name: "React", category: "Frontend", icon: siReact },
-  { name: "Next.js", category: "Frontend", icon: siNextdotjs },
-  { name: "Dart", category: "Frontend", icon: siDart },
-  
-  // Backend & Database
-  { name: "PHP", category: "Backend", icon: siPhp },
-  { name: "Laravel", category: "Backend", icon: siLaravel },
-  { name: "CodeIgniter", category: "Backend", icon: siCodeigniter },
-  { name: "Node.js", category: "Backend", icon: siNodedotjs },
-  { name: "Express", category: "Backend", icon: siExpress },
-  { name: "MySQL", category: "Backend", icon: siMysql },
-  { name: "PostgreSQL", category: "Backend", icon: siPostgresql },
-  { name: "SQLite", category: "Backend", icon: siSqlite },
-  { name: "Supabase", category: "Backend", icon: siSupabase },
+  // Design
+{ name: "Figma", category: "Design", icon: siFigma },
+{ name: "Miro", category: "Design", icon: siMiro },
+{ name: "Maze", category: "Design", icon: Compass },
+{ name: "Archi", category: "Design", icon: Network },
+{ name: "Draw.io", category: "Design", icon: siDiagramsdotnet },
+{ name: "Photoshop", category: "Design", icon: PenTool },
+{ name: "Affinity", category: "Design", icon: Brush },
+{ name: "Canva", category: "Design", icon: Palette },
+{ name: "CapCut", category: "Design", icon: Video },
 
-  // Languages
-  { name: "Python", category: "Languages", icon: siPython },
-  { name: "C", category: "Languages", icon: siC },
-  { name: "C++", category: "Languages", icon: siCplusplus },
-  { name: "Java", category: "Languages", icon: siOpenjdk },
-  { name: "Kotlin", category: "Languages", icon: siKotlin },
+// Code
+{ name: "HTML/CSS", category: "Code", icon: siHtml5 },
+{ name: "Tailwind CSS", category: "Code", icon: siTailwindcss },
+{ name: "Bootstrap", category: "Code", icon: siBootstrap },
+{ name: "JavaScript", category: "Code", icon: siJavascript },
+{ name: "TypeScript", category: "Code", icon: siTypescript },
+{ name: "React", category: "Code", icon: siReact },
+{ name: "Next.js", category: "Code", icon: siNextdotjs },
+{ name: "Dart", category: "Code", icon: siDart },
+{ name: "PHP", category: "Code", icon: siPhp },
+{ name: "Laravel", category: "Code", icon: siLaravel },
+{ name: "CodeIgniter", category: "Code", icon: siCodeigniter },
+{ name: "Node.js", category: "Code", icon: siNodedotjs },
+{ name: "Express", category: "Code", icon: siExpress },
+{ name: "MySQL", category: "Code", icon: siMysql },
+{ name: "PostgreSQL", category: "Code", icon: siPostgresql },
+{ name: "SQLite", category: "Code", icon: siSqlite },
+{ name: "Supabase", category: "Code", icon: siSupabase },
+{ name: "Python", category: "Code", icon: siPython },
+{ name: "C", category: "Code", icon: siC },
+{ name: "C++", category: "Code", icon: siCplusplus },
+{ name: "Java", category: "Code", icon: siOpenjdk },
+{ name: "Kotlin", category: "Code", icon: siKotlin },
 
-  // Tools
-  { name: "GitHub", category: "Tools", icon: siGithub },
-  { name: "GitLab", category: "Tools", icon: siGitlab },
-  { name: "Postman", category: "Tools", icon: siPostman },
-  { name: "Vercel", category: "Tools", icon: siVercel },
-  { name: "Linear", category: "Tools", icon: siLinear },
-  { name: "Miro", category: "Tools", icon: siMiro },
-  { name: "Draw.io", category: "Tools", icon: siDiagramsdotnet },
-  { name: "Photoshop", category: "Tools", icon: PenTool },
-  { name: "Affinity", category: "Tools", icon: Brush },
-  { name: "Canva", category: "Tools", icon: Palette },
-  { name: "CapCut", category: "Tools", icon: Video },
-  { name: "MS Office 365", category: "Tools", icon: FileText },
-  { name: "Archi", category: "Tools", icon: Network },
-  { name: "Maze", category: "Tools", icon: Compass },
-  { name: "Google Colab", category: "Tools", icon: siGooglecolab }
+// Tools
+{ name: "GitHub", category: "Tools", icon: siGithub },
+{ name: "GitLab", category: "Tools", icon: siGitlab },
+{ name: "Postman", category: "Tools", icon: siPostman },
+{ name: "Vercel", category: "Tools", icon: siVercel },
+{ name: "Linear", category: "Tools", icon: siLinear },
+{ name: "MS Office 365", category: "Tools", icon: FileText },
+{ name: "Archi", category: "Tools", icon: Network },
+{ name: "Google Colab", category: "Tools", icon: siGooglecolab }
+
 ];
 
 export const projects = [
