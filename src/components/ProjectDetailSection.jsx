@@ -1,40 +1,237 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Calendar, Briefcase, Award, CheckCircle } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Briefcase, Award, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import { FaGithub, FaFigma } from 'react-icons/fa';
 import { SiGooglecolab } from 'react-icons/si';
 
-function GalleryImage({ src, alt }) {
-  const [hasError, setHasError] = useState(false);
+function ProjectCarousel({ images, title, icon: Icon, isMobile }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [failedIndexes, setFailedIndexes] = useState([]);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
-  if (hasError) return null;
+  if (!images || images.length === 0) return null;
+
+  const validImages = images.filter((src, idx) => src && !failedIndexes.includes(idx));
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % validImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + validImages.length) % validImages.length);
+  };
+
+  // Touch Swipe handlers for mobile devices
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+  };
+
+  if (validImages.length === 0) {
+    return (
+      <div style={{
+        width: '100%',
+        height: 'clamp(220px, 45vw, 420px)',
+        background: 'linear-gradient(135deg, #121216 0%, #1a1a22 100%)',
+        border: '1px solid var(--border)',
+        borderRadius: '24px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '1rem',
+        color: 'var(--cream-dim)',
+        marginBottom: '3.5rem'
+      }}>
+        {Icon && <Icon size={64} strokeWidth={1} />}
+        <span style={{ fontSize: '0.8rem', fontFamily: "'JetBrains Mono', monospace", color: 'var(--muted)' }}>
+          [ Visual Mockup Placeholder ]
+        </span>
+      </div>
+    );
+  }
+
+  const showControls = validImages.length > 1;
 
   return (
     <div style={{
-      borderRadius: '16px',
-      border: '1px solid var(--border)',
-      overflow: 'hidden',
-      background: 'rgba(255,255,255,0.02)',
-      aspectRatio: '16/9',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      width: '100%',
+      gap: isMobile ? '0' : '1.25rem',
+      marginBottom: '3.5rem',
       position: 'relative'
     }}>
-      <img 
-        src={src} 
-        alt={alt} 
-        onError={() => setHasError(true)}
+      {/* External Prev Arrow (Desktop Only) */}
+      {showControls && !isMobile && (
+        <button
+          onClick={prevSlide}
+          aria-label="Previous slide"
+          style={{
+            width: '42px',
+            height: '42px',
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.02)',
+            border: '1px solid var(--border)',
+            color: 'var(--cream-dim)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            zIndex: 5,
+            transition: 'all 0.2s ease',
+            flexShrink: 0,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+            e.currentTarget.style.color = 'var(--text)';
+            e.currentTarget.style.borderColor = 'var(--border-hover)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 240, 255, 0.15)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+            e.currentTarget.style.color = 'var(--cream-dim)';
+            e.currentTarget.style.borderColor = 'var(--border)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+          }}
+        >
+          <ChevronLeft size={22} />
+        </button>
+      )}
+
+      {/* Main Slider Container */}
+      <div 
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         style={{
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          transition: 'transform 0.3s ease',
-          cursor: 'zoom-in'
+          position: 'relative',
+          flex: 1,
+          height: 'clamp(220px, 45vw, 420px)',
+          borderRadius: '24px',
+          overflow: 'hidden',
+          boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+          border: '1px solid var(--border)',
+          background: 'linear-gradient(135deg, #121216 0%, #1a1a22 100%)',
         }}
-        onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-        onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
-      />
+      >
+        {/* Sliding Track */}
+        <div style={{
+          display: 'flex',
+          width: `${validImages.length * 100}%`,
+          height: '100%',
+          transform: `translate3d(-${(currentIndex * 100) / validImages.length}%, 0, 0)`,
+          transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
+        }}>
+          {validImages.map((src, idx) => (
+            <div key={idx} style={{ width: `${100 / validImages.length}%`, height: '100%' }}>
+              <img 
+                src={src} 
+                alt={`${title} slide ${idx + 1}`}
+                onError={() => setFailedIndexes((prev) => [...prev, idx])}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Indicator Dots */}
+        {showControls && (
+          <div style={{
+            position: 'absolute',
+            bottom: '1rem',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            gap: '0.5rem',
+            zIndex: 5,
+            padding: '0.4rem 0.8rem',
+            borderRadius: '20px',
+            background: 'rgba(10, 10, 12, 0.5)',
+            backdropFilter: 'blur(4px)',
+            WebkitBackdropFilter: 'blur(4px)',
+          }}>
+            {validImages.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  border: 'none',
+                  padding: 0,
+                  cursor: 'pointer',
+                  background: idx === currentIndex ? 'var(--cream)' : 'rgba(255, 255, 255, 0.3)',
+                  transition: 'background 0.3s ease, transform 0.3s ease',
+                  transform: idx === currentIndex ? 'scale(1.2)' : 'scale(1)'
+                }}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* External Next Arrow (Desktop Only) */}
+      {showControls && !isMobile && (
+        <button
+          onClick={nextSlide}
+          aria-label="Next slide"
+          style={{
+            width: '42px',
+            height: '42px',
+            borderRadius: '50%',
+            background: 'rgba(255, 255, 255, 0.02)',
+            border: '1px solid var(--border)',
+            color: 'var(--cream-dim)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            zIndex: 5,
+            transition: 'all 0.2s ease',
+            flexShrink: 0,
+            boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+            e.currentTarget.style.color = 'var(--text)';
+            e.currentTarget.style.borderColor = 'var(--border-hover)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 240, 255, 0.15)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+            e.currentTarget.style.color = 'var(--cream-dim)';
+            e.currentTarget.style.borderColor = 'var(--border)';
+            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+          }}
+        >
+          <ChevronRight size={22} />
+        </button>
+      )}
     </div>
   );
 }
@@ -42,7 +239,6 @@ function GalleryImage({ src, alt }) {
 // Projects links mapping helper is no longer needed since project.links is a dynamic array
 
 export default function ProjectDetailSection({ project, onBack }) {
-  const [imgError, setImgError] = useState(false);
   const [showFloatingBack, setShowFloatingBack] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
@@ -74,8 +270,6 @@ export default function ProjectDetailSection({ project, onBack }) {
   }, []);
 
   if (!project) return null;
-
-  const Icon = project.icon;
   const cs = project.caseStudy || {};
 
   return (
@@ -222,41 +416,13 @@ export default function ProjectDetailSection({ project, onBack }) {
           </p>
         </header>
 
-        {/* Main Feature Image / Mockup Fallback */}
-        <div style={{
-          width: '100%',
-          height: 'clamp(220px, 45vw, 420px)',
-          background: 'linear-gradient(135deg, #121216 0%, #1a1a22 100%)',
-          border: '1px solid var(--border)',
-          borderRadius: '24px',
-          overflow: 'hidden',
-          position: 'relative',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: '3.5rem'
-        }}>
-          {!imgError && project.image ? (
-            <img 
-              src={project.image} 
-              alt={project.title} 
-              onError={() => setImgError(true)}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover'
-              }}
-            />
-          ) : (
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', color: 'var(--cream-dim)' }}>
-              {Icon && <Icon size={64} strokeWidth={1} />}
-              <span style={{ fontSize: '0.8rem', fontFamily: "'JetBrains Mono', monospace", color: 'var(--muted)' }}>
-                [ Visual Mockup Placeholder ]
-              </span>
-            </div>
-          )}
-        </div>
+        {/* Main Image Carousel */}
+        <ProjectCarousel 
+          images={[project.image, ...(cs.gallery || [])]} 
+          title={project.title} 
+          icon={project.icon} 
+          isMobile={isMobile}
+        />
 
         {/* Project Meta Information Grid */}
         <section style={{
@@ -333,7 +499,7 @@ export default function ProjectDetailSection({ project, onBack }) {
           {/* The Challenge (Situation) */}
           <div>
             <h3 style={{ fontFamily: "'Sora', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.25rem', color: '#E6E4DD', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Award size={20} style={{ color: '#ff6b6b' }} /> The Challenge (Situation)
+              <Award size={20} style={{ color: '#ff6b6b' }} /> The Challenge
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {(cs.challenges || []).map((challenge, i) => (
@@ -354,7 +520,7 @@ export default function ProjectDetailSection({ project, onBack }) {
           {/* The Solution (Action) */}
           <div>
             <h3 style={{ fontFamily: "'Sora', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.25rem', color: '#E6E4DD', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Briefcase size={20} style={{ color: '#4dadf7' }} /> The Solution (Action)
+              <Briefcase size={20} style={{ color: '#4dadf7' }} /> The Solution
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {(cs.solutions || []).map((solution, i) => (
@@ -375,7 +541,7 @@ export default function ProjectDetailSection({ project, onBack }) {
           {/* Key Features & Impact (Result) */}
           <div>
             <h3 style={{ fontFamily: "'Sora', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '1.25rem', color: '#E6E4DD', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <CheckCircle size={20} style={{ color: '#51cf66' }} /> Key Features &amp; Impact (Result)
+              <CheckCircle size={20} style={{ color: '#51cf66' }} /> Key Features &amp; Impact
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1rem' }}>
               {(cs.features || []).map((feature, i) => {
@@ -396,26 +562,6 @@ export default function ProjectDetailSection({ project, onBack }) {
             </div>
           </div>
 
-          {/* Project Gallery (Conditional) */}
-          {cs.gallery && cs.gallery.length > 0 && (
-            <div>
-              <h3 style={{ fontFamily: "'Sora', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '0.5rem', color: '#E6E4DD' }}>
-                Project Gallery
-              </h3>
-              <p style={{ fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '1.5rem' }}>
-                Screenshots, interface designs, and key deliverables.
-              </p>
-              <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-                gap: '1rem'
-              }}>
-                {cs.gallery.map((imgSrc, idx) => (
-                  <GalleryImage key={idx} src={imgSrc} alt={`${project.title} screenshot ${idx + 1}`} />
-                ))}
-              </div>
-            </div>
-          )}
 
           {/* Action Links & Footer Back Button */}
           <div style={{ 

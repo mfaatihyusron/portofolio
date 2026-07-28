@@ -195,7 +195,7 @@ export const projects = [
     techStack: ["PHP", "CodeIgniter 3", "MySQL", "JavaScript", "jQuery", "Tailwind CSS", "Leaflet.js", "Chart.js"],
     links: [
       { type: "github", label: "GitHub", url: "https://github.com/mfaatihyusron/socialact" },
-      { type: "demo", label: "Video Demo", url: "https://drive.google.com/file/d/1EvNwqRpAnZjr9LXWzab2KMdj25CoaDKI/view?usp=sharing" }
+      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/1MLX4p8tCU-zMcTT6eVwOmfI18i5jiZAx/view?usp=sharing" }
     ],
     caseStudy: {
       role: "Fullstack Developer",
@@ -233,8 +233,8 @@ export const projects = [
     result: "Delivered an intuitive app interface design that makes it easy for farmers to monitor livestock health, daily schedules, and farming information.",
     techStack: ["Figma", "Design Thinking", "UX Research", "Prototyping", "Maze"],
     links: [
-      { type: "figma", label: "Figma Prototype", url: "https://www.figma.com/proto/nDNOmStAz0rpph60lDBihn/Apk-BarnE-peternak?node-id=334-1053&scaling=scale-down&page-id=5%3A3&starting-point-node-id=334%3A1053&show-proto-sidebar=1" },
-      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/1EvNwqRpAnZjr9LXWzab2KMdj25CoaDKI/view?usp=sharing" }
+      { type: "figma", label: "Figma Prototype", url: "https://www.figma.com/proto/nDNOmStAz0rpph60lDBihn/Apk-BarnE-peternak?node-id=334-1053&p=f&t=Le50htaI0RIXD5z2-1&scaling=scale-down&content-scaling=fixed&page-id=5%3A3&starting-point-node-id=334%3A1053&show-proto-sidebar=1" },
+      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/15Lwq8PpEQ_4agbwdibzkyE9rK5bLQo0K/view?usp=drive_link" }
     ],
     caseStudy: {
       role: "UI/UX Designer",
@@ -258,7 +258,7 @@ export const projects = [
         "Profile & Health Details: Monitor medical records and weight progress of livestock.",
         "Livestock Catalog & Toko Ternak: Simplifies buying and selling farming supplies or products."
       ],
-      gallery: ["/projects/barne.png","/projects/barne-1.png", "/projects/barne-2.png"]
+      gallery: ["/projects/barne-1.png", "/projects/barne-2.png","/projects/barne-3.png"]
     }
   },
   {
@@ -273,8 +273,8 @@ export const projects = [
     result: "Designed a disaster reporting and mitigation system that accelerates emergency response and unifies volunteer coordination.",
     techStack: ["Figma", "Design Thinking", "UX Research", "Prototyping"],
     links: [
-      { type: "figma", label: "Figma Prototype", url: "https://www.figma.com/proto/WjrHhHqYQsJ9l4bBQ1PUBI/Baru-Aplikasi-SIGAP?node-id=72-2752&scaling=scale-down&page-id=3%3A196&starting-point-node-id=72%3A2752&show-proto-sidebar=1" },
-      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/1EvNwqRpAnZjr9LXWzab2KMdj25CoaDKI/view?usp=sharing" }
+      { type: "figma", label: "Figma Prototype", url: "https://www.figma.com/proto/WjrHhHqYQsJ9l4bBQ1PUBI/Baru-Aplikasi-SIGAP?node-id=72-763&scaling=scale-down&page-id=3%3A196&starting-point-node-id=72%3A763&show-proto-sidebar=1&t=OhU3Wiz9ydwo4dQV-1" },
+      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/1i_eRHzMVuJZ2DJR_EUaSlFhBMQKPPb5_/view?usp=sharing" }
     ],
     caseStudy: {
       role: "UI/UX Designer",
@@ -297,7 +297,7 @@ export const projects = [
         "Formulir Pelaporan Cepat: Laporkan kondisi banjir/gempa dengan foto dan koordinat lokasi.",
         "Edukasi Kebencanaan: Panduan langkah-langkah evakuasi pra dan pasca bencana."
       ],
-      gallery: ["/projects/sigap-1.png", "/projects/sigap-2.png"]
+      gallery: ["/projects/sigap-1.png", "/projects/sigap-2.png", "/projects/sigap-3.png"]
     }
   }
 ];
