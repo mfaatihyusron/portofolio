@@ -156,7 +156,7 @@ export const projects = [
     techStack: ["PHP", "CodeIgniter 3", "MySQL", "JavaScript", "jQuery", "Tailwind CSS"],
     links: [
       { type: "github", label: "GitHub", url: "https://github.com/mfaatihyusron/Courty" },
-      { type: "demo", label: "Video Demo", url: "https://drive.google.com/file/d/1avSNncm6kok1qDPBw7sdVlP5GA4MpeYK/view?usp=sharing" }
+      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/1avSNncm6kok1qDPBw7sdVlP5GA4MpeYK/view?usp=sharing" }
     ],
     caseStudy: {
       role: "Fullstack Developer",
