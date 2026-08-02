@@ -481,7 +481,67 @@ export default function ProjectDetailSection({ project, onBack }) {
               ))}
             </ul>
           </div>
-        </section>
+
+            {project.links && project.links.length > 0 && (
+              <div>
+                <h4 style={{ fontSize: '0.72rem', fontFamily: "'JetBrains Mono', monospace", color: 'var(--muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                  Project Links
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.2rem' }}>
+                  {project.links.map((link, idx) => {
+                    let LinkIcon = ExternalLink;
+                    if (link.type === 'github') LinkIcon = FaGithub;
+                    if (link.type === 'figma') LinkIcon = FaFigma;
+                    if (link.type === 'colab') LinkIcon = SiGooglecolab;
+
+                    const isPrimary = idx === 0;
+                    return (
+                      <a 
+                        key={idx}
+                        href={link.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        style={{
+                          fontSize: '0.8rem',
+                          padding: '0.5rem 1rem',
+                          borderRadius: '8px',
+                          textDecoration: 'none',
+                          fontWeight: 600,
+                          transition: 'all 0.2s',
+                          fontFamily: "'Inter', sans-serif",
+                          background: isPrimary ? 'var(--cream)' : 'transparent',
+                          color: isPrimary ? '#0A0A0B' : 'var(--muted)',
+                          border: isPrimary ? 'none' : '1px solid var(--border)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                          width: 'fit-content'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (isPrimary) {
+                            e.currentTarget.style.background = '#ffffff';
+                          } else {
+                            e.currentTarget.style.borderColor = 'var(--border-hover)';
+                            e.currentTarget.style.color = 'var(--text)';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (isPrimary) {
+                            e.currentTarget.style.background = 'var(--cream)';
+                          } else {
+                            e.currentTarget.style.borderColor = 'var(--border)';
+                            e.currentTarget.style.color = 'var(--muted)';
+                          }
+                        }}
+                      >
+                        {link.label} <LinkIcon size={14} />
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </section>
 
         {/* Case Study Detailed Body */}
         <section style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
@@ -563,69 +623,14 @@ export default function ProjectDetailSection({ project, onBack }) {
           </div>
 
 
-          {/* Action Links & Footer Back Button */}
+          {/* Footer Back Button */}
           <div style={{ 
             display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
-            gap: '2.5rem',
+            justifyContent: 'center',
             borderTop: '1px solid var(--border)', 
-            marginTop: '2rem',
-            paddingTop: '3rem' 
+            marginTop: '4rem',
+            paddingTop: '2.5rem' 
           }}>
-            {/* External Code & Live Demo Buttons */}
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-              {project.links && project.links.map((link, idx) => {
-                let LinkIcon = ExternalLink;
-                if (link.type === 'github') LinkIcon = FaGithub;
-                if (link.type === 'figma') LinkIcon = FaFigma;
-                if (link.type === 'colab') LinkIcon = SiGooglecolab;
-
-                const isPrimary = idx === 0;
-                return (
-                  <a 
-                    key={idx}
-                    href={link.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    style={{
-                      fontSize: '0.85rem',
-                      padding: '0.75rem 1.75rem',
-                      borderRadius: '10px',
-                      textDecoration: 'none',
-                      fontWeight: 600,
-                      transition: 'all 0.2s',
-                      fontFamily: "'Inter', sans-serif",
-                      background: isPrimary ? 'var(--cream)' : 'transparent',
-                      color: isPrimary ? '#0A0A0B' : 'var(--muted)',
-                      border: isPrimary ? 'none' : '1px solid var(--border)',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: '0.5rem'
-                    }}
-                    onMouseEnter={(e) => {
-                      if (isPrimary) {
-                        e.currentTarget.style.background = '#ffffff';
-                      } else {
-                        e.currentTarget.style.borderColor = 'var(--border-hover)';
-                        e.currentTarget.style.color = 'var(--text)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (isPrimary) {
-                        e.currentTarget.style.background = 'var(--cream)';
-                      } else {
-                        e.currentTarget.style.borderColor = 'var(--border)';
-                        e.currentTarget.style.color = 'var(--muted)';
-                      }
-                    }}
-                  >
-                    {link.label} <LinkIcon size={16} />
-                  </a>
-                );
-              })}
-            </div>
-
             {/* Large Back Button */}
             <button 
               onClick={onBack}
