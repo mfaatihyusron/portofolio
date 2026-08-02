@@ -162,7 +162,7 @@ export const projects = [
       role: "Fullstack Developer",
       timeline: "Nov 2025 — Jan 2026",
       deliverables: [
-        "Responsive Web Application (Mobile-First Design)", 
+        "Web Application", 
         "Relational Database Schema (ERD) with 6 Tables", 
         "Interactive Admin, Partner, and User Dashboards"
       ],

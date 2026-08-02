@@ -48,7 +48,7 @@ function ProjectCarousel({ images, title, icon: Icon, isMobile }) {
     return (
       <div style={{
         width: '100%',
-        height: 'clamp(220px, 45vw, 420px)',
+        aspectRatio: '16/9',
         background: 'linear-gradient(135deg, #121216 0%, #1a1a22 100%)',
         border: '1px solid var(--border)',
         borderRadius: '24px',
@@ -126,7 +126,7 @@ function ProjectCarousel({ images, title, icon: Icon, isMobile }) {
         style={{
           position: 'relative',
           flex: 1,
-          height: 'clamp(220px, 45vw, 420px)',
+          aspectRatio: '16/9',
           borderRadius: '24px',
           overflow: 'hidden',
           boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
