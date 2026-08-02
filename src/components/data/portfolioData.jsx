@@ -150,9 +150,9 @@ export const projects = [
     category: "Full Stack",
     icon: Calendar,
     image: "/projects/courty.png",
-    situation: "The sports court reservation process was manual and inefficient, leading to scheduling conflicts and long queues.",
-    action: "Developed an MVC-based web application featuring a multi-role authentication system (User, Owner, Super Admin), real-time schedule availability checks, and payment management.",
-    result: "Reservations became faster and more accurate, schedules were managed efficiently, and double-booking was completely prevented.",
+    situation: "The sports court reservation process was manual and inefficient, leading to scheduling conflicts, lack of price transparency, and long queues.",
+    action: "Developed an MVC-based web application featuring a role-based access control system (User, Partner/Owner, Super Admin), real-time schedule availability checks, dynamic popularity tracking, and a verification-based payment workflow.",
+    result: "Reservations became faster and more accurate, schedules were managed efficiently, double-booking was completely prevented, and venue owners gained a digital control panel to scale their operations.",
     techStack: ["PHP", "CodeIgniter 3", "MySQL", "JavaScript", "jQuery", "Tailwind CSS"],
     links: [
       { type: "github", label: "GitHub", url: "https://github.com/mfaatihyusron/Courty" },
@@ -161,25 +161,36 @@ export const projects = [
     caseStudy: {
       role: "Fullstack Developer",
       timeline: "Nov 2025 — Jan 2026",
-      deliverables: ["Responsive Web Application", "Relational Database Schema (ERD)", "Admin & Partner Management Panel"],
-      overview: "Courty is a web application designed to simplify sports court reservations online. It addresses schedule uncertainty and long queues by displaying real-time court availability for users, court owners (partners), and administrators.",
+      deliverables: [
+        "Responsive Web Application (Mobile-First Design)", 
+        "Relational Database Schema (ERD) with 6 Tables", 
+        "Interactive Admin, Partner, and User Dashboards"
+      ],
+      overview: `Courty was conceived to address the persistent inefficiencies in local sports court reservations, which are traditionally handled through fragmented, manual channels like phone calls, WhatsApp messages, or physical visits.
+This outdated process frequently results in scheduling conflicts, double-bookings, and a complete lack of real-time price and slot transparency for customers.
+For court owners (partners), managing bookings on paper ledgers or basic spreadsheets causes administrative bottlenecks, difficulties in verifying bank transfer receipts manually, and limited marketing reach to new customers.
+Courty solves these problems by providing a centralized, web-based marketplace that synchronizes real-time court schedules, automates the booking-to-payment approval workflow, and gives renters, venue owners, and administrators dedicated portals to manage their operations seamlessly.`,
       challenges: [
-        "Preventing reservation conflicts or double-bookings on the same time slot.",
-        "Designing a dynamic and intuitive interface for various user groups (Multi-role).",
-        "Managing integrated payment verification workflows between renters and court owners."
+        "Preventing reservation conflicts or double-bookings on the same time slot under concurrent user requests.",
+        "Designing a secure and seamless onboarding flow for venue owners with detailed operational data.",
+        "Structuring an integrated payment verification workflow between renters and court owners without direct API payment gateway overhead."
       ],
       solutions: [
-        "Built a Real-Time Booking System for live schedule availability checks.",
-        "Implemented Role-Based Access Control (RBAC) to separate dashboards and automatically manage access rights for Users, Owners (Partners), and Super Admins.",
-        "Provided a payment proof upload feature for users integrated with the partner's manual verification panel."
+        "Built a Real-Time Booking System that automatically calculates rental duration, computes pricing, and locks time slots during transaction states.",
+        "Implemented a Secure Role-Based Access Control (RBAC) separating access rights and dashboard layouts for Users, Partners/Owners, and Super Admins.",
+        "Designed a Two-Step Partner Registration Wizard that separates personal credentials from venue profile creation (storing business addresses, Google Maps links, and operating hours).",
+        "Integrated a dynamic popularity tracker ('Trending Venues') that records page visits (view counts) to automatically promote highly-visited venues on the homepage."
       ],
       features: [
-        "Multi-Role Authentication: Separate dashboards and access controls for Users, Owners, and Admins.",
-        "Real-Time Booking System: Instant availability checks to prevent double-bookings.",
-        "Payment Management: Module for uploading and verifying payment receipts.",
-        "Complete CRUD Management: Partner control panel to manage court data, pricing, photos, and operational hours."
+        "Multi-Role System (User / Partner / Admin): Customized portals where Users book courts, Partners manage assets and orders, and Admins moderate the platform.",
+        "Two-Step Owner Registration: Smooth onboarding flow for business partners ensuring accurate data collection for sports venues.",
+        "Interactive Booking & Schedule Checker: Live availability checking categorized by 7 sports (Futsal, Badminton, Swimming, Tennis, Padel, Basketball, Volleyball).",
+        "Interactive Payment Approval Workflow: A secure flow where owners approve booking requests by uploading custom QR codes, and verify uploaded payment receipts before marked as 'Completed'.",
+        "Custom Rejection System: Allows owners to decline a reservation by submitting a specific custom reason (e.g., public holidays, invalid transfer slips).",
+        "Dynamic Venue Analytics (Popularity Engine): Automatically tracks venue detail page views to calculate and display trending venues dynamically.",
+        "Complete Court CRUD Control: Dashboard for owners to add, edit, or delete individual courts, prices, descriptions, and high-quality profile photos."
       ],
-      gallery: ["/projects/courty-1.png", "/projects/courty-2.png"]
+      gallery: ["/projects/courty-1.png", "/projects/courty-2.png", "/projects/courty-3.png", "/projects/courty-4.png", "/projects/courty-5.png", "/projects/courty-6.png", "/projects/courty-7.png"]
     }
   },
   {

@@ -491,8 +491,8 @@ export default function ProjectDetailSection({ project, onBack }) {
             <h3 style={{ fontFamily: "'Sora', sans-serif", fontSize: '1.4rem', fontWeight: 700, marginBottom: '1rem', color: '#E6E4DD' }}>
               Overview
             </h3>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'var(--muted)' }}>
-              {cs.overview}
+            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'var(--muted)', whiteSpace: 'pre-line', textAlign: 'justify' }}>
+              {cs.overview ? cs.overview.replace(/\/n/g, '\n') : ''}
             </p>
           </div>
 
