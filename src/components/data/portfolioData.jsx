@@ -195,41 +195,95 @@ Courty solves these problems by providing a centralized, web-based marketplace t
   },
   {
     id: 2,
-    title: "Social Act",
-    subtitle: "Social Action Transparency & GIS-Based Trash Reporting Website",
+    title: "SocialAct",
+    subtitle: "GIS-Based Social Action & Donation Transparency Platform",
     category: "Full Stack",
     icon: Globe,
     image: "/projects/socialact.png",
-    situation: "Environmental social movements often lack public trust due to a lack of financial transparency and unstructured trash location data.",
-    action: "Designed an MVC web architecture with GIS mapping using Leaflet.js, integrated financial transparency charts with Chart.js, and volunteer registration.",
-    result: "Increased public trust through real-time data transparency and simplified trash cleanup location mapping.",
-    techStack: ["PHP", "CodeIgniter 3", "MySQL", "JavaScript", "jQuery", "Tailwind CSS", "Leaflet.js", "Chart.js"],
-    links: [
-      { type: "github", label: "GitHub", url: "https://github.com/mfaatihyusron/socialact" },
-      { type: "demo", label: "Documentation", url: "https://drive.google.com/file/d/1MLX4p8tCU-zMcTT6eVwOmfI18i5jiZAx/view?usp=sharing" }
+
+    situation:
+      "Environmental cleanup initiatives often struggle with limited public trust due to opaque donation management and the absence of a centralized platform for reporting and tracking waste locations.",
+
+    action:
+      "Built a full-stack web platform using CodeIgniter 3 with Role-Based Access Control (RBAC), GIS-based waste reporting powered by Leaflet.js, real-time financial transparency dashboards using Chart.js, and volunteer event management.",
+
+    result:
+      "Centralized waste reporting, improved transparency of donation usage, and streamlined collaboration between the public, finance administrators, and field coordinators through a single integrated platform.",
+
+    techStack: [
+      "PHP",
+      "CodeIgniter 3",
+      "MySQL",
+      "JavaScript",
+      "jQuery",
+      "Tailwind CSS",
+      "Leaflet.js",
+      "Chart.js"
     ],
+
+    links: [
+      {
+        type: "github",
+        label: "GitHub",
+        url: "https://github.com/mfaatihyusron/socialact"
+      },
+      {
+        type: "demo",
+        label: "Documentation",
+        url: "https://drive.google.com/file/d/1MLX4p8tCU-zMcTT6eVwOmfI18i5jiZAx/view?usp=sharing"
+      }
+    ],
+
     caseStudy: {
-      role: "Fullstack Developer",
+      role: "Full Stack Developer",
+
       timeline: "Dec 2025 — Jan 2026",
-      deliverables: ["GIS Trash Mapping Portal", "Real-Time Financial Dashboard", "Volunteer Registration System"],
-      overview: "SocialAct is a web application designed to modernize environmental social movements with a focus on public trust and data management efficiency. Inspired by the Pandawara Group, the platform integrates real-time financial transparency and Geographical Information System (GIS) based trash mapping.",
+
+      deliverables: [
+        "GIS Waste Reporting Platform",
+        "Donation Transparency Dashboard",
+        "Volunteer Management System",
+        "Role-Based Administration Panel"
+      ],
+
+      overview:
+        "SocialAct is a web-based platform designed to improve the effectiveness of community-driven environmental cleanup initiatives by addressing two major challenges: the lack of transparency in donation management and the absence of a centralized system for reporting and monitoring waste locations. Inspired by initiatives such as Pandawara Group, the platform enables the public to report waste through an interactive GIS map, participate in volunteer activities, donate to cleanup programs, and monitor how donated funds are allocated. Administrative workflows are separated through Role-Based Access Control (RBAC), allowing Finance Admins, Field Coordinators, and Super Admins to manage responsibilities efficiently while maintaining accountability.",
+
       challenges: [
-        "Presenting social action funding alocation and usage openly and transparently.",
-        "Displaying the latest trash locations visually on an interactive map.",
-        "Managing data workflow and access rights among Super Admin, Finance Team, and Field Coordinators."
+        "Building public trust by providing transparent records of donation income and operational expenses.",
+        "Providing an intuitive GIS interface for reporting, locating, and tracking waste cleanup progress.",
+        "Managing different administrative responsibilities securely through role-based permissions.",
+        "Connecting public participation, volunteer coordination, financial management, and field operations within one integrated platform."
       ],
+
       solutions: [
-        "Integrated Chart.js for real-time visualization of donation income and expense charts.",
-        "Used Leaflet.js to map Geographical Information System (GIS) coordinates of trash reports in the field.",
-        "Applied Role-Based Access Control (RBAC) to divide authority among Super Admin, Finance, and Field Coordinators."
+        "Implemented a Financial Transparency Dashboard with Chart.js to visualize donation income, expenses, and account balances in real time.",
+        "Developed an interactive GIS mapping system using Leaflet.js for waste reporting, geographic visualization, and cleanup status tracking.",
+        "Designed a Role-Based Access Control (RBAC) architecture separating permissions for Super Admin, Finance Admin, and Field Coordinator.",
+        "Integrated donation submission, volunteer registration, event management, and before-after cleanup documentation into a unified workflow."
       ],
+
       features: [
-        "Financial Transparency Dashboard: Real-time visualization of donation income and fund expenditures.",
-        "GIS Interactive Mapping: Geographically-based distribution and reporting of trash locations.",
-        "Donation & Volunteer System: Integrated donation forms and volunteer activity registration.",
-        "Execution Gallery & Reports: Documentation gallery of cleanups and report resolution progress."
+        "GIS Waste Reporting: Interactive map for reporting waste locations with coordinates and before-after cleanup images.",
+        "Financial Transparency Dashboard: Public visualization of donations, expenditures, and fund allocation.",
+        "Donation Management: Donation submission with payment proof upload and finance verification workflow.",
+        "Volunteer Hub: Volunteer event creation, registration, and participant management.",
+        "Role-Based Admin Panel: Dedicated dashboards for Super Admin, Finance Admin, and Field Coordinator.",
+        "Cleanup Progress Tracking: Status monitoring from Pending to In Progress and Resolved with supporting documentation."
       ],
-      gallery: ["/projects/socialact-1.png", "/projects/socialact-2.png"]
+
+      gallery: [
+        "/projects/socialact-1.png",
+        "/projects/socialact-2.png",
+        "/projects/socialact-3.png",
+        "/projects/socialact-4.png",
+        "/projects/socialact-5.png",
+        "/projects/socialact-6.png",
+        "/projects/socialact-7.png",
+        "/projects/socialact-8.png",
+        "/projects/socialact-9.png",
+        "/projects/socialact-10.png"
+      ]
     }
   },
   {
