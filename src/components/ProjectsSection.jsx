@@ -5,7 +5,7 @@ import { FaGithub, FaFigma } from 'react-icons/fa';
 import { SiGooglecolab } from 'react-icons/si';
 
 const tabs = [
-  { id: "uiux", label: "UI/UX Design", icon: Palette, color: "#ffe600" },      // Yellow
+  { id: "uiux", label: "Design", icon: Palette, color: "#ffe600" },      // Yellow
   { id: "web", label: "Web Development", icon: Code2, color: "#00f0ff" },    // Cyan
   { id: "datascience", label: "Data Science", icon: Brain, color: "#ffffff" } // White
 ];
@@ -190,7 +190,7 @@ export default function ProjectsSection({ onProjectClick }) {
   // Filter projects by active tab
   const filteredProjects = projects.filter(project => {
     if (activeTab === "uiux") {
-      return project.category === "UI/UX Design" || project.category === "Mobile Design";
+      return project.category === "UI/UX Design" || project.category === "Mobile Design" || project.category === "Graphic Design" || project.category === "Design System";
     }
     if (activeTab === "web") {
       return project.category === "Full Stack" || project.category === "Frontend" || project.category === "Backend";

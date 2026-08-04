@@ -366,10 +366,10 @@ Courty solves these problems by providing a centralized, web-based marketplace t
     }
   },
   {
-  id: 3,
+  id: 5,
   title: "ProdActivity",
   subtitle: "AI-Powered Student Productivity & Career Insight Platform",
-  category: "Full Stack",
+  category: "Frontend",
   icon: ShieldAlert,
   image: "/projects/ProdActivity.jpg",
 
