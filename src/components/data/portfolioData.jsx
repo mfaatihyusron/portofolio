@@ -364,7 +364,98 @@ Courty solves these problems by providing a centralized, web-based marketplace t
       ],
       gallery: ["/projects/sigap-1.png", "/projects/sigap-2.png", "/projects/sigap-3.png"]
     }
+  },
+  {
+  id: 3,
+  title: "ProdActivity",
+  subtitle: "AI-Powered Student Productivity & Career Insight Platform",
+  category: "Full Stack",
+  icon: ShieldAlert,
+  image: "/projects/ProdActivity.jpg",
+
+  situation:
+    "Students often rely on multiple disconnected tools to manage academic tasks, personal notes, and career planning, making it difficult to monitor productivity and gain meaningful insights from their activities.",
+
+  action:
+    "Designed the end-to-end user experience and implemented a responsive React frontend featuring productivity dashboards, activity management, AI-powered career insights, and an interactive chatbot with a clean, modern interface.",
+
+  result:
+    "Delivered a centralized productivity platform that simplifies daily activity management while providing clear visualizations and an intuitive user experience for AI-assisted career analysis.",
+
+  techStack: [
+    "React",
+    "Vite",
+    "JavaScript",
+    "Tailwind CSS",
+    "React Router",
+    "Recharts",
+    "Lucide React"
+  ],
+
+  links: [
+    {
+      type: "github",
+      label: "GitHub",
+      url: "https://github.com/Liaurentino/ProdActivity"
+    },
+    {
+      type: "demo",
+      label: "Documentation",
+      url: "https://drive.google.com/file/d/1J5Y1E2OxolKg6XeuXQGdYzf_-jI8-boi/view?usp=drive_link"
+    }
+  ],
+
+  caseStudy: {
+    role: "UI/UX Designer & Front-End Developer",
+
+    timeline: "2026",
+
+    deliverables: [
+      "User Research & UI Design",
+      "Responsive React Frontend",
+      "Productivity Dashboard",
+      "Activity Management Interface",
+      "AI Career Insight Interface",
+      "AI Chat Interface"
+    ],
+
+    overview:
+      "ProdActivity is an AI-powered web platform that helps university students organize daily activities, track productivity, and receive personalized career recommendations based on their completed activities and interests. As the UI/UX Designer and Front-End Developer, I designed the user journey, crafted a modern and accessible interface, and implemented responsive frontend pages that transform complex productivity and AI-generated information into intuitive, easy-to-understand experiences.",
+
+    challenges: [
+      "Designing a dashboard capable of presenting productivity metrics without overwhelming users.",
+      "Creating a seamless workflow for managing activities, notes, and AI features within one application.",
+      "Presenting AI-generated career recommendations in a clear, trustworthy, and actionable format.",
+      "Maintaining a consistent design system across multiple modules and responsive screen sizes."
+    ],
+
+    solutions: [
+      "Designed a clean dashboard with progress rings, timeline views, weekly charts, and category statistics for quick productivity monitoring.",
+      "Developed reusable React components with Tailwind CSS to ensure a consistent and responsive interface.",
+      "Created intuitive user flows for onboarding, activity management, AI career analysis, and AI chat interactions.",
+      "Applied a modern design system emphasizing readability, visual hierarchy, and user-friendly navigation."
+    ],
+
+    features: [
+      "Productivity Dashboard with activity statistics, progress tracking, and visual analytics.",
+      "Activity Tracker for managing academic, organizational, and personal activities.",
+      "Notes & Todo Management with dynamic checklist functionality.",
+      "AI Career Insight interface displaying career predictions, recommended skills, and next steps.",
+      "AI Chat interface supporting document upload and conversational assistance.",
+      "Responsive Authentication and Onboarding experience for new users."
+    ],
+
+    gallery: [
+      "/projects/ProdActivity-1.jpg",
+      "/projects/ProdActivity-2.jpg",
+      "/projects/ProdActivity-3.jpg",
+      "/projects/ProdActivity-4.jpg",
+      "/projects/ProdActivity-5.jpg",
+      "/projects/ProdActivity-6.jpg",
+      "/projects/ProdActivity-7.jpg"
+    ]
   }
+}
 ];
 
 export const experiences = {
