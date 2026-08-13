@@ -59,7 +59,7 @@ export const personalInfo = {
   email: "faatihyusron@gmail.com",
   github: "https://github.com/mfaatihyusron",
   linkedin: "https://www.linkedin.com/in/mfaatihyusron/",
-  cv: "https://drive.google.com/file/d/1QRvX4j7FvdFg_QxL2Ky3yx76Xc5IRH95/view?usp=sharing",
+  cv: "https://drive.google.com/file/d/1BXzVQCLnrcU0zvX4E1XXkgQIUfaNesTS/view?usp=sharing",
   profileImage: "/assets/hero.png",
   avatarInitial: "MFY",
   availability: "Available 2025",
