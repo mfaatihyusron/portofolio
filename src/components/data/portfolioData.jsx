@@ -366,96 +366,179 @@ Courty solves these problems by providing a centralized, web-based marketplace t
     }
   },
   {
-  id: 5,
-  title: "ProdActivity",
-  subtitle: "AI-Powered Student Productivity & Career Insight Platform",
-  category: "Frontend",
-  icon: ShieldAlert,
-  image: "/projects/ProdActivity.jpg",
+    id: 5,
+    title: "ProdActivity",
+    subtitle: "AI-Powered Student Productivity & Career Insight Platform",
+    category: "Frontend",
+    icon: ShieldAlert,
+    image: "/projects/ProdActivity.jpg",
 
-  situation:
-    "Students often rely on multiple disconnected tools to manage academic tasks, personal notes, and career planning, making it difficult to monitor productivity and gain meaningful insights from their activities.",
+    situation:
+      "Students often rely on multiple disconnected tools to manage academic tasks, personal notes, and career planning, making it difficult to monitor productivity and gain meaningful insights from their activities.",
 
-  action:
-    "Designed the end-to-end user experience and implemented a responsive React frontend featuring productivity dashboards, activity management, AI-powered career insights, and an interactive chatbot with a clean, modern interface.",
+    action:
+      "Designed the end-to-end user experience and implemented a responsive React frontend featuring productivity dashboards, activity management, AI-powered career insights, and an interactive chatbot with a clean, modern interface.",
 
-  result:
-    "Delivered a centralized productivity platform that simplifies daily activity management while providing clear visualizations and an intuitive user experience for AI-assisted career analysis.",
+    result:
+      "Delivered a centralized productivity platform that simplifies daily activity management while providing clear visualizations and an intuitive user experience for AI-assisted career analysis.",
 
-  techStack: [
-    "React",
-    "Vite",
-    "JavaScript",
-    "Tailwind CSS",
-    "React Router",
-    "Recharts",
-    "Lucide React"
-  ],
+    techStack: [
+      "React",
+      "Vite",
+      "JavaScript",
+      "Tailwind CSS",
+      "React Router",
+      "Recharts",
+      "Lucide React"
+    ],
 
-  links: [
-    {
-      type: "github",
-      label: "GitHub",
-      url: "https://github.com/Liaurentino/ProdActivity"
-    },
-    {
-      type: "demo",
-      label: "Documentation",
-      url: "https://drive.google.com/file/d/1J5Y1E2OxolKg6XeuXQGdYzf_-jI8-boi/view?usp=drive_link"
+    links: [
+      {
+        type: "github",
+        label: "GitHub",
+        url: "https://github.com/Liaurentino/ProdActivity"
+      },
+      {
+        type: "demo",
+        label: "Documentation",
+        url: "https://drive.google.com/file/d/1J5Y1E2OxolKg6XeuXQGdYzf_-jI8-boi/view?usp=drive_link"
+      }
+    ],
+
+    caseStudy: {
+      role: "UI/UX Designer & Front-End Developer",
+
+      timeline: "2026",
+
+      deliverables: [
+        "User Research & UI Design",
+        "Responsive React Frontend",
+        "Productivity Dashboard",
+        "Activity Management Interface",
+        "AI Career Insight Interface",
+        "AI Chat Interface"
+      ],
+
+      overview:
+        "ProdActivity is an AI-powered web platform that helps university students organize daily activities, track productivity, and receive personalized career recommendations based on their completed activities and interests. As the UI/UX Designer and Front-End Developer, I designed the user journey, crafted a modern and accessible interface, and implemented responsive frontend pages that transform complex productivity and AI-generated information into intuitive, easy-to-understand experiences.",
+
+      challenges: [
+        "Designing a dashboard capable of presenting productivity metrics without overwhelming users.",
+        "Creating a seamless workflow for managing activities, notes, and AI features within one application.",
+        "Presenting AI-generated career recommendations in a clear, trustworthy, and actionable format.",
+        "Maintaining a consistent design system across multiple modules and responsive screen sizes."
+      ],
+
+      solutions: [
+        "Designed a clean dashboard with progress rings, timeline views, weekly charts, and category statistics for quick productivity monitoring.",
+        "Developed reusable React components with Tailwind CSS to ensure a consistent and responsive interface.",
+        "Created intuitive user flows for onboarding, activity management, AI career analysis, and AI chat interactions.",
+        "Applied a modern design system emphasizing readability, visual hierarchy, and user-friendly navigation."
+      ],
+
+      features: [
+        "Productivity Dashboard with activity statistics, progress tracking, and visual analytics.",
+        "Activity Tracker for managing academic, organizational, and personal activities.",
+        "Notes & Todo Management with dynamic checklist functionality.",
+        "AI Career Insight interface displaying career predictions, recommended skills, and next steps.",
+        "AI Chat interface supporting document upload and conversational assistance.",
+        "Responsive Authentication and Onboarding experience for new users."
+      ],
+
+      gallery: [
+        "/projects/ProdActivity-1.jpg",
+        "/projects/ProdActivity-2.jpg",
+        "/projects/ProdActivity-3.jpg",
+        "/projects/ProdActivity-4.jpg",
+        "/projects/ProdActivity-5.jpg",
+        "/projects/ProdActivity-6.jpg",
+        "/projects/ProdActivity-7.jpg"
+      ]
+    } 
+  },
+  {
+    id: 6,
+
+    title: "SIERA",
+
+    subtitle: "New Student Orientation System for Incoming UPNVJ Students",
+
+    category: "UI/UX Design",
+
+    icon: ShieldAlert,
+
+    image: "/projects/siera.png",
+
+    situation: "The new student orientation process at UPNVJ required a centralized system to manage thousands of incoming students while supporting multiple administrative roles and complex event, group, and attendance workflows.",
+
+    action: "Designed the Admin Dashboard as part of a 5-member UI/UX team from 70+ developers, creating wireframes and high-fidelity interfaces for 10 administrative roles. Collaborated with product managers and engineers to translate product requirements into intuitive and consistent user experiences.",
+
+    result: "Designed a scalable orientation management system capable of supporting 6,000+ concurrent users and 13 user roles, streamlining administrative workflows for group, event, and attendance management.",
+
+    techStack: ["Figma", "UI/UX Design", "Wireframing", "Prototyping", "Design System"],
+
+    links: [
+      { type: "demo", label: "Website", url: "https://siera.upnvj.ac.id/" },
+      { type: "demo", label: "Product Requirements", url: "https://drive.google.com/file/d/1iKuCUs_qpsAABNorUvl7RMco_lPoVIvh/view?usp=drive_link" },
+    ],
+
+    caseStudy: {
+
+      role: "UI/UX Designer",
+
+      timeline: "Feb 2026 - Mar 2026",
+
+      deliverables: [
+        "Admin Dashboard UI",
+        "Wireframes & High-Fidelity Designs",
+        "User Flow & Interaction Design",
+        "Design System / UI Components"
+      ],
+
+      overview: "SIERA is a new student orientation system built from scratch for incoming UPNVJ students, designed to support 6,000+ concurrent users. Developed through a 70+ member cross-functional collaboration involving Product Managers, UI/UX Designers, Engineers, and QA, the project focused on creating a scalable and seamless experience across 13 user roles. As part of a 5-member UI/UX team, I contributed to the Admin Dashboard experience, designing key workflows for administrative operations. Beyond improving the orientation experience, the project contributed to a YoY 275% increase in merchandise sales revenue, growing from Rp80 million to Rp300 million.",
+
+      challenges: [
+
+        "The system needed to accommodate complex workflows across 10 administrative roles with different responsibilities and access needs.",
+
+        "Designing an administrative dashboard that could remain intuitive and consistent despite the scale of the system and number of user roles.",
+
+        "Translating product requirements into clear interfaces while maintaining alignment between UI/UX, product, and engineering teams."
+
+      ],
+
+      solutions: [
+
+        "Designed the Admin Dashboard from scratch, covering key workflows such as Home, Group Management, Event Management, and Attendance Management.",
+
+        "Created wireframes and high-fidelity UI designs to validate user flows and establish consistent interaction patterns across administrative features.",
+
+        "Collaborated closely with product managers and engineers to align design decisions with product requirements, technical constraints, and the needs of 13 user roles."
+
+      ],
+
+      features: [
+
+        "Admin Dashboard: Centralized overview for administrators to monitor and manage orientation activities.",
+
+        "Group Management: Interface for organizing and managing incoming students across orientation groups.",
+
+        "Event Management: Tools for administrators to create, organize, and manage orientation events.",
+
+        "Attendance Management: Streamlined interface for monitoring and managing student attendance.",
+
+        "Multi-Role Support: Designed workflows and interfaces to accommodate 10 administrative roles within a system supporting 13 total user roles."
+
+      ],
+
+      gallery: [
+        "/projects/siera-1.png",
+        "/projects/siera-2.png",
+        "/projects/siera-3.png"
+      ]
+
     }
-  ],
-
-  caseStudy: {
-    role: "UI/UX Designer & Front-End Developer",
-
-    timeline: "2026",
-
-    deliverables: [
-      "User Research & UI Design",
-      "Responsive React Frontend",
-      "Productivity Dashboard",
-      "Activity Management Interface",
-      "AI Career Insight Interface",
-      "AI Chat Interface"
-    ],
-
-    overview:
-      "ProdActivity is an AI-powered web platform that helps university students organize daily activities, track productivity, and receive personalized career recommendations based on their completed activities and interests. As the UI/UX Designer and Front-End Developer, I designed the user journey, crafted a modern and accessible interface, and implemented responsive frontend pages that transform complex productivity and AI-generated information into intuitive, easy-to-understand experiences.",
-
-    challenges: [
-      "Designing a dashboard capable of presenting productivity metrics without overwhelming users.",
-      "Creating a seamless workflow for managing activities, notes, and AI features within one application.",
-      "Presenting AI-generated career recommendations in a clear, trustworthy, and actionable format.",
-      "Maintaining a consistent design system across multiple modules and responsive screen sizes."
-    ],
-
-    solutions: [
-      "Designed a clean dashboard with progress rings, timeline views, weekly charts, and category statistics for quick productivity monitoring.",
-      "Developed reusable React components with Tailwind CSS to ensure a consistent and responsive interface.",
-      "Created intuitive user flows for onboarding, activity management, AI career analysis, and AI chat interactions.",
-      "Applied a modern design system emphasizing readability, visual hierarchy, and user-friendly navigation."
-    ],
-
-    features: [
-      "Productivity Dashboard with activity statistics, progress tracking, and visual analytics.",
-      "Activity Tracker for managing academic, organizational, and personal activities.",
-      "Notes & Todo Management with dynamic checklist functionality.",
-      "AI Career Insight interface displaying career predictions, recommended skills, and next steps.",
-      "AI Chat interface supporting document upload and conversational assistance.",
-      "Responsive Authentication and Onboarding experience for new users."
-    ],
-
-    gallery: [
-      "/projects/ProdActivity-1.jpg",
-      "/projects/ProdActivity-2.jpg",
-      "/projects/ProdActivity-3.jpg",
-      "/projects/ProdActivity-4.jpg",
-      "/projects/ProdActivity-5.jpg",
-      "/projects/ProdActivity-6.jpg",
-      "/projects/ProdActivity-7.jpg"
-    ]
   }
-}
 ];
 
 export const experiences = {
