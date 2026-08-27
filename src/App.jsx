@@ -118,6 +118,7 @@ function App() {
                 setActiveProject(null);
                 setScrollTarget("#projects");
               }} 
+              onProjectSelect={setActiveProject}
             />
             <div className="divider"></div>
             <Footer />

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink, Briefcase, Award, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowLeft, ExternalLink, Briefcase, Award, CheckCircle, ChevronLeft, ChevronRight, ZoomIn, ZoomOut, X } from 'lucide-react';
 import { FaGithub, FaFigma } from 'react-icons/fa';
 import { SiGooglecolab } from 'react-icons/si';
+import { projects } from "./data/portfolioData";
 
-function ProjectCarousel({ images, title, icon: Icon, isMobile }) {
+function ProjectCarousel({ images, title, icon: Icon, isMobile, onImageClick }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [failedIndexes, setFailedIndexes] = useState([]);
   const [touchStart, setTouchStart] = useState(null);
@@ -73,164 +74,170 @@ function ProjectCarousel({ images, title, icon: Icon, isMobile }) {
   return (
     <div style={{
       display: 'flex',
+      flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
       width: '100%',
-      gap: isMobile ? '0' : '1.25rem',
       marginBottom: '3.5rem',
-      position: 'relative'
+      gap: '1rem'
     }}>
-      {/* External Prev Arrow (Desktop Only) */}
-      {showControls && !isMobile && (
-        <button
-          onClick={prevSlide}
-          aria-label="Previous slide"
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%',
+        gap: isMobile ? '0' : '1.25rem',
+        position: 'relative'
+      }}>
+        {/* External Prev Arrow (Desktop Only) */}
+        {showControls && !isMobile && (
+          <button
+            onClick={prevSlide}
+            aria-label="Previous slide"
+            style={{
+              width: '42px',
+              height: '42px',
+              borderRadius: '50%',
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid var(--border)',
+              color: 'var(--cream-dim)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              zIndex: 5,
+              transition: 'all 0.2s ease',
+              flexShrink: 0,
+              boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+              e.currentTarget.style.color = 'var(--text)';
+              e.currentTarget.style.borderColor = 'var(--border-hover)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 240, 255, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+              e.currentTarget.style.color = 'var(--cream-dim)';
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            }}
+          >
+            <ChevronLeft size={22} />
+          </button>
+        )}
+
+        {/* Main Slider Container */}
+        <div 
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onClick={() => onImageClick && onImageClick(currentIndex)}
           style={{
-            width: '42px',
-            height: '42px',
-            borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.02)',
+            position: 'relative',
+            flex: 1,
+            aspectRatio: '16/9',
+            borderRadius: '24px',
+            overflow: 'hidden',
+            boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
             border: '1px solid var(--border)',
-            color: 'var(--cream-dim)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            zIndex: 5,
-            transition: 'all 0.2s ease',
-            flexShrink: 0,
-            boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-            e.currentTarget.style.color = 'var(--text)';
-            e.currentTarget.style.borderColor = 'var(--border-hover)';
-            e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 240, 255, 0.15)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
-            e.currentTarget.style.color = 'var(--cream-dim)';
-            e.currentTarget.style.borderColor = 'var(--border)';
-            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            background: 'linear-gradient(135deg, #121216 0%, #1a1a22 100%)',
+            cursor: 'zoom-in'
           }}
         >
-          <ChevronLeft size={22} />
-        </button>
-      )}
-
-      {/* Main Slider Container */}
-      <div 
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        style={{
-          position: 'relative',
-          flex: 1,
-          aspectRatio: '16/9',
-          borderRadius: '24px',
-          overflow: 'hidden',
-          boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
-          border: '1px solid var(--border)',
-          background: 'linear-gradient(135deg, #121216 0%, #1a1a22 100%)',
-        }}
-      >
-        {/* Sliding Track */}
-        <div style={{
-          display: 'flex',
-          width: `${validImages.length * 100}%`,
-          height: '100%',
-          transform: `translate3d(-${(currentIndex * 100) / validImages.length}%, 0, 0)`,
-          transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
-        }}>
-          {validImages.map((src, idx) => (
-            <div key={idx} style={{ width: `${100 / validImages.length}%`, height: '100%' }}>
-              <img 
-                src={src} 
-                alt={`${title} slide ${idx + 1}`}
-                onError={() => setFailedIndexes((prev) => [...prev, idx])}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
-                }}
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Indicator Dots */}
-        {showControls && (
+          {/* Sliding Track */}
           <div style={{
-            position: 'absolute',
-            bottom: '1rem',
-            left: '50%',
-            transform: 'translateX(-50%)',
             display: 'flex',
-            gap: '0.5rem',
-            zIndex: 5,
-            padding: '0.4rem 0.8rem',
-            borderRadius: '20px',
-            background: 'rgba(10, 10, 12, 0.5)',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
+            width: `${validImages.length * 100}%`,
+            height: '100%',
+            transform: `translate3d(-${(currentIndex * 100) / validImages.length}%, 0, 0)`,
+            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'
           }}>
-            {validImages.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  borderRadius: '50%',
-                  border: 'none',
-                  padding: 0,
-                  cursor: 'pointer',
-                  background: idx === currentIndex ? 'var(--cream)' : 'rgba(255, 255, 255, 0.3)',
-                  transition: 'background 0.3s ease, transform 0.3s ease',
-                  transform: idx === currentIndex ? 'scale(1.2)' : 'scale(1)'
-                }}
-              />
+            {validImages.map((src, idx) => (
+              <div key={idx} style={{ width: `${100 / validImages.length}%`, height: '100%' }}>
+                <img 
+                  src={src} 
+                  alt={`${title} slide ${idx + 1}`}
+                  onError={() => setFailedIndexes((prev) => [...prev, idx])}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+              </div>
             ))}
           </div>
+        </div>
+
+        {/* External Next Arrow (Desktop Only) */}
+        {showControls && !isMobile && (
+          <button
+            onClick={nextSlide}
+            aria-label="Next slide"
+            style={{
+              width: '42px',
+              height: '42px',
+              borderRadius: '50%',
+              background: 'rgba(255, 255, 255, 0.02)',
+              border: '1px solid var(--border)',
+              color: 'var(--cream-dim)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              zIndex: 5,
+              transition: 'all 0.2s ease',
+              flexShrink: 0,
+              boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+              e.currentTarget.style.color = 'var(--text)';
+              e.currentTarget.style.borderColor = 'var(--border-hover)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 240, 255, 0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+              e.currentTarget.style.color = 'var(--cream-dim)';
+              e.currentTarget.style.borderColor = 'var(--border)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
+            }}
+          >
+            <ChevronRight size={22} />
+          </button>
         )}
       </div>
 
-      {/* External Next Arrow (Desktop Only) */}
-      {showControls && !isMobile && (
-        <button
-          onClick={nextSlide}
-          aria-label="Next slide"
-          style={{
-            width: '42px',
-            height: '42px',
-            borderRadius: '50%',
-            background: 'rgba(255, 255, 255, 0.02)',
-            border: '1px solid var(--border)',
-            color: 'var(--cream-dim)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            zIndex: 5,
-            transition: 'all 0.2s ease',
-            flexShrink: 0,
-            boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
-            e.currentTarget.style.color = 'var(--text)';
-            e.currentTarget.style.borderColor = 'var(--border-hover)';
-            e.currentTarget.style.boxShadow = '0 6px 20px rgba(0, 240, 255, 0.15)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
-            e.currentTarget.style.color = 'var(--cream-dim)';
-            e.currentTarget.style.borderColor = 'var(--border)';
-            e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.2)';
-          }}
-        >
-          <ChevronRight size={22} />
-        </button>
+      {/* Indicator Dots (Outside and below the slider box) */}
+      {showControls && (
+        <div style={{
+          display: 'flex',
+          gap: '0.6rem',
+          padding: '0.4rem 0.8rem',
+          borderRadius: '20px',
+          background: 'rgba(30, 30, 36, 0.4)',
+          border: '1px solid var(--border)',
+          backdropFilter: 'blur(4px)',
+          WebkitBackdropFilter: 'blur(4px)',
+        }}>
+          {validImages.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => setCurrentIndex(idx)}
+              style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                border: 'none',
+                padding: 0,
+                cursor: 'pointer',
+                background: idx === currentIndex ? 'var(--cream)' : 'rgba(255, 255, 255, 0.15)',
+                transition: 'all 0.3s ease',
+                transform: idx === currentIndex ? 'scale(1.2)' : 'scale(1)'
+              }}
+            />
+          ))}
+        </div>
       )}
     </div>
   );
@@ -238,9 +245,12 @@ function ProjectCarousel({ images, title, icon: Icon, isMobile }) {
 
 // Projects links mapping helper is no longer needed since project.links is a dynamic array
 
-export default function ProjectDetailSection({ project, onBack }) {
+export default function ProjectDetailSection({ project, onBack, onProjectSelect }) {
   const [showFloatingBack, setShowFloatingBack] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const [zoomScale, setZoomScale] = useState(1);
 
   // Scroll to top when this section loads
   useEffect(() => {
@@ -269,8 +279,30 @@ export default function ProjectDetailSection({ project, onBack }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const cs = project?.caseStudy || {};
+  const validImages = project ? [project.image, ...(cs.gallery || [])].filter(Boolean) : [];
+
+  // Keyboard navigation for Lightbox
+  useEffect(() => {
+    if (!isLightboxOpen || validImages.length === 0) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsLightboxOpen(false);
+        setZoomScale(1);
+      } else if (e.key === 'ArrowLeft') {
+        setZoomScale(1);
+        setLightboxIndex((prev) => (prev - 1 + validImages.length) % validImages.length);
+      } else if (e.key === 'ArrowRight') {
+        setZoomScale(1);
+        setLightboxIndex((prev) => (prev + 1) % validImages.length);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isLightboxOpen, lightboxIndex, validImages.length]);
+
   if (!project) return null;
-  const cs = project.caseStudy || {};
+  const otherProjects = projects.filter((p) => p.id !== project.id);
 
   return (
     <>
@@ -418,10 +450,14 @@ export default function ProjectDetailSection({ project, onBack }) {
 
         {/* Main Image Carousel */}
         <ProjectCarousel 
-          images={[project.image, ...(cs.gallery || [])]} 
+          images={validImages} 
           title={project.title} 
           icon={project.icon} 
           isMobile={isMobile}
+          onImageClick={(idx) => {
+            setLightboxIndex(idx);
+            setIsLightboxOpen(true);
+          }}
         />
 
         {/* Project Meta Information Grid */}
@@ -623,6 +659,132 @@ export default function ProjectDetailSection({ project, onBack }) {
           </div>
 
 
+          {/* Other Case Studies Section */}
+          {otherProjects.length > 0 && (
+            <section style={{
+              marginTop: '5rem',
+              borderTop: '1px solid var(--border)',
+              paddingTop: '4rem',
+              textAlign: 'left'
+            }}>
+              <h3 style={{
+                fontFamily: "'Sora', sans-serif",
+                fontSize: '1.6rem',
+                fontWeight: 800,
+                color: '#E6E4DD',
+                marginBottom: '0.5rem'
+              }}>
+                Other Case Studies
+              </h3>
+              <p style={{
+                fontSize: '0.9rem',
+                color: 'var(--muted)',
+                marginBottom: '2rem'
+              }}>
+                Explore more projects from my design and development journey.
+              </p>
+
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                gap: '1.5rem'
+              }}>
+                {otherProjects.map((p) => {
+                  const ProjectIcon = p.icon;
+                  return (
+                    <div
+                      key={p.id}
+                      onClick={() => {
+                        if (onProjectSelect) {
+                          onProjectSelect(p);
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }
+                      }}
+                      style={{
+                        background: 'rgba(30, 30, 36, 0.4)',
+                        border: '1px solid var(--border)',
+                        borderRadius: '16px',
+                        padding: '1.5rem',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1rem',
+                        height: '100%',
+                        boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-4px)';
+                        e.currentTarget.style.borderColor = 'var(--border-hover)';
+                        e.currentTarget.style.background = 'rgba(30, 30, 36, 0.6)';
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 240, 255, 0.08)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.borderColor = 'var(--border)';
+                        e.currentTarget.style.background = 'rgba(30, 30, 36, 0.4)';
+                        e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.15)';
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <span style={{
+                          fontSize: '0.7rem',
+                          fontFamily: "'JetBrains Mono', monospace",
+                          color: 'var(--muted)',
+                          background: 'rgba(255,255,255,0.03)',
+                          padding: '0.25rem 0.6rem',
+                          borderRadius: '12px',
+                          border: '1px solid rgba(255,255,255,0.05)'
+                        }}>
+                          {p.category}
+                        </span>
+                        <div style={{ color: 'var(--muted)' }}>
+                          {ProjectIcon && <ProjectIcon size={18} />}
+                        </div>
+                      </div>
+
+                      <div>
+                        <h4 style={{
+                          fontFamily: "'Sora', sans-serif",
+                          fontWeight: 700,
+                          fontSize: '1.1rem',
+                          color: 'var(--cream)',
+                          marginBottom: '0.35rem'
+                        }}>
+                          {p.title}
+                        </h4>
+                        <p style={{
+                          fontSize: '0.82rem',
+                          color: 'var(--muted)',
+                          lineHeight: 1.4,
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis'
+                        }}>
+                          {p.subtitle}
+                        </p>
+                      </div>
+
+                      <div style={{
+                        marginTop: 'auto',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        color: 'var(--cream-dim)'
+                      }}>
+                        Read Case Study <ChevronRight size={14} />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          )}
+
           {/* Footer Back Button */}
           <div style={{ 
             display: 'flex', 
@@ -666,6 +828,276 @@ export default function ProjectDetailSection({ project, onBack }) {
 
         </section>
       </motion.article>
+
+      {/* Fullscreen Lightbox Modal */}
+      <AnimatePresence>
+        {isLightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => {
+              setIsLightboxOpen(false);
+              setZoomScale(1);
+            }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(5, 5, 8, 0.95)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              zIndex: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+              userSelect: 'none'
+            }}
+          >
+            {/* Control stops propagation to avoid closing on backdrop click */}
+            <div 
+              onClick={(e) => e.stopPropagation()} 
+              style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              {/* Controls Overlay */}
+              <div style={{
+                position: 'absolute',
+                top: '1.5rem',
+                right: '1.5rem',
+                display: 'flex',
+                gap: '0.75rem',
+                zIndex: 10002
+              }}>
+                {/* Zoom In Button */}
+                <button 
+                  onClick={() => setZoomScale((prev) => Math.min(prev + 0.5, 4))}
+                  title="Zoom In"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--cream-dim)',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                    e.currentTarget.style.color = 'var(--text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                    e.currentTarget.style.color = 'var(--cream-dim)';
+                  }}
+                >
+                  <ZoomIn size={18} />
+                </button>
+
+                {/* Zoom Out Button */}
+                <button 
+                  onClick={() => setZoomScale((prev) => Math.max(prev - 0.5, 1))}
+                  title="Zoom Out"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--cream-dim)',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                    e.currentTarget.style.color = 'var(--text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                    e.currentTarget.style.color = 'var(--cream-dim)';
+                  }}
+                >
+                  <ZoomOut size={18} />
+                </button>
+
+                {/* Close Button */}
+                <button 
+                  onClick={() => {
+                    setIsLightboxOpen(false);
+                    setZoomScale(1);
+                  }}
+                  title="Close (Esc)"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.03)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--cream-dim)',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                    e.currentTarget.style.color = 'var(--text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)';
+                    e.currentTarget.style.color = 'var(--cream-dim)';
+                  }}
+                >
+                  <X size={18} />
+                </button>
+              </div>
+
+              {/* Prev Slide Arrow */}
+              {validImages.length > 1 && (
+                <button
+                  onClick={() => {
+                    setZoomScale(1);
+                    setLightboxIndex((prev) => (prev - 1 + validImages.length) % validImages.length);
+                  }}
+                  style={{
+                    position: 'absolute',
+                    left: '2rem',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--cream-dim)',
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    zIndex: 10001,
+                    transition: 'all 0.2s ease',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                    e.currentTarget.style.color = 'var(--text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+                    e.currentTarget.style.color = 'var(--cream-dim)';
+                  }}
+                >
+                  <ChevronLeft size={24} />
+                </button>
+              )}
+
+              {/* Central Image Canvas with Drag/Scale constraints */}
+              <div style={{
+                width: '80%',
+                height: '80%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                <motion.img
+                  key={lightboxIndex}
+                  src={validImages[lightboxIndex]}
+                  alt={`${project.title} fullscreen slide`}
+                  initial={{ scale: 0.95, opacity: 0 }}
+                  animate={{ scale: zoomScale, opacity: 1 }}
+                  exit={{ scale: 0.95, opacity: 0 }}
+                  transition={{ duration: 0.25, ease: 'easeOut' }}
+                  drag={zoomScale > 1}
+                  dragConstraints={{ left: -300, right: 300, top: -200, bottom: 200 }}
+                  dragElastic={0.15}
+                  style={{
+                    maxHeight: '90%',
+                    maxWidth: '90%',
+                    objectFit: 'contain',
+                    cursor: zoomScale > 1 ? 'grab' : 'zoom-in',
+                    boxShadow: '0 30px 60px rgba(0,0,0,0.6)'
+                  }}
+                  onDoubleClick={() => {
+                    if (zoomScale > 1) {
+                      setZoomScale(1);
+                    } else {
+                      setZoomScale(2);
+                    }
+                  }}
+                />
+              </div>
+
+              {/* Next Slide Arrow */}
+              {validImages.length > 1 && (
+                <button
+                  onClick={() => {
+                    setZoomScale(1);
+                    setLightboxIndex((prev) => (prev + 1) % validImages.length);
+                  }}
+                  style={{
+                    position: 'absolute',
+                    right: '2rem',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--cream-dim)',
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    zIndex: 10001,
+                    transition: 'all 0.2s ease',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+                    e.currentTarget.style.color = 'var(--text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.02)';
+                    e.currentTarget.style.color = 'var(--cream-dim)';
+                  }}
+                >
+                  <ChevronRight size={24} />
+                </button>
+              )}
+
+              {/* Indicator Number */}
+              <div style={{
+                position: 'absolute',
+                bottom: '2.5rem',
+                color: 'var(--muted)',
+                fontSize: '0.85rem',
+                fontFamily: "'JetBrains Mono', monospace",
+                letterSpacing: '0.1em'
+              }}>
+                {lightboxIndex + 1} / {validImages.length}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
