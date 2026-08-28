@@ -538,6 +538,92 @@ Courty solves these problems by providing a centralized, web-based marketplace t
       ]
 
     }
+  },
+  {
+    id: 7,
+
+    title: "Web Development SDN Joglo 05",
+
+    subtitle: "School Management System for Academic and Administrative Processes",
+
+    category: "UI/UX Design",
+
+    icon: ShieldAlert,
+
+    image: "/projects/sdnjoglo.png",
+
+    situation: "SDN Joglo 05 needed a web-based school management system to digitalize academic and administrative processes while supporting the needs of approximately 300+ users.",
+
+    action: "Designed the UI/UX for a school management system with 6+ core modules, creating 15+ wireframes and high-fidelity interface screens in Figma. Collaborated with a 20-member cross-functional team, working closely with developers and stakeholders to translate requirements into implementable design solutions.",
+
+    result: "Delivered a consistent and user-friendly school management interface that supported the digitalization of academic and administrative processes for 300+ users.",
+
+    techStack: ["Figma", "UI/UX Design", "Wireframing", "High-Fidelity Design", "Design System"],
+
+    links: [
+      { type: "demo", label: "Website", url: "https://sdnjoglo05.sch.id/id" },
+      { type: "demo", label: "Requirement Document", url: "https://drive.google.com/file/d/1CxKy0zmBihAQfRdVYtfT9mdWZY92S_cJ/view?usp=drive_link" }
+    ],
+
+    caseStudy: {
+
+      role: "UI/UX Designer",
+
+      timeline: "July 2025 - Jan 2026",
+
+      deliverables: [
+        "School Management System UI",
+        "Wireframes & High-Fidelity Designs",
+        "User Flow & Interaction Design",
+        "Design System / UI Components"
+      ],
+
+      overview: "Web Development SDN Joglo 05 is a web-based school management system designed to digitalize academic and administrative processes for approximately 300+ users. As a UI/UX Designer, I contributed to designing the interface across 6+ core modules, creating 15+ wireframes and high-fidelity screens in Figma. The project involved collaboration within a 20-member cross-functional team, working closely with developers and stakeholders to translate requirements into consistent and implementable design solutions.",
+
+      challenges: [
+
+        "The system needed to support academic and administrative processes for approximately 300+ users while maintaining a simple and user-friendly experience.",
+
+        "Designing multiple core modules while ensuring visual and interaction consistency across the entire school management system.",
+
+        "Translating requirements from stakeholders into practical UI/UX solutions that could be effectively implemented by developers."
+      ],
+
+      solutions: [
+
+        "Designed UI/UX for 6+ core modules of the school management system using a consistent design system and reusable interface patterns.",
+
+        "Created 15+ wireframes and high-fidelity interface screens in Figma to define user flows, layouts, and interactions before implementation.",
+
+        "Collaborated closely with developers and stakeholders within a 20-member cross-functional team to refine requirements and ensure design solutions were technically implementable."
+      ],
+
+      features: [
+
+        "Academic Management: Designed interfaces to support the digitalization of school academic processes.",
+
+        "Administrative Management: Created user interfaces for administrative workflows within the school management system.",
+
+        "Multi-Module System: Designed UI/UX across 6+ core modules while maintaining consistency throughout the platform.",
+
+        "Design System: Applied consistent UI components, visual patterns, and interaction principles across the system.",
+
+        "User-Centered Interface: Developed 15+ wireframes and high-fidelity screens to create a clear and user-friendly experience for 300+ users."
+      ],
+
+      gallery: [
+        "/projects/sdnjoglo-1.png",
+        "/projects/sdnjoglo-2.png",
+        "/projects/sdnjoglo-3.png",
+        "/projects/sdnjoglo-4.png",
+        "/projects/sdnjoglo-5.png",
+        "/projects/sdnjoglo-6.png",
+        "/projects/sdnjoglo-7.png",
+        "/projects/sdnjoglo-8.png",
+        "/projects/sdnjoglo-9.png"
+      ]
+
+    }
   }
 ];
 
