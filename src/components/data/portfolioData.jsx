@@ -408,7 +408,7 @@ Courty solves these problems by providing a centralized, web-based marketplace t
     caseStudy: {
       role: "UI/UX Designer & Front-End Developer",
 
-      timeline: "2026",
+      timeline: "May 2026 - July 2026",
 
       deliverables: [
         "User Research & UI Design",
@@ -461,7 +461,7 @@ Courty solves these problems by providing a centralized, web-based marketplace t
 
     title: "SIERA",
 
-    subtitle: "New Student Orientation System for Incoming UPNVJ Students",
+    subtitle: "New Student Campus Life Orientation System for Incoming UPNVJ Students",
 
     category: "UI/UX Design",
 
@@ -624,7 +624,112 @@ Courty solves these problems by providing a centralized, web-based marketplace t
       ]
 
     }
-  }
+  },
+  {
+    id: 5,
+    title: "ProdActivity",
+    subtitle: "AI-Powered Student Productivity & Career Insight Platform",
+    category: "UI/UX Design",
+    icon: ShieldAlert,
+    image: "/projects/ProdActivity.jpg",
+
+    situation:
+      "University students often manage academic activities, personal tasks, notes, and career planning across disconnected tools, making it difficult to maintain productivity and understand how their activities contribute to their future career goals.",
+
+    action:
+      "Designed the end-to-end user experience for ProdActivity, from user flows and information architecture to high-fidelity interfaces and interactive prototypes. Focused on creating a clear and intuitive experience for productivity tracking, activity management, AI-powered career insights, and conversational AI features.",
+
+    result:
+      "Created a centralized and user-friendly experience that helps students manage daily activities, monitor productivity, and understand AI-generated career insights through clear information hierarchy and intuitive interactions.",
+
+    techStack: [
+      "Figma",
+      "UI/UX Design",
+      "User Flow",
+      "Wireframing",
+      "Prototyping",
+      "Design System"
+    ],
+
+    links: [
+      {
+        type: "demo",
+        label: "Documentation",
+        url: "https://drive.google.com/file/d/1J5Y1E2OxolKg6XeuXQGdYzf_-jI8-boi/view?usp=drive_link"
+      }
+    ],
+
+    caseStudy: {
+      role: "UI/UX Designer & Front-End Developer",
+
+      timeline: "May 2026 - July 2026",
+
+      deliverables: [
+        "User Flow & Information Architecture",
+        "Wireframes & High-Fidelity Designs",
+        "Productivity Dashboard UI",
+        "Activity Management Interface",
+        "AI Career Insight Interface",
+        "AI Chat Interface",
+        "Design System & UI Components"
+      ],
+
+      overview:
+        "ProdActivity is an AI-powered productivity and career insight platform designed to help university students organize their daily activities, track productivity, and gain personalized career insights. As the UI/UX Designer, I designed the end-to-end user experience, focusing on simplifying complex productivity data and AI-generated recommendations into clear, intuitive, and actionable interfaces. The design process covered user flows, information architecture, wireframing, high-fidelity UI design, prototyping, and the creation of reusable UI components.",
+
+      challenges: [
+        "Designing a productivity dashboard that communicates multiple types of information without overwhelming students.",
+
+        "Creating a seamless experience that connects daily activity management with productivity tracking and career development.",
+
+        "Presenting AI-generated career recommendations in a way that feels clear, understandable, and actionable for students.",
+
+        "Maintaining a consistent visual language and interaction pattern across productivity, activity management, and AI-powered features.",
+
+        "Designing an experience that remains intuitive across different screen sizes and user contexts."
+      ],
+
+      solutions: [
+        "Designed the information architecture and user flows to create a clear connection between activities, productivity data, and career insights.",
+
+        "Created wireframes to validate page structure, content hierarchy, and user interactions before moving into high-fidelity designs.",
+
+        "Designed a dashboard using visual hierarchy, progress indicators, charts, and categorized information to make productivity data easier to understand.",
+
+        "Designed AI Career Insight interfaces that organize career predictions, recommended skills, and suggested next steps into digestible sections.",
+
+        "Created intuitive interaction patterns for activity management, notes, todos, onboarding, and AI chat features.",
+
+        "Established reusable UI components and design patterns to maintain consistency across the platform."
+      ],
+
+      features: [
+        "Productivity Dashboard: Visual overview of productivity metrics, progress, activity trends, and category statistics.",
+
+        "Activity Management: Interface for creating, tracking, and organizing academic, organizational, and personal activities.",
+
+        "Notes & Todo Management: Integrated workspace for managing notes and completing daily tasks.",
+
+        "AI Career Insights: Structured interface for presenting career predictions, recommended skills, and personalized next steps.",
+
+        "AI Chat: Conversational interface designed to support students through AI-assisted career and productivity guidance.",
+
+        "Onboarding Experience: Guided onboarding flow designed to introduce users to the platform and collect relevant information for personalized insights.",
+
+        "Design System: Reusable components, typography, spacing, and interaction patterns to maintain a consistent experience across the platform."
+      ],
+
+      gallery: [
+        "/projects/ProdActivity-1.jpg",
+        "/projects/ProdActivity-2.jpg",
+        "/projects/ProdActivity-3.jpg",
+        "/projects/ProdActivity-4.jpg",
+        "/projects/ProdActivity-5.jpg",
+        "/projects/ProdActivity-6.jpg",
+        "/projects/ProdActivity-7.jpg"
+      ]
+    }
+  },
 ];
 
 export const experiences = {

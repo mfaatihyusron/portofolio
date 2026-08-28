@@ -43,7 +43,10 @@ function ProjectCard({ project, i, onSelect }) {
         transition: 'all .25s',
         display: 'flex',
         flexDirection: 'column',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        maxWidth: '480px',
+        width: '100%',
+        margin: '0 auto'
       }}
     >
       <div className="project-mockup" style={{
@@ -293,22 +296,6 @@ export default function ProjectsSection({ onProjectClick }) {
         </div>
       </div>
       
-      {/* Grid of Projects */}
-      <div className="projects-grid stagger" style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-        gap: '1.5rem'
-      }}>
-        {currentProjects.map((project, i) => (
-          <ProjectCard 
-            key={project.id} 
-            project={project} 
-            i={(currentPage - 1) * PAGE_SIZE + i} 
-            onSelect={onProjectClick} 
-          />
-        ))}
-      </div>
-
       {/* Pagination Bar */}
       {totalPages > 1 && (
         <div style={{
@@ -316,7 +303,7 @@ export default function ProjectsSection({ onProjectClick }) {
           justifyContent: 'center',
           alignItems: 'center',
           gap: '0.5rem',
-          marginTop: '3.5rem',
+          marginBottom: '3.5rem',
           fontFamily: "'Inter', sans-serif"
         }}>
           <button 
@@ -407,6 +394,22 @@ export default function ProjectsSection({ onProjectClick }) {
           </button>
         </div>
       )}
+
+      {/* Grid of Projects */}
+      <div className="projects-grid stagger" style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
+        gap: '1.5rem'
+      }}>
+        {currentProjects.map((project, i) => (
+          <ProjectCard 
+            key={project.id} 
+            project={project} 
+            i={(currentPage - 1) * PAGE_SIZE + i} 
+            onSelect={onProjectClick} 
+          />
+        ))}
+      </div>
       
       <style>{`
         .project-card:hover {
